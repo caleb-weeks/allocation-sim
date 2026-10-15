@@ -7,6 +7,7 @@
 from __future__ import annotations
 
 import json
+import math
 import random
 import sys
 from pathlib import Path
@@ -57,13 +58,32 @@ def build() -> dict:
     return {"generatedBy": "python -m reference.cross_check", "seed": SEED, "cases": cases}
 
 
+def first_difference(a, b, path: str = "$") -> str | None:
+    """Where two JSON values differ, allowing last-bit float noise between platforms' NumPy builds."""
+    if isinstance(a, (int, float)) and isinstance(b, (int, float)) and not isinstance(a, bool):
+        return None if math.isclose(a, b, rel_tol=1e-9, abs_tol=1e-9) else f"{path}: {a} != {b}"
+    if type(a) is not type(b):
+        return f"{path}: {type(a).__name__} != {type(b).__name__}"
+    if isinstance(a, dict):
+        if a.keys() != b.keys():
+            return f"{path}: keys {sorted(a.keys() ^ b.keys())} differ"
+        return next((d for k in a if (d := first_difference(a[k], b[k], f"{path}.{k}"))), None)
+    if isinstance(a, list):
+        if len(a) != len(b):
+            return f"{path}: length {len(a)} != {len(b)}"
+        return next((d for i, (x, y) in enumerate(zip(a, b)) if (d := first_difference(x, y, f"{path}[{i}]"))), None)
+    return None if a == b else f"{path}: {a!r} != {b!r}"
+
+
 def main() -> None:
-    text = json.dumps(build(), indent=1) + "\n"
+    fixture = build()
     if "--check" in sys.argv:
-        if not FIXTURE.exists() or FIXTURE.read_text() != text:
-            sys.exit(f"{FIXTURE} is stale; run python -m reference.cross_check")
+        diff = first_difference(json.loads(FIXTURE.read_text()), fixture) if FIXTURE.exists() else "fixture missing"
+        if diff:
+            sys.exit(f"{FIXTURE} is stale ({diff}); run python -m reference.cross_check")
         print("cross-check fixture is up to date")
         return
+    text = json.dumps(fixture, indent=1) + "\n"
     FIXTURE.parent.mkdir(parents=True, exist_ok=True)
     FIXTURE.write_text(text)
     print(f"wrote {CASES} cases to {FIXTURE}")

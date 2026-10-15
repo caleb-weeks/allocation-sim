@@ -19,6 +19,9 @@ permissions:
 jobs:
   typecheck:
     runs-on: ubuntu-latest
+    env:
+      # prisma.config.ts requires it to be set; `prisma generate` never connects.
+      DATABASE_URL: postgresql://unused@localhost:5432/unused
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4 # version comes from package.json "packageManager"
@@ -41,6 +44,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm --filter @allocation-sim/engine test
+      - run: pnpm --filter @allocation-sim/engine build # the web tests import the built engine
       - run: pnpm --filter @allocation-sim/web test
 
   python:
