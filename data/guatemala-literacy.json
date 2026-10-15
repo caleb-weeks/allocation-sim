@@ -1,0 +1,1386 @@
+{
+  "id": "guatemala-literacy",
+  "title": "Guatemala literacy programs, by department",
+  "valueUnit": "learners reached per $1,000 (need-weighted)",
+  "sources": [
+    {
+      "name": "CONALFA — Proyección de población alfabeta y analfabeta de 15 años y más, 2023",
+      "url": "https://www.conalfa.edu.gt/data/proyeccion2023.pdf"
+    }
+  ],
+  "assumptions": {
+    "cost_per_learner_usd": 100,
+    "reach_fraction_per_round": 0.02,
+    "hardest_to_reach_cost_multiple": 2.5,
+    "note": "Illustrative program economics, not sourced estimates: about $100 per learner who completes a course, a single round can enrol at most 2% of a department's illiterate population, and the last learners reached cost 2.5x the first."
+  },
+  "applications": [
+    {
+      "id": "guatemala",
+      "name": "Literacy program — Guatemala",
+      "cap": 291362,
+      "data": {
+        "department": "Guatemala",
+        "illiterate_15plus": 145681,
+        "illiteracy_rate": 0.054000000000000006,
+        "female_illiteracy_rate": 0.0706,
+        "population_15plus": 2695627
+      }
+    },
+    {
+      "id": "el-progreso",
+      "name": "Literacy program — El Progreso",
+      "cap": 31028,
+      "data": {
+        "department": "El Progreso",
+        "illiterate_15plus": 15514,
+        "illiteracy_rate": 0.1108,
+        "female_illiteracy_rate": 0.1258,
+        "population_15plus": 140049
+      }
+    },
+    {
+      "id": "sacatepequez",
+      "name": "Literacy program — Sacatepéquez",
+      "cap": 52168,
+      "data": {
+        "department": "Sacatepéquez",
+        "illiterate_15plus": 26084,
+        "illiteracy_rate": 0.085,
+        "female_illiteracy_rate": 0.1151,
+        "population_15plus": 306906
+      }
+    },
+    {
+      "id": "chimaltenango",
+      "name": "Literacy program — Chimaltenango",
+      "cap": 134080,
+      "data": {
+        "department": "Chimaltenango",
+        "illiterate_15plus": 67040,
+        "illiteracy_rate": 0.1243,
+        "female_illiteracy_rate": 0.1653,
+        "population_15plus": 539134
+      }
+    },
+    {
+      "id": "escuintla",
+      "name": "Literacy program — Escuintla",
+      "cap": 132416,
+      "data": {
+        "department": "Escuintla",
+        "illiterate_15plus": 66208,
+        "illiteracy_rate": 0.1124,
+        "female_illiteracy_rate": 0.1367,
+        "population_15plus": 589160
+      }
+    },
+    {
+      "id": "santa-rosa",
+      "name": "Literacy program — Santa Rosa",
+      "cap": 76842,
+      "data": {
+        "department": "Santa Rosa",
+        "illiterate_15plus": 38421,
+        "illiteracy_rate": 0.1162,
+        "female_illiteracy_rate": 0.1338,
+        "population_15plus": 330743
+      }
+    },
+    {
+      "id": "solola",
+      "name": "Literacy program — Sololá",
+      "cap": 155592,
+      "data": {
+        "department": "Sololá",
+        "illiterate_15plus": 77796,
+        "illiteracy_rate": 0.2281,
+        "female_illiteracy_rate": 0.2811,
+        "population_15plus": 341004
+      }
+    },
+    {
+      "id": "totonicapan",
+      "name": "Literacy program — Totonicapán",
+      "cap": 149206,
+      "data": {
+        "department": "Totonicapán",
+        "illiterate_15plus": 74603,
+        "illiteracy_rate": 0.2254,
+        "female_illiteracy_rate": 0.2891,
+        "population_15plus": 330982
+      }
+    },
+    {
+      "id": "quetzaltenango",
+      "name": "Literacy program — Quetzaltenango",
+      "cap": 172264,
+      "data": {
+        "department": "Quetzaltenango",
+        "illiterate_15plus": 86132,
+        "illiteracy_rate": 0.1338,
+        "female_illiteracy_rate": 0.1674,
+        "population_15plus": 643920
+      }
+    },
+    {
+      "id": "suchitepequez",
+      "name": "Literacy program — Suchitepéquez",
+      "cap": 138774,
+      "data": {
+        "department": "Suchitepéquez",
+        "illiterate_15plus": 69387,
+        "illiteracy_rate": 0.162,
+        "female_illiteracy_rate": 0.20850000000000002,
+        "population_15plus": 428414
+      }
+    },
+    {
+      "id": "retalhuleu",
+      "name": "Literacy program — Retalhuleu",
+      "cap": 72060,
+      "data": {
+        "department": "Retalhuleu",
+        "illiterate_15plus": 36030,
+        "illiteracy_rate": 0.13449999999999998,
+        "female_illiteracy_rate": 0.1729,
+        "population_15plus": 267960
+      }
+    },
+    {
+      "id": "san-marcos",
+      "name": "Literacy program — San Marcos",
+      "cap": 277394,
+      "data": {
+        "department": "San Marcos",
+        "illiterate_15plus": 138697,
+        "illiteracy_rate": 0.1751,
+        "female_illiteracy_rate": 0.2234,
+        "population_15plus": 792293
+      }
+    },
+    {
+      "id": "huehuetenango",
+      "name": "Literacy program — Huehuetenango",
+      "cap": 451518,
+      "data": {
+        "department": "Huehuetenango",
+        "illiterate_15plus": 225759,
+        "illiteracy_rate": 0.247,
+        "female_illiteracy_rate": 0.3114,
+        "population_15plus": 914140
+      }
+    },
+    {
+      "id": "quiche",
+      "name": "Literacy program — Quiché",
+      "cap": 423092,
+      "data": {
+        "department": "Quiché",
+        "illiterate_15plus": 211546,
+        "illiteracy_rate": 0.3015,
+        "female_illiteracy_rate": 0.3728,
+        "population_15plus": 701645
+      }
+    },
+    {
+      "id": "baja-verapaz",
+      "name": "Literacy program — Baja Verapaz",
+      "cap": 97068,
+      "data": {
+        "department": "Baja Verapaz",
+        "illiterate_15plus": 48534,
+        "illiteracy_rate": 0.21170000000000003,
+        "female_illiteracy_rate": 0.2662,
+        "population_15plus": 229250
+      }
+    },
+    {
+      "id": "alta-verapaz",
+      "name": "Literacy program — Alta Verapaz",
+      "cap": 521520,
+      "data": {
+        "department": "Alta Verapaz",
+        "illiterate_15plus": 260760,
+        "illiteracy_rate": 0.2876,
+        "female_illiteracy_rate": 0.3567,
+        "population_15plus": 906525
+      }
+    },
+    {
+      "id": "peten",
+      "name": "Literacy program — Petén",
+      "cap": 161556,
+      "data": {
+        "department": "Petén",
+        "illiterate_15plus": 80778,
+        "illiteracy_rate": 0.1911,
+        "female_illiteracy_rate": 0.2147,
+        "population_15plus": 422757
+      }
+    },
+    {
+      "id": "izabal",
+      "name": "Literacy program — Izabal",
+      "cap": 98976,
+      "data": {
+        "department": "Izabal",
+        "illiterate_15plus": 49488,
+        "illiteracy_rate": 0.1577,
+        "female_illiteracy_rate": 0.1796,
+        "population_15plus": 313739
+      }
+    },
+    {
+      "id": "zacapa",
+      "name": "Literacy program — Zacapa",
+      "cap": 59758,
+      "data": {
+        "department": "Zacapa",
+        "illiterate_15plus": 29879,
+        "illiteracy_rate": 0.15689999999999998,
+        "female_illiteracy_rate": 0.16829999999999998,
+        "population_15plus": 190486
+      }
+    },
+    {
+      "id": "chiquimula",
+      "name": "Literacy program — Chiquimula",
+      "cap": 145246,
+      "data": {
+        "department": "Chiquimula",
+        "illiterate_15plus": 72623,
+        "illiteracy_rate": 0.23829999999999998,
+        "female_illiteracy_rate": 0.2566,
+        "population_15plus": 304710
+      }
+    },
+    {
+      "id": "jalapa",
+      "name": "Literacy program — Jalapa",
+      "cap": 102554,
+      "data": {
+        "department": "Jalapa",
+        "illiterate_15plus": 51277,
+        "illiteracy_rate": 0.18280000000000002,
+        "female_illiteracy_rate": 0.2164,
+        "population_15plus": 280477
+      }
+    },
+    {
+      "id": "jutiapa",
+      "name": "Literacy program — Jutiapa",
+      "cap": 121534,
+      "data": {
+        "department": "Jutiapa",
+        "illiterate_15plus": 60767,
+        "illiteracy_rate": 0.15109999999999998,
+        "female_illiteracy_rate": 0.17800000000000002,
+        "population_15plus": 402133
+      }
+    }
+  ],
+  "recommenders": [
+    {
+      "id": "rec-reach",
+      "name": "Reach",
+      "lens": "Every learner counts the same; go where the most people can be reached."
+    },
+    {
+      "id": "rec-equity",
+      "name": "Equity",
+      "lens": "Weight by how far a department's illiteracy rate is above the national rate."
+    },
+    {
+      "id": "rec-gender",
+      "name": "Gender gap",
+      "lens": "Weight by female illiteracy, where gaps are largest."
+    }
+  ],
+  "funders": [
+    {
+      "id": "funder-north",
+      "name": "North Star Fund (example)",
+      "budget": 1000000,
+      "trust": {
+        "rec-reach": 1,
+        "rec-equity": 2,
+        "rec-gender": 1
+      }
+    },
+    {
+      "id": "funder-river",
+      "name": "River Trust (example)",
+      "budget": 500000,
+      "trust": {
+        "rec-reach": 2,
+        "rec-equity": 1,
+        "rec-gender": 0.5
+      }
+    }
+  ],
+  "curves": {
+    "rec-reach": {
+      "guatemala": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.0
+          },
+          {
+            "x": 145681,
+            "m": 7.9
+          },
+          {
+            "x": 291362,
+            "m": 4.0
+          }
+        ]
+      },
+      "el-progreso": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.0
+          },
+          {
+            "x": 15514,
+            "m": 7.9
+          },
+          {
+            "x": 31028,
+            "m": 4.0
+          }
+        ]
+      },
+      "sacatepequez": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.0
+          },
+          {
+            "x": 26084,
+            "m": 7.9
+          },
+          {
+            "x": 52168,
+            "m": 4.0
+          }
+        ]
+      },
+      "chimaltenango": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.0
+          },
+          {
+            "x": 67040,
+            "m": 7.9
+          },
+          {
+            "x": 134080,
+            "m": 4.0
+          }
+        ]
+      },
+      "escuintla": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.0
+          },
+          {
+            "x": 66208,
+            "m": 7.9
+          },
+          {
+            "x": 132416,
+            "m": 4.0
+          }
+        ]
+      },
+      "santa-rosa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.0
+          },
+          {
+            "x": 38421,
+            "m": 7.9
+          },
+          {
+            "x": 76842,
+            "m": 4.0
+          }
+        ]
+      },
+      "solola": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.0
+          },
+          {
+            "x": 77796,
+            "m": 7.9
+          },
+          {
+            "x": 155592,
+            "m": 4.0
+          }
+        ]
+      },
+      "totonicapan": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.0
+          },
+          {
+            "x": 74603,
+            "m": 7.9
+          },
+          {
+            "x": 149206,
+            "m": 4.0
+          }
+        ]
+      },
+      "quetzaltenango": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.0
+          },
+          {
+            "x": 86132,
+            "m": 7.9
+          },
+          {
+            "x": 172264,
+            "m": 4.0
+          }
+        ]
+      },
+      "suchitepequez": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.0
+          },
+          {
+            "x": 69387,
+            "m": 7.9
+          },
+          {
+            "x": 138774,
+            "m": 4.0
+          }
+        ]
+      },
+      "retalhuleu": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.0
+          },
+          {
+            "x": 36030,
+            "m": 7.9
+          },
+          {
+            "x": 72060,
+            "m": 4.0
+          }
+        ]
+      },
+      "san-marcos": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.0
+          },
+          {
+            "x": 138697,
+            "m": 7.9
+          },
+          {
+            "x": 277394,
+            "m": 4.0
+          }
+        ]
+      },
+      "huehuetenango": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.0
+          },
+          {
+            "x": 225759,
+            "m": 7.9
+          },
+          {
+            "x": 451518,
+            "m": 4.0
+          }
+        ]
+      },
+      "quiche": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.0
+          },
+          {
+            "x": 211546,
+            "m": 7.9
+          },
+          {
+            "x": 423092,
+            "m": 4.0
+          }
+        ]
+      },
+      "baja-verapaz": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.0
+          },
+          {
+            "x": 48534,
+            "m": 7.9
+          },
+          {
+            "x": 97068,
+            "m": 4.0
+          }
+        ]
+      },
+      "alta-verapaz": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.0
+          },
+          {
+            "x": 260760,
+            "m": 7.9
+          },
+          {
+            "x": 521520,
+            "m": 4.0
+          }
+        ]
+      },
+      "peten": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.0
+          },
+          {
+            "x": 80778,
+            "m": 7.9
+          },
+          {
+            "x": 161556,
+            "m": 4.0
+          }
+        ]
+      },
+      "izabal": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.0
+          },
+          {
+            "x": 49488,
+            "m": 7.9
+          },
+          {
+            "x": 98976,
+            "m": 4.0
+          }
+        ]
+      },
+      "zacapa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.0
+          },
+          {
+            "x": 29879,
+            "m": 7.9
+          },
+          {
+            "x": 59758,
+            "m": 4.0
+          }
+        ]
+      },
+      "chiquimula": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.0
+          },
+          {
+            "x": 72623,
+            "m": 7.9
+          },
+          {
+            "x": 145246,
+            "m": 4.0
+          }
+        ]
+      },
+      "jalapa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.0
+          },
+          {
+            "x": 51277,
+            "m": 7.9
+          },
+          {
+            "x": 102554,
+            "m": 4.0
+          }
+        ]
+      },
+      "jutiapa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.0
+          },
+          {
+            "x": 60767,
+            "m": 7.9
+          },
+          {
+            "x": 121534,
+            "m": 4.0
+          }
+        ]
+      }
+    },
+    "rec-equity": {
+      "guatemala": {
+        "points": [
+          {
+            "x": 0,
+            "m": 1.1373
+          },
+          {
+            "x": 145681,
+            "m": 0.8985
+          },
+          {
+            "x": 291362,
+            "m": 0.4549
+          }
+        ]
+      },
+      "el-progreso": {
+        "points": [
+          {
+            "x": 0,
+            "m": 4.7882
+          },
+          {
+            "x": 15514,
+            "m": 3.7827
+          },
+          {
+            "x": 31028,
+            "m": 1.9153
+          }
+        ]
+      },
+      "sacatepequez": {
+        "points": [
+          {
+            "x": 0,
+            "m": 2.818
+          },
+          {
+            "x": 26084,
+            "m": 2.2262
+          },
+          {
+            "x": 52168,
+            "m": 1.1272
+          }
+        ]
+      },
+      "chimaltenango": {
+        "points": [
+          {
+            "x": 0,
+            "m": 6.0261
+          },
+          {
+            "x": 67040,
+            "m": 4.7606
+          },
+          {
+            "x": 134080,
+            "m": 2.4105
+          }
+        ]
+      },
+      "escuintla": {
+        "points": [
+          {
+            "x": 0,
+            "m": 4.9275
+          },
+          {
+            "x": 66208,
+            "m": 3.8928
+          },
+          {
+            "x": 132416,
+            "m": 1.971
+          }
+        ]
+      },
+      "santa-rosa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 5.2663
+          },
+          {
+            "x": 38421,
+            "m": 4.1604
+          },
+          {
+            "x": 76842,
+            "m": 2.1065
+          }
+        ]
+      },
+      "solola": {
+        "points": [
+          {
+            "x": 0,
+            "m": 20.2931
+          },
+          {
+            "x": 77796,
+            "m": 16.0315
+          },
+          {
+            "x": 155592,
+            "m": 8.1172
+          }
+        ]
+      },
+      "totonicapan": {
+        "points": [
+          {
+            "x": 0,
+            "m": 19.8155
+          },
+          {
+            "x": 74603,
+            "m": 15.6542
+          },
+          {
+            "x": 149206,
+            "m": 7.9262
+          }
+        ]
+      },
+      "quetzaltenango": {
+        "points": [
+          {
+            "x": 0,
+            "m": 6.9825
+          },
+          {
+            "x": 86132,
+            "m": 5.5162
+          },
+          {
+            "x": 172264,
+            "m": 2.793
+          }
+        ]
+      },
+      "suchitepequez": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.2359
+          },
+          {
+            "x": 69387,
+            "m": 8.0864
+          },
+          {
+            "x": 138774,
+            "m": 4.0944
+          }
+        ]
+      },
+      "retalhuleu": {
+        "points": [
+          {
+            "x": 0,
+            "m": 7.0557
+          },
+          {
+            "x": 36030,
+            "m": 5.574
+          },
+          {
+            "x": 72060,
+            "m": 2.8223
+          }
+        ]
+      },
+      "san-marcos": {
+        "points": [
+          {
+            "x": 0,
+            "m": 11.9583
+          },
+          {
+            "x": 138697,
+            "m": 9.4471
+          },
+          {
+            "x": 277394,
+            "m": 4.7833
+          }
+        ]
+      },
+      "huehuetenango": {
+        "points": [
+          {
+            "x": 0,
+            "m": 23.7953
+          },
+          {
+            "x": 225759,
+            "m": 18.7983
+          },
+          {
+            "x": 451518,
+            "m": 9.5181
+          }
+        ]
+      },
+      "quiche": {
+        "points": [
+          {
+            "x": 0,
+            "m": 35.4545
+          },
+          {
+            "x": 211546,
+            "m": 28.0091
+          },
+          {
+            "x": 423092,
+            "m": 14.1818
+          }
+        ]
+      },
+      "baja-verapaz": {
+        "points": [
+          {
+            "x": 0,
+            "m": 17.4799
+          },
+          {
+            "x": 48534,
+            "m": 13.8091
+          },
+          {
+            "x": 97068,
+            "m": 6.992
+          }
+        ]
+      },
+      "alta-verapaz": {
+        "points": [
+          {
+            "x": 0,
+            "m": 32.2608
+          },
+          {
+            "x": 260760,
+            "m": 25.486
+          },
+          {
+            "x": 521520,
+            "m": 12.9043
+          }
+        ]
+      },
+      "peten": {
+        "points": [
+          {
+            "x": 0,
+            "m": 14.2435
+          },
+          {
+            "x": 80778,
+            "m": 11.2524
+          },
+          {
+            "x": 161556,
+            "m": 5.6974
+          }
+        ]
+      },
+      "izabal": {
+        "points": [
+          {
+            "x": 0,
+            "m": 9.6997
+          },
+          {
+            "x": 49488,
+            "m": 7.6628
+          },
+          {
+            "x": 98976,
+            "m": 3.8799
+          }
+        ]
+      },
+      "zacapa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 9.6016
+          },
+          {
+            "x": 29879,
+            "m": 7.5852
+          },
+          {
+            "x": 59758,
+            "m": 3.8406
+          }
+        ]
+      },
+      "chiquimula": {
+        "points": [
+          {
+            "x": 0,
+            "m": 22.1485
+          },
+          {
+            "x": 72623,
+            "m": 17.4973
+          },
+          {
+            "x": 145246,
+            "m": 8.8594
+          }
+        ]
+      },
+      "jalapa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 13.0331
+          },
+          {
+            "x": 51277,
+            "m": 10.2962
+          },
+          {
+            "x": 102554,
+            "m": 5.2133
+          }
+        ]
+      },
+      "jutiapa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 8.9048
+          },
+          {
+            "x": 60767,
+            "m": 7.0348
+          },
+          {
+            "x": 121534,
+            "m": 3.5619
+          }
+        ]
+      }
+    },
+    "rec-gender": {
+      "guatemala": {
+        "points": [
+          {
+            "x": 0,
+            "m": 1.2778
+          },
+          {
+            "x": 145681,
+            "m": 1.0095
+          },
+          {
+            "x": 291362,
+            "m": 0.5111
+          }
+        ]
+      },
+      "el-progreso": {
+        "points": [
+          {
+            "x": 0,
+            "m": 4.0572
+          },
+          {
+            "x": 15514,
+            "m": 3.2052
+          },
+          {
+            "x": 31028,
+            "m": 1.6229
+          }
+        ]
+      },
+      "sacatepequez": {
+        "points": [
+          {
+            "x": 0,
+            "m": 3.3964
+          },
+          {
+            "x": 26084,
+            "m": 2.6831
+          },
+          {
+            "x": 52168,
+            "m": 1.3585
+          }
+        ]
+      },
+      "chimaltenango": {
+        "points": [
+          {
+            "x": 0,
+            "m": 7.005
+          },
+          {
+            "x": 67040,
+            "m": 5.534
+          },
+          {
+            "x": 134080,
+            "m": 2.802
+          }
+        ]
+      },
+      "escuintla": {
+        "points": [
+          {
+            "x": 0,
+            "m": 4.7907
+          },
+          {
+            "x": 66208,
+            "m": 3.7847
+          },
+          {
+            "x": 132416,
+            "m": 1.9163
+          }
+        ]
+      },
+      "santa-rosa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 4.5896
+          },
+          {
+            "x": 38421,
+            "m": 3.6258
+          },
+          {
+            "x": 76842,
+            "m": 1.8358
+          }
+        ]
+      },
+      "solola": {
+        "points": [
+          {
+            "x": 0,
+            "m": 20.2574
+          },
+          {
+            "x": 77796,
+            "m": 16.0034
+          },
+          {
+            "x": 155592,
+            "m": 8.103
+          }
+        ]
+      },
+      "totonicapan": {
+        "points": [
+          {
+            "x": 0,
+            "m": 21.4269
+          },
+          {
+            "x": 74603,
+            "m": 16.9272
+          },
+          {
+            "x": 149206,
+            "m": 8.5708
+          }
+        ]
+      },
+      "quetzaltenango": {
+        "points": [
+          {
+            "x": 0,
+            "m": 7.1841
+          },
+          {
+            "x": 86132,
+            "m": 5.6755
+          },
+          {
+            "x": 172264,
+            "m": 2.8736
+          }
+        ]
+      },
+      "suchitepequez": {
+        "points": [
+          {
+            "x": 0,
+            "m": 11.1449
+          },
+          {
+            "x": 69387,
+            "m": 8.8044
+          },
+          {
+            "x": 138774,
+            "m": 4.4579
+          }
+        ]
+      },
+      "retalhuleu": {
+        "points": [
+          {
+            "x": 0,
+            "m": 7.664
+          },
+          {
+            "x": 36030,
+            "m": 6.0545
+          },
+          {
+            "x": 72060,
+            "m": 3.0656
+          }
+        ]
+      },
+      "san-marcos": {
+        "points": [
+          {
+            "x": 0,
+            "m": 12.7947
+          },
+          {
+            "x": 138697,
+            "m": 10.1078
+          },
+          {
+            "x": 277394,
+            "m": 5.1179
+          }
+        ]
+      },
+      "huehuetenango": {
+        "points": [
+          {
+            "x": 0,
+            "m": 24.8599
+          },
+          {
+            "x": 225759,
+            "m": 19.6394
+          },
+          {
+            "x": 451518,
+            "m": 9.944
+          }
+        ]
+      },
+      "quiche": {
+        "points": [
+          {
+            "x": 0,
+            "m": 35.6299
+          },
+          {
+            "x": 211546,
+            "m": 28.1476
+          },
+          {
+            "x": 423092,
+            "m": 14.252
+          }
+        ]
+      },
+      "baja-verapaz": {
+        "points": [
+          {
+            "x": 0,
+            "m": 18.1668
+          },
+          {
+            "x": 48534,
+            "m": 14.3518
+          },
+          {
+            "x": 97068,
+            "m": 7.2667
+          }
+        ]
+      },
+      "alta-verapaz": {
+        "points": [
+          {
+            "x": 0,
+            "m": 32.6189
+          },
+          {
+            "x": 260760,
+            "m": 25.7689
+          },
+          {
+            "x": 521520,
+            "m": 13.0476
+          }
+        ]
+      },
+      "peten": {
+        "points": [
+          {
+            "x": 0,
+            "m": 11.8175
+          },
+          {
+            "x": 80778,
+            "m": 9.3359
+          },
+          {
+            "x": 161556,
+            "m": 4.727
+          }
+        ]
+      },
+      "izabal": {
+        "points": [
+          {
+            "x": 0,
+            "m": 8.2694
+          },
+          {
+            "x": 49488,
+            "m": 6.5328
+          },
+          {
+            "x": 98976,
+            "m": 3.3078
+          }
+        ]
+      },
+      "zacapa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 7.2616
+          },
+          {
+            "x": 29879,
+            "m": 5.7366
+          },
+          {
+            "x": 59758,
+            "m": 2.9046
+          }
+        ]
+      },
+      "chiquimula": {
+        "points": [
+          {
+            "x": 0,
+            "m": 16.8801
+          },
+          {
+            "x": 72623,
+            "m": 13.3353
+          },
+          {
+            "x": 145246,
+            "m": 6.7521
+          }
+        ]
+      },
+      "jalapa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 12.0054
+          },
+          {
+            "x": 51277,
+            "m": 9.4843
+          },
+          {
+            "x": 102554,
+            "m": 4.8022
+          }
+        ]
+      },
+      "jutiapa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 8.1227
+          },
+          {
+            "x": 60767,
+            "m": 6.417
+          },
+          {
+            "x": 121534,
+            "m": 3.2491
+          }
+        ]
+      }
+    }
+  }
+}

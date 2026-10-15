@@ -1,0 +1,12 @@
+# Caddy terminates TLS (automatic Let's Encrypt) and proxies to the API.
+# Replace the hostname with your own; the web app on Vercel lives at the parent domain.
+api.example.org {
+	encode zstd gzip
+	reverse_proxy 127.0.0.1:4000
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+		-Server
+	}
+}

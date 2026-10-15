@@ -1,0 +1,9 @@
+{
+  "name": "Allocation Simulator",
+  "short_name": "Allocate",
+  "start_url": "/rounds",
+  "display": "standalone",
+  "background_color": "#f9f9f7",
+  "theme_color": "#f9f9f7",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

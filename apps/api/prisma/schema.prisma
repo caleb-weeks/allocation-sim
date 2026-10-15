@@ -1,0 +1,149 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  OWNER
+  FUNDER
+  RECOMMENDER
+  OBSERVER
+}
+
+model User {
+  id           String        @id @default(cuid())
+  email        String        @unique
+  name         String
+  /// argon2id hash. Null for demo personas, which can only sign in through the demo endpoint.
+  passwordHash String?
+  isDemo       Boolean       @default(false)
+  createdAt    DateTime      @default(now())
+  sessions     AuthSession[]
+  memberships  Membership[]
+  auditEvents  AuditEvent[]
+}
+
+model AuthSession {
+  /// sha256 of the session token; the raw token only ever lives in the cookie.
+  id        String   @id
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+/// One allocation round: a set of applications, the people evaluating and funding them, and their inputs.
+model Round {
+  id           String        @id @default(cuid())
+  /// Stable key for seeded rounds (e.g. the demo), so they can be reset in place.
+  key          String?       @unique
+  title        String
+  valueUnit    String
+  sources      Json          @default("[]")
+  assumptions  Json          @default("{}")
+  createdAt    DateTime      @default(now())
+  applications Application[]
+  memberships  Membership[]
+  curves       Curve[]
+  snapshots    Snapshot[]
+  auditEvents  AuditEvent[]
+}
+
+model Membership {
+  id          String   @id @default(cuid())
+  roundId     String
+  round       Round    @relation(fields: [roundId], references: [id], onDelete: Cascade)
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role        Role
+  displayName String
+  /// Funders only: whole dollars.
+  budget      Int?
+  /// Recommenders only: a one-line description of how they evaluate.
+  lens        String?
+  curves      Curve[]
+  trustGiven  Trust[]  @relation("funder")
+  trustHeld   Trust[]  @relation("recommender")
+
+  @@unique([roundId, userId])
+  @@index([userId])
+}
+
+model Application {
+  id      String  @id @default(cuid())
+  roundId String
+  round   Round   @relation(fields: [roundId], references: [id], onDelete: Cascade)
+  key     String
+  name    String
+  /// Most this application can usefully absorb, in whole dollars.
+  cap     Int
+  data    Json    @default("{}")
+  curves  Curve[]
+
+  @@unique([roundId, key])
+}
+
+/// A recommender's marginal value curve for one application.
+model Curve {
+  id            String      @id @default(cuid())
+  roundId       String
+  round         Round       @relation(fields: [roundId], references: [id], onDelete: Cascade)
+  recommenderId String
+  recommender   Membership  @relation(fields: [recommenderId], references: [id], onDelete: Cascade)
+  applicationId String
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  /// [{x, m}, ...]; the database also enforces validity (see the migration's CHECK constraint).
+  points        Json
+  /// Drafts are private to their author; only shared curves count toward the official allocation.
+  isShared      Boolean     @default(false)
+  version       Int         @default(1)
+  updatedAt     DateTime    @updatedAt
+
+  @@unique([recommenderId, applicationId])
+  @@index([roundId])
+}
+
+model Trust {
+  id            String     @id @default(cuid())
+  funderId      String
+  funder        Membership @relation("funder", fields: [funderId], references: [id], onDelete: Cascade)
+  recommenderId String
+  recommender   Membership @relation("recommender", fields: [recommenderId], references: [id], onDelete: Cascade)
+  weight        Float
+
+  @@unique([funderId, recommenderId])
+}
+
+/// A saved allocation result, so a round's decisions can be referred back to.
+model Snapshot {
+  id          String   @id @default(cuid())
+  roundId     String
+  round       Round    @relation(fields: [roundId], references: [id], onDelete: Cascade)
+  createdById String
+  label       String
+  method      String
+  result      Json
+  createdAt   DateTime @default(now())
+
+  @@index([roundId])
+}
+
+model AuditEvent {
+  id        String   @id @default(cuid())
+  roundId   String
+  round     Round    @relation(fields: [roundId], references: [id], onDelete: Cascade)
+  actorId   String
+  actor     User     @relation(fields: [actorId], references: [id], onDelete: Cascade)
+  action    String
+  target    String?
+  detail    Json     @default("{}")
+  createdAt DateTime @default(now())
+
+  @@index([roundId, createdAt])
+}

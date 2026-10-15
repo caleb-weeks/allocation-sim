@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+/*
+ * Color tokens. Chart colors follow a validated categorical palette
+ * (slots 1-3 pass the colorblind-separation checks for every pair, in both
+ * modes). Recommenders take slots in a fixed order; UI chrome stays neutral so
+ * it never competes with data colors.
+ */
+:root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --surface-2: #f3f2ee;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #6f6d68;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11, 11, 11, 0.1);
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --gain: #2a78d6;
+  --loss: #e34948;
+  --good: #006300;
+  --critical: #d03b3b;
+  --button: #0b0b0b;
+  --button-ink: #fcfcfb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --surface-2: #232321;
+    --ink: #f0efec;
+    --ink-2: #c3c2b7;
+    --muted: #9a9890;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --border: rgba(255, 255, 255, 0.1);
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --gain: #3987e5;
+    --loss: #e66767;
+    --good: #0ca30c;
+    --critical: #e66767;
+    --button: #f0efec;
+    --button-ink: #1a1a19;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d;
+  --surface: #1a1a19;
+  --surface-2: #232321;
+  --ink: #f0efec;
+  --ink-2: #c3c2b7;
+  --muted: #9a9890;
+  --grid: #2c2c2a;
+  --axis: #383835;
+  --border: rgba(255, 255, 255, 0.1);
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --gain: #3987e5;
+  --loss: #e66767;
+  --good: #0ca30c;
+  --critical: #e66767;
+  --button: #f0efec;
+  --button-ink: #1a1a19;
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-grid: var(--grid);
+  --color-axis: var(--axis);
+  --color-border: var(--border);
+  --color-gain: var(--gain);
+  --color-loss: var(--loss);
+  --color-good: var(--good);
+  --color-critical: var(--critical);
+  --color-button: var(--button);
+  --color-button-ink: var(--button-ink);
+  --font-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+body {
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-text-size-adjust: 100%;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Visible keyboard focus everywhere. */
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}

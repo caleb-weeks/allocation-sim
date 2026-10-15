@@ -1,0 +1,5 @@
+# m h dom mon dow user command
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+15 3 * * * allocation /srv/allocation-sim/infra/vm/backup.sh >> /var/log/allocation-backup.log 2>&1
+30 3 * * * allocation cd /srv/allocation-sim && pnpm --filter @allocation-sim/api demo:reset >> /var/log/allocation-demo-reset.log 2>&1
