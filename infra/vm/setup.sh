@@ -5,7 +5,8 @@ set -euo pipefail
 
 APP_USER=allocation
 APP_DIR=/srv/allocation-sim
-REPO_URL="${REPO_URL:-https://gitlab.com/REPLACE_ME/allocation-sim.git}"
+# A plain HTTPS clone needs the repo to be public; for a private repo, pass an SSH URL and add a GitHub deploy key.
+REPO_URL="${REPO_URL:-https://github.com/caleb-weeks/allocation-sim.git}"
 
 export DEBIAN_FRONTEND=noninteractive
 

@@ -1,0 +1,92 @@
+# Typecheck and test: TypeScript engine + web, Python reference, and the Postgres-backed API.
+# The web app deploys through Vercel's GitHub integration (root directory: apps/web);
+# the API deploys with the manual "Deploy API" workflow (deploy.yml).
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4 # version comes from package.json "packageManager"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @allocation-sim/engine build
+      - run: pnpm -r typecheck
+
+  engine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @allocation-sim/engine test
+      - run: pnpm --filter @allocation-sim/web test
+
+  python:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: python
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: python/requirements.txt
+      - run: pip install -r requirements.txt
+      - run: python -m pytest -q
+      # The TypeScript engine is tested against this fixture; make sure it matches the Python reference.
+      - run: python -m reference.cross_check --check
+      - run: python -m pipeline.build_seed --check
+
+  api:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_DB: allocation_sim_test
+          POSTGRES_USER: ci
+          POSTGRES_PASSWORD: ci
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U ci"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql://ci:ci@localhost:5432/allocation_sim_test
+      TEST_DATABASE_URL: postgresql://ci:ci@localhost:5432/allocation_sim_test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @allocation-sim/engine build
+      - run: pnpm --filter @allocation-sim/api exec prisma generate
+      - run: pnpm --filter @allocation-sim/api test

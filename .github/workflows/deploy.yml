@@ -1,0 +1,41 @@
+# Deploy the API to the GCP VM: SSH in and run infra/vm/deploy.sh (pull, build, migrate, restart, health check).
+# Run manually from the Actions tab once CI is green on main.
+#
+# Configure on the "production" environment:
+#   secrets   DEPLOY_HOST, DEPLOY_SSH_KEY (private key for the VM's `allocation` user),
+#             DEPLOY_KNOWN_HOSTS (output of `ssh-keyscan <host>`)
+#   variables API_HOSTNAME (e.g. api.example.org)
+
+name: Deploy API
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-api
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://${{ vars.API_HOSTNAME }}
+    steps:
+      - name: Configure SSH
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" | tr -d '\r' > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+      - name: Deploy
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+        run: ssh -i ~/.ssh/id_deploy "allocation@$DEPLOY_HOST" /srv/allocation-sim/infra/vm/deploy.sh

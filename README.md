@@ -104,11 +104,12 @@ cd python
 
 ## Deployment
 
-- **Web:** Vercel, via its GitLab integration. Root directory `apps/web`; set `NEXT_PUBLIC_API_URL`.
+- **Web:** Vercel, via its GitHub integration. Root directory `apps/web`; set `NEXT_PUBLIC_API_URL`.
 - **API:** a GCP e2-micro VM (free tier) running Node under systemd behind Caddy (automatic TLS), with Postgres on the same VM.
   - `infra/gcp/provision.sh` creates the VM.
   - `infra/vm/setup.sh` bootstraps it.
-  - GitLab CI's manual `deploy-api` job runs `infra/vm/deploy.sh` over SSH (pull, build, migrate, restart, health check).
+  - The manual **Deploy API** GitHub Actions workflow (`.github/workflows/deploy.yml`) runs `infra/vm/deploy.sh` over SSH (pull, build, migrate, restart, health check).
+- **CI:** `.github/workflows/ci.yml` typechecks and runs the TypeScript, Python, and Postgres-backed API tests on every push and pull request.
 - **Cron:**
   - nightly `pg_dump` with 14-day retention, and the dump is verified readable;
   - nightly demo reset.
