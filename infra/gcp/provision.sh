@@ -18,5 +18,5 @@ gcloud compute firewall-rules describe allow-http-https >/dev/null 2>&1 || \
   gcloud compute firewall-rules create allow-http-https \
     --allow=tcp:80,tcp:443 --target-tags=http-server,https-server
 
-echo "VM created. Point api.<your-domain> at its external IP:"
+echo "VM created. Point the api.calebweeks.com A record at its external IP:"
 gcloud compute instances describe "$NAME" --zone="$ZONE" --format='get(networkInterfaces[0].accessConfigs[0].natIP)'

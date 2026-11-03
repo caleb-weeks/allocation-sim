@@ -13,7 +13,7 @@ allows.
 The demo scenario uses CONALFA's 2023 literacy data for Guatemala's 22
 departments. The program costs are explicit, illustrative assumptions.
 
-- **Live demo:** _TBD (one-click demo personas, no signup)_
+- **Live demo:** https://allocation.calebweeks.com _(coming soon; one-click demo personas, no signup)_
 - **The math:** [docs/math.md](docs/math.md)
 
 ## What's in here
@@ -104,8 +104,8 @@ cd python
 
 ## Deployment
 
-- **Web:** Vercel, via its GitHub integration. Root directory `apps/web`; set `NEXT_PUBLIC_API_URL`.
-- **API:** a GCP e2-micro VM (free tier) running Node under systemd behind Caddy (automatic TLS), with Postgres on the same VM.
+- **Web:** Vercel (Hobby), via its GitHub integration, at `allocation.calebweeks.com`. Root directory `apps/web`; set `NEXT_PUBLIC_API_URL=https://api.calebweeks.com`.
+- **API:** a GCP e2-micro VM (free tier) at `api.calebweeks.com`, running Node under systemd behind Caddy (automatic TLS), with Postgres on the same VM. On the VM, `apps/api/.env` sets `WEB_ORIGINS=https://allocation.calebweeks.com`.
   - `infra/gcp/provision.sh` creates the VM.
   - `infra/vm/setup.sh` bootstraps it.
   - The manual **Deploy API** GitHub Actions workflow (`.github/workflows/deploy.yml`) runs `infra/vm/deploy.sh` over SSH (pull, build, migrate, restart, health check).
@@ -113,7 +113,11 @@ cd python
 - **Cron:**
   - nightly `pg_dump` with 14-day retention, and the dump is verified readable;
   - nightly demo reset.
-- **Cookies:** serve the web app at `example.org` and the API at `api.example.org`, and set `COOKIE_DOMAIN=.example.org` so the session cookie is same-site.
+- **DNS** (at the domain's registrar; the main calebweeks.com site is untouched):
+  - `allocation` CNAME → the target Vercel shows when the domain is added;
+  - `api` A → the VM's external IP.
+- **Cookies:** the session cookie is host-only on `api.calebweeks.com` (`COOKIE_DOMAIN` unset). The web app and API share the registrable domain, so `SameSite=Lax` cookies still flow, and the cookie is never sent to other calebweeks.com sites.
+- **Cost:** about $3.60/month, for the VM's external IPv4 address. Everything else is within free tiers.
 
 ## Data and attribution
 

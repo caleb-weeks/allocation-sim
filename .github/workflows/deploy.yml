@@ -4,7 +4,7 @@
 # Configure on the "production" environment:
 #   secrets   DEPLOY_HOST, DEPLOY_SSH_KEY (private key for the VM's `allocation` user),
 #             DEPLOY_KNOWN_HOSTS (output of `ssh-keyscan <host>`)
-#   variables API_HOSTNAME (e.g. api.example.org)
+#   variables API_HOSTNAME (api.calebweeks.com)
 
 name: Deploy API
 

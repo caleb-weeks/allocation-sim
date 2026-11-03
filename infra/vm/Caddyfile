@@ -1,6 +1,6 @@
 # Caddy terminates TLS (automatic Let's Encrypt) and proxies to the API.
-# Replace the hostname with your own; the web app on Vercel lives at the parent domain.
-api.example.org {
+# The web app is on Vercel at allocation.calebweeks.com. DNS: an A record for api.calebweeks.com → this VM's IP.
+api.calebweeks.com {
 	encode zstd gzip
 	reverse_proxy 127.0.0.1:4000
 	header {
