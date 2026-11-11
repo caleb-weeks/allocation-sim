@@ -43,6 +43,12 @@ const rows: [aspect: string, v1: React.ReactNode, v2: React.ReactNode, tradeoff:
     "GitHub pauses schedules after 60 days without repo activity.",
   ],
   ["api DNS record", "A record → reserved static IP", "CNAME → the Render service", "Nothing to reserve or pay for."],
+  [
+    "Sample projects",
+    "One: Guatemala literacy by department",
+    "Five, picked on the landing page, plus your own list of projects",
+    "More concrete examples to explore, each with its own pipeline, sources and assumptions to keep current.",
+  ],
 ];
 
 export function Changes() {

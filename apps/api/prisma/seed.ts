@@ -1,101 +1,116 @@
 /**
- * (Re)create the shared demo round from the Guatemala literacy template.
+ * (Re)create one shared demo round per sample scenario (data/*.json).
  * Safe to run repeatedly; the nightly GitHub Actions workflow (demo-reset.yml) uses it to wipe visitors' changes.
+ *
+ * The same seven demo personas belong to every demo round: each sample's two funders and three
+ * recommenders map onto the persona slots in order, with the sample's names as display names.
  *
  *   pnpm --filter @allocation-sim/api demo:reset
  */
 import { prisma } from "../src/db.js";
 import type { Prisma } from "../src/generated/prisma/client.js";
-import { DEMO_ROUND_KEY } from "../src/state.js";
-import { loadTemplate } from "../src/templates.js";
+import { type ScenarioTemplate, type TemplateId, availableTemplates, demoRoundKey, isDemoRoundKey, loadTemplate } from "../src/templates.js";
 
-const t = loadTemplate("guatemala-literacy");
+type Slot = "owner" | "funder-1" | "funder-2" | "recommender-1" | "recommender-2" | "recommender-3" | "observer";
 
-const personas = [
-  { email: "owner@demo.local", name: "Olivia (demo owner)", role: "OWNER" as const, displayName: "Round owner" },
-  ...t.funders.map((f) => ({
-    email: `${f.id}@demo.local`,
-    name: `${f.name} (demo)`,
-    role: "FUNDER" as const,
-    displayName: f.name,
-    templateId: f.id,
-  })),
-  ...t.recommenders.map((r) => ({
-    email: `${r.id}@demo.local`,
-    name: `${r.name} recommender (demo)`,
-    role: "RECOMMENDER" as const,
-    displayName: r.name,
-    templateId: r.id,
-    lens: r.lens,
-  })),
-  { email: "observer@demo.local", name: "Oscar (demo observer)", role: "OBSERVER" as const, displayName: "Observer" },
+const personas: { slot: Slot; email: string; name: string }[] = [
+  { slot: "owner", email: "owner@demo.local", name: "Olivia (demo owner)" },
+  { slot: "funder-1", email: "funder-1@demo.local", name: "Farah (demo funder)" },
+  { slot: "funder-2", email: "funder-2@demo.local", name: "Felix (demo funder)" },
+  { slot: "recommender-1", email: "recommender-1@demo.local", name: "Rosa (demo recommender)" },
+  { slot: "recommender-2", email: "recommender-2@demo.local", name: "Ravi (demo recommender)" },
+  { slot: "recommender-3", email: "recommender-3@demo.local", name: "Remy (demo recommender)" },
+  { slot: "observer", email: "observer@demo.local", name: "Oscar (demo observer)" },
 ];
 
-async function main() {
-  await prisma.$transaction(async (tx) => {
-    await tx.round.deleteMany({ where: { key: DEMO_ROUND_KEY } });
-    const round = await tx.round.create({
-      data: {
-        key: DEMO_ROUND_KEY,
-        title: `${t.title} (shared demo)`,
-        valueUnit: t.valueUnit,
-        sources: t.sources,
-        assumptions: t.assumptions as Prisma.InputJsonObject,
-      },
-    });
-
-    const appIds = new Map<string, string>();
-    for (const a of t.applications) {
-      const created = await tx.application.create({
-        data: { roundId: round.id, key: a.id, name: a.name, cap: a.cap, data: a.data as Prisma.InputJsonObject },
-      });
-      appIds.set(a.id, created.id);
-    }
-
-    const memberIds = new Map<string, string>();
-    for (const p of personas) {
-      const user = await tx.user.upsert({
-        where: { email: p.email },
-        create: { email: p.email, name: p.name, isDemo: true },
-        update: { name: p.name, isDemo: true },
-      });
-      const funder = p.role === "FUNDER" ? t.funders.find((f) => f.id === ("templateId" in p ? p.templateId : "")) : undefined;
-      const member = await tx.membership.create({
+async function seedSample(id: TemplateId, t: ScenarioTemplate, users: Map<Slot, string>) {
+  const key = demoRoundKey(id);
+  await prisma.$transaction(
+    async (tx) => {
+      await tx.round.deleteMany({ where: { key } });
+      const round = await tx.round.create({
         data: {
-          roundId: round.id,
-          userId: user.id,
-          role: p.role,
-          displayName: p.displayName,
-          budget: funder?.budget ?? null,
-          lens: "lens" in p ? p.lens : null,
+          key,
+          title: `${t.title} (shared demo)`,
+          valueUnit: t.valueUnit,
+          sources: t.sources,
+          assumptions: t.assumptions as Prisma.InputJsonObject,
         },
       });
-      if ("templateId" in p) memberIds.set(p.templateId, member.id);
-    }
 
-    for (const [recTemplateId, byApp] of Object.entries(t.curves)) {
-      for (const [appTemplateId, curve] of Object.entries(byApp)) {
-        await tx.curve.create({
-          data: {
+      const appIds = new Map<string, string>();
+      for (const a of t.applications) {
+        const created = await tx.application.create({
+          data: { roundId: round.id, key: a.id, name: a.name, cap: a.cap, data: a.data as Prisma.InputJsonObject },
+        });
+        appIds.set(a.id, created.id);
+      }
+
+      // Template funder/recommender ids → membership ids, assigning persona slots in order.
+      const memberIds = new Map<string, string>();
+      const member = (slot: Slot, data: Omit<Prisma.MembershipUncheckedCreateInput, "roundId" | "userId">) =>
+        tx.membership.create({ data: { roundId: round.id, userId: users.get(slot)!, ...data } });
+
+      await member("owner", { role: "OWNER", displayName: "Olivia" });
+      for (const [i, f] of t.funders.entries()) {
+        const m = await member(`funder-${i + 1}` as Slot, { role: "FUNDER", displayName: f.name, budget: f.budget });
+        memberIds.set(f.id, m.id);
+      }
+      for (const [i, r] of t.recommenders.entries()) {
+        const m = await member(`recommender-${i + 1}` as Slot, { role: "RECOMMENDER", displayName: r.name, lens: r.lens });
+        memberIds.set(r.id, m.id);
+      }
+      await member("observer", { role: "OBSERVER", displayName: "Oscar" });
+
+      await tx.curve.createMany({
+        data: Object.entries(t.curves).flatMap(([recId, byApp]) =>
+          Object.entries(byApp).map(([appId, curve]) => ({
             roundId: round.id,
-            recommenderId: memberIds.get(recTemplateId)!,
-            applicationId: appIds.get(appTemplateId)!,
+            recommenderId: memberIds.get(recId)!,
+            applicationId: appIds.get(appId)!,
             points: curve.points as unknown as Prisma.InputJsonArray,
             isShared: true,
-          },
-        });
-      }
-    }
+          })),
+        ),
+      });
+      await tx.trust.createMany({
+        data: t.funders.flatMap((f) =>
+          Object.entries(f.trust).map(([recId, weight]) => ({ funderId: memberIds.get(f.id)!, recommenderId: memberIds.get(recId)!, weight })),
+        ),
+      });
+    },
+    { timeout: 30_000 },
+  );
+}
 
-    for (const f of t.funders) {
-      for (const [recTemplateId, weight] of Object.entries(f.trust)) {
-        await tx.trust.create({
-          data: { funderId: memberIds.get(f.id)!, recommenderId: memberIds.get(recTemplateId)!, weight },
-        });
-      }
-    }
-  }, { timeout: 30_000 });
-  console.log(`demo round ${DEMO_ROUND_KEY} reset with ${personas.length} personas`);
+async function main() {
+  const samples = availableTemplates();
+  const templates = samples.map((id) => [id, loadTemplate(id)] as const);
+  for (const [id, t] of templates) {
+    if (t.funders.length > 2 || t.recommenders.length > 3) throw new Error(`${id}: demo personas cover 2 funders and 3 recommenders`);
+  }
+
+  const users = new Map<Slot, string>();
+  for (const p of personas) {
+    const user = await prisma.user.upsert({
+      where: { email: p.email },
+      create: { email: p.email, name: p.name, isDemo: true },
+      update: { name: p.name, isDemo: true },
+    });
+    users.set(p.slot, user.id);
+  }
+
+  for (const [id, t] of templates) await seedSample(id, t, users);
+
+  // Drop demo rounds for samples that no longer exist, and demo users from older persona schemes.
+  const keep = new Set<string>(samples.map(demoRoundKey));
+  const stale = (await prisma.round.findMany({ where: { key: { startsWith: "demo-" } }, select: { id: true, key: true } })).filter(
+    (r) => isDemoRoundKey(r.key) && !keep.has(r.key!),
+  );
+  await prisma.round.deleteMany({ where: { id: { in: stale.map((r) => r.id) } } });
+  await prisma.user.deleteMany({ where: { isDemo: true, email: { notIn: personas.map((p) => p.email) } } });
+
+  console.log(`reset ${templates.length} demo round(s): ${samples.join(", ")}`);
 }
 
 main()

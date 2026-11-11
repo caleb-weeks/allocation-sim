@@ -1,0 +1,22 @@
+charity,cea_sheet,gap_id,location,gap_name,gap_2021_usd,gap_2022_usd,gap_2023_usd,gap_total_usd,multiple_of_cash,mortality_share,cost_per_life_saved_usd,givewell_priority
+Malaria Consortium,Malaria Consortium,1,Burkina Faso,Burkina Faso,0,0,3143892,3143892,14.6781,0.7079,3981,Very high cost-effectiveness (>10x) that has been sufficiently vetted
+Against Malaria Foundation,AMF,2,DRC,DRC distributions (last ~$20 million),0,0,14704499,14704499,10.2522,0.5683,9207,High cost-effectiveness (8-10x) that has been sufficiently vetted
+Malaria Consortium,Malaria Consortium,3,Nigeria,Nigeria,0,0,9062469,9062469,10.1853,0.7354,5387,High cost-effectiveness (8-10x) that has been sufficiently vetted
+Malaria Consortium,Malaria Consortium,4,Togo,Togo,0,0,743205,743205,9.1668,0.5582,7945,High cost-effectiveness (8-10x) that has been sufficiently vetted
+Helen Keller International,Helen Keller International,1,Nigeria,Nigeria - Niger state,0,1016646,1016646,2033292,28.8402,0.8866,2022,Investigation of this funding gap is ongoing
+Helen Keller International,Helen Keller International,2,Nigeria,Nigeria - Plateau state,0,769566,769566,1539132,28.8402,0.8866,2022,Investigation of this funding gap is ongoing
+Helen Keller International,Helen Keller International,3,Nigeria,Nigeria - Akwa Ibom state,0,0,1008915,1008915,28.8402,0.8866,2022,Investigation of this funding gap is ongoing
+Helen Keller International,Helen Keller International,4,Nigeria,Nigeria - Adamawa state,0,0,780545,780545,28.8402,0.8866,2022,Investigation of this funding gap is ongoing
+Helen Keller International,Helen Keller International,7,Cameroon,Cameroon,1357917,1214105,1214105,3786127,27.062,0.8389,2278,Investigation of this funding gap is ongoing
+Sightsavers,Sightsavers,3,Chad,Chad,2581100,999974,1803005,5384079,14.1379,0,,Investigation of this funding gap is ongoing
+New Incentives,New Incentives,1,Overall,Scale-up in Northern Nigeria,0,7898436,8324402,16222838,10.8436,0.6755,4222,Investigation of this funding gap is ongoing
+SCI Foundation,SCI Foundation,1,Overall,Maintenance of 2021 scale,0,29092,10127945,10157037,9.8863,0,,Investigation of this funding gap is ongoing
+SCI Foundation,SCI Foundation,2,Overall,Expansion in 2022,0,5932826,0,5932826,9.8863,0,,Investigation of this funding gap is ongoing
+SCI Foundation,SCI Foundation,3,Overall,Maintenance of 2022 expansion,0,0,5327941,5327941,9.8863,0,,Investigation of this funding gap is ongoing
+SCI Foundation,SCI Foundation,4,Overall,Expansion in 2023,0,0,1497660,1497660,9.8863,0,,Investigation of this funding gap is ongoing
+Helen Keller International,Helen Keller International,5,Kenya,Kenya,1296132,1125000,1125000,3546132,7.1046,0.6783,10731,"Cost-effectiveness estimate is currently relatively low, but investigation of this funding gap is ongoing"
+Malaria Consortium,Malaria Consortium,5,Chad,Chad,0,649448,7764762,8414210,6.2323,0.7481,8671,"Cost-effectiveness estimate is currently relatively low, but investigation of this funding gap is ongoing"
+Deworm the World,Deworm the World,1,"Lagos, Nigeria","Nigeria, Lagos State, program expansion and extension",0,0,269485,269485,5.3505,0,,Not currently highly prioritized—more cost-effective funding gaps exist
+Deworm the World,Deworm the World,2,Pakistan,"Pakistan, program extension",0,0,2249172,2249172,5.1221,0,,Not currently highly prioritized—more cost-effective funding gaps exist
+Sightsavers,Sightsavers,1,Senegal,Senegal,338108,433552,521150,1292810,3.5092,0,,"Cost-effectiveness estimate is currently relatively low, but investigation of this funding gap is ongoing"
+GiveDirectly,GiveDirectly,1,Overall,Maintain rolling programs,10071218,6689808,6689808,23450834,0.9752,0,,Not currently highly prioritized—more cost-effective funding gaps exist

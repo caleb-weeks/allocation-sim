@@ -10,8 +10,7 @@ import {
 import { type Actor, can } from "./authz.js";
 import { prisma } from "./db.js";
 import type { Method, RoundView } from "./protocol.js";
-
-export const DEMO_ROUND_KEY = "demo-guatemala-literacy";
+import { isDemoRoundKey } from "./templates.js";
 
 export type FullRound = NonNullable<Awaited<ReturnType<typeof loadRound>>>;
 
@@ -140,7 +139,7 @@ export function viewFor(round: FullRound, computed: Computed, membershipId: stri
     permissions: {
       viewAudit: can(actor, { type: "round:viewAudit" }),
       createSnapshot: can(actor, { type: "snapshot:create" }),
-      manageMembers: can(actor, { type: "members:manage" }) && round.key !== DEMO_ROUND_KEY,
+      manageMembers: can(actor, { type: "members:manage" }) && !isDemoRoundKey(round.key),
     },
   };
 }

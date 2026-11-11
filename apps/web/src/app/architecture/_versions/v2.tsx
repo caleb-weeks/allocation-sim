@@ -1,12 +1,21 @@
 import { C, Note } from "../_lib/primitives";
 import type { HostingContent } from "../_lib/content";
-import { architecture, ship } from "./v2-diagrams";
+import { architecture, pipeline, ship } from "./v2-diagrams";
 
 export const v2: HostingContent = {
   apiSummary: "Express + Socket.IO on Render, Postgres on Neon",
   architectureIntro:
     "Everything runs on free plans. Vercel serves the web pages; one Node process on Render serves both the REST API and the live WebSocket; Neon hosts Postgres; GitHub Actions runs CI and the nightly demo reset.",
   architectureSvg: architecture(),
+  pipelineSvg: pipeline(),
+  pipelineCaption: (
+    <>
+      Each sample is a module in <C>python/pipeline/scenarios</C> whose <C>build()</C> reads only a committed CSV, so
+      output is deterministic. <C>validate.py</C> enforces the database&apos;s curve rules plus what a demo needs: one
+      persona per role, a budget that can&apos;t fund everything, and recommenders whose top picks differ. The bottom row is
+      how the math is verified: an independent NumPy solver writes expected answers the TypeScript engine must reproduce.
+    </>
+  ),
   notes: (
     <>
       <Note title="Free tiers sleep.">

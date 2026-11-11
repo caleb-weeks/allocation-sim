@@ -1,0 +1,1697 @@
+{
+  "id": "childhood-vaccination",
+  "title": "Reaching zero-dose children, by country",
+  "summary": "Outreach to find and vaccinate \"zero-dose\" children, who got no routine vaccines, in the 20 countries where most of them live. Sized from WHO/UNICEF's 2025 national immunization coverage estimates (WUENIC): zero-dose counts, DTP3 and measles coverage. Program costs are illustrative assumptions.",
+  "valueUnit": "zero-dose children reached per $1,000 (lens-weighted)",
+  "sources": [
+    {
+      "name": "WHO/UNICEF Estimates of National Immunization Coverage (WUENIC), 2025 revision — WHO Immunization Data portal",
+      "url": "https://immunizationdata.who.int/"
+    },
+    {
+      "name": "WHO — WUENIC overview and methods",
+      "url": "https://www.who.int/teams/immunization-vaccines-and-biologicals/immunization-analysis-and-insights/global-monitoring/immunization-coverage/who-unicef-estimates-of-national-immunization-coverage"
+    },
+    {
+      "name": "Immunization Economics — Ethiopia study of delivery cost per zero-dose child reached (2025)",
+      "url": "https://immunizationeconomics.org/recent-activity/2025/11/26/ethiopia-study-finds-delivery-cost-per-zero-dose-child-reached-as-low-as-6-65/"
+    }
+  ],
+  "assumptions": {
+    "cost_per_child_first_usd": 50,
+    "hardest_to_reach_cost_multiple": 2.5,
+    "reach_fraction_per_round": 0.1,
+    "reach_scale_exponent": 0.25,
+    "need_weight_exponent": 2,
+    "note": "Illustrative program economics, not quoted costs. (1) The first zero-dose children a program reaches cost about $50 each and the hardest-to-reach cost 2.5x that (about $125); this brackets the $52-$129 per zero-dose child reached that a 2025 Ethiopia costing study (Afar and Somali regions) found for routine outreach and mobile health teams, though costs vary widely by setting and strategy. (2) Each country's cap is the budget to reach 10% of its 2025 zero-dose children at the first-child cost of $50; because later children cost more, a fully funded round reaches somewhat fewer. (3) Value per dollar falls along each curve as the easiest children are found first, with most of the drop late in the round. (4) Lens weights are recommender judgments, not data: Reach scales value by (zero-dose count / median count)^0.25, on the view that large concentrations of unreached children let fixed outreach costs go further; Coverage gap scales by (DTP3 gap / mean DTP3 gap)^2; Outbreak risk scales by (MCV1 gap / mean MCV1 gap)^2, where a gap is 100% minus coverage. (5) Countries are the 20 with the most zero-dose children in WUENIC 2025; coverage is WUENIC's national estimate, rounded to whole percent."
+  },
+  "applications": [
+    {
+      "id": "nigeria",
+      "name": "Nigeria",
+      "cap": 10868765,
+      "data": {
+        "facts": [
+          {
+            "label": "Zero-dose children (2025)",
+            "value": "2.17M"
+          },
+          {
+            "label": "DTP1 coverage",
+            "value": "70%"
+          },
+          {
+            "label": "DTP3 coverage",
+            "value": "62%"
+          },
+          {
+            "label": "Measles (MCV1) coverage",
+            "value": "56%"
+          }
+        ],
+        "country": "Nigeria",
+        "iso3": "NGA",
+        "whoRegion": "AFRO",
+        "year": 2025,
+        "zeroDoseChildren": 2173753,
+        "dtp1Coverage": 0.7,
+        "dtp3Coverage": 0.62,
+        "mcv1Coverage": 0.56
+      }
+    },
+    {
+      "id": "dr-congo",
+      "name": "DR Congo",
+      "cap": 3942275,
+      "data": {
+        "facts": [
+          {
+            "label": "Zero-dose children (2025)",
+            "value": "788k"
+          },
+          {
+            "label": "DTP1 coverage",
+            "value": "82%"
+          },
+          {
+            "label": "DTP3 coverage",
+            "value": "65%"
+          },
+          {
+            "label": "Measles (MCV1) coverage",
+            "value": "55%"
+          }
+        ],
+        "country": "Democratic Republic of the Congo",
+        "iso3": "COD",
+        "whoRegion": "AFRO",
+        "year": 2025,
+        "zeroDoseChildren": 788455,
+        "dtp1Coverage": 0.82,
+        "dtp3Coverage": 0.65,
+        "mcv1Coverage": 0.55
+      }
+    },
+    {
+      "id": "yemen",
+      "name": "Yemen",
+      "cap": 3478185,
+      "data": {
+        "facts": [
+          {
+            "label": "Zero-dose children (2025)",
+            "value": "696k"
+          },
+          {
+            "label": "DTP1 coverage",
+            "value": "49%"
+          },
+          {
+            "label": "DTP3 coverage",
+            "value": "39%"
+          },
+          {
+            "label": "Measles (MCV1) coverage",
+            "value": "41%"
+          }
+        ],
+        "country": "Yemen",
+        "iso3": "YEM",
+        "whoRegion": "EMRO",
+        "year": 2025,
+        "zeroDoseChildren": 695637,
+        "dtp1Coverage": 0.49,
+        "dtp3Coverage": 0.39,
+        "mcv1Coverage": 0.41
+      }
+    },
+    {
+      "id": "india",
+      "name": "India",
+      "cap": 3393775,
+      "data": {
+        "facts": [
+          {
+            "label": "Zero-dose children (2025)",
+            "value": "679k"
+          },
+          {
+            "label": "DTP1 coverage",
+            "value": "97%"
+          },
+          {
+            "label": "DTP3 coverage",
+            "value": "95%"
+          },
+          {
+            "label": "Measles (MCV1) coverage",
+            "value": "98%"
+          }
+        ],
+        "country": "India",
+        "iso3": "IND",
+        "whoRegion": "SEARO",
+        "year": 2025,
+        "zeroDoseChildren": 678755,
+        "dtp1Coverage": 0.97,
+        "dtp3Coverage": 0.95,
+        "mcv1Coverage": 0.98
+      }
+    },
+    {
+      "id": "indonesia",
+      "name": "Indonesia",
+      "cap": 3283240,
+      "data": {
+        "facts": [
+          {
+            "label": "Zero-dose children (2025)",
+            "value": "657k"
+          },
+          {
+            "label": "DTP1 coverage",
+            "value": "85%"
+          },
+          {
+            "label": "DTP3 coverage",
+            "value": "82%"
+          },
+          {
+            "label": "Measles (MCV1) coverage",
+            "value": "85%"
+          }
+        ],
+        "country": "Indonesia",
+        "iso3": "IDN",
+        "whoRegion": "WPRO",
+        "year": 2025,
+        "zeroDoseChildren": 656648,
+        "dtp1Coverage": 0.85,
+        "dtp3Coverage": 0.82,
+        "mcv1Coverage": 0.85
+      }
+    },
+    {
+      "id": "ethiopia",
+      "name": "Ethiopia",
+      "cap": 3251655,
+      "data": {
+        "facts": [
+          {
+            "label": "Zero-dose children (2025)",
+            "value": "650k"
+          },
+          {
+            "label": "DTP1 coverage",
+            "value": "84%"
+          },
+          {
+            "label": "DTP3 coverage",
+            "value": "81%"
+          },
+          {
+            "label": "Measles (MCV1) coverage",
+            "value": "77%"
+          }
+        ],
+        "country": "Ethiopia",
+        "iso3": "ETH",
+        "whoRegion": "AFRO",
+        "year": 2025,
+        "zeroDoseChildren": 650331,
+        "dtp1Coverage": 0.84,
+        "dtp3Coverage": 0.81,
+        "mcv1Coverage": 0.77
+      }
+    },
+    {
+      "id": "afghanistan",
+      "name": "Afghanistan",
+      "cap": 2401605,
+      "data": {
+        "facts": [
+          {
+            "label": "Zero-dose children (2025)",
+            "value": "480k"
+          },
+          {
+            "label": "DTP1 coverage",
+            "value": "67%"
+          },
+          {
+            "label": "DTP3 coverage",
+            "value": "61%"
+          },
+          {
+            "label": "Measles (MCV1) coverage",
+            "value": "56%"
+          }
+        ],
+        "country": "Afghanistan",
+        "iso3": "AFG",
+        "whoRegion": "EMRO",
+        "year": 2025,
+        "zeroDoseChildren": 480321,
+        "dtp1Coverage": 0.67,
+        "dtp3Coverage": 0.61,
+        "mcv1Coverage": 0.56
+      }
+    },
+    {
+      "id": "pakistan",
+      "name": "Pakistan",
+      "cap": 2324240,
+      "data": {
+        "facts": [
+          {
+            "label": "Zero-dose children (2025)",
+            "value": "465k"
+          },
+          {
+            "label": "DTP1 coverage",
+            "value": "93%"
+          },
+          {
+            "label": "DTP3 coverage",
+            "value": "86%"
+          },
+          {
+            "label": "Measles (MCV1) coverage",
+            "value": "84%"
+          }
+        ],
+        "country": "Pakistan",
+        "iso3": "PAK",
+        "whoRegion": "EMRO",
+        "year": 2025,
+        "zeroDoseChildren": 464848,
+        "dtp1Coverage": 0.93,
+        "dtp3Coverage": 0.86,
+        "mcv1Coverage": 0.84
+      }
+    },
+    {
+      "id": "angola",
+      "name": "Angola",
+      "cap": 2269460,
+      "data": {
+        "facts": [
+          {
+            "label": "Zero-dose children (2025)",
+            "value": "454k"
+          },
+          {
+            "label": "DTP1 coverage",
+            "value": "67%"
+          },
+          {
+            "label": "DTP3 coverage",
+            "value": "52%"
+          },
+          {
+            "label": "Measles (MCV1) coverage",
+            "value": "71%"
+          }
+        ],
+        "country": "Angola",
+        "iso3": "AGO",
+        "whoRegion": "AFRO",
+        "year": 2025,
+        "zeroDoseChildren": 453892,
+        "dtp1Coverage": 0.67,
+        "dtp3Coverage": 0.52,
+        "mcv1Coverage": 0.71
+      }
+    },
+    {
+      "id": "philippines",
+      "name": "Philippines",
+      "cap": 1904530,
+      "data": {
+        "facts": [
+          {
+            "label": "Zero-dose children (2025)",
+            "value": "381k"
+          },
+          {
+            "label": "DTP1 coverage",
+            "value": "79%"
+          },
+          {
+            "label": "DTP3 coverage",
+            "value": "71%"
+          },
+          {
+            "label": "Measles (MCV1) coverage",
+            "value": "72%"
+          }
+        ],
+        "country": "Philippines",
+        "iso3": "PHL",
+        "whoRegion": "WPRO",
+        "year": 2025,
+        "zeroDoseChildren": 380906,
+        "dtp1Coverage": 0.79,
+        "dtp3Coverage": 0.71,
+        "mcv1Coverage": 0.72
+      }
+    },
+    {
+      "id": "south-africa",
+      "name": "South Africa",
+      "cap": 1901085,
+      "data": {
+        "facts": [
+          {
+            "label": "Zero-dose children (2025)",
+            "value": "380k"
+          },
+          {
+            "label": "DTP1 coverage",
+            "value": "67%"
+          },
+          {
+            "label": "DTP3 coverage",
+            "value": "65%"
+          },
+          {
+            "label": "Measles (MCV1) coverage",
+            "value": "66%"
+          }
+        ],
+        "country": "South Africa",
+        "iso3": "ZAF",
+        "whoRegion": "AFRO",
+        "year": 2025,
+        "zeroDoseChildren": 380217,
+        "dtp1Coverage": 0.67,
+        "dtp3Coverage": 0.65,
+        "mcv1Coverage": 0.66
+      }
+    },
+    {
+      "id": "tanzania",
+      "name": "Tanzania",
+      "cap": 1534450,
+      "data": {
+        "facts": [
+          {
+            "label": "Zero-dose children (2025)",
+            "value": "307k"
+          },
+          {
+            "label": "DTP1 coverage",
+            "value": "87%"
+          },
+          {
+            "label": "DTP3 coverage",
+            "value": "83%"
+          },
+          {
+            "label": "Measles (MCV1) coverage",
+            "value": "84%"
+          }
+        ],
+        "country": "United Republic of Tanzania",
+        "iso3": "TZA",
+        "whoRegion": "AFRO",
+        "year": 2025,
+        "zeroDoseChildren": 306890,
+        "dtp1Coverage": 0.87,
+        "dtp3Coverage": 0.83,
+        "mcv1Coverage": 0.84
+      }
+    },
+    {
+      "id": "sudan",
+      "name": "Sudan",
+      "cap": 1363990,
+      "data": {
+        "facts": [
+          {
+            "label": "Zero-dose children (2025)",
+            "value": "273k"
+          },
+          {
+            "label": "DTP1 coverage",
+            "value": "83%"
+          },
+          {
+            "label": "DTP3 coverage",
+            "value": "71%"
+          },
+          {
+            "label": "Measles (MCV1) coverage",
+            "value": "68%"
+          }
+        ],
+        "country": "Sudan",
+        "iso3": "SDN",
+        "whoRegion": "EMRO",
+        "year": 2025,
+        "zeroDoseChildren": 272798,
+        "dtp1Coverage": 0.83,
+        "dtp3Coverage": 0.71,
+        "mcv1Coverage": 0.68
+      }
+    },
+    {
+      "id": "china",
+      "name": "China",
+      "cap": 1299600,
+      "data": {
+        "facts": [
+          {
+            "label": "Zero-dose children (2025)",
+            "value": "260k"
+          },
+          {
+            "label": "DTP1 coverage",
+            "value": "97%"
+          },
+          {
+            "label": "DTP3 coverage",
+            "value": "97%"
+          },
+          {
+            "label": "Measles (MCV1) coverage",
+            "value": "95%"
+          }
+        ],
+        "country": "China",
+        "iso3": "CHN",
+        "whoRegion": "WPRO",
+        "year": 2025,
+        "zeroDoseChildren": 259920,
+        "dtp1Coverage": 0.97,
+        "dtp3Coverage": 0.97,
+        "mcv1Coverage": 0.95
+      }
+    },
+    {
+      "id": "madagascar",
+      "name": "Madagascar",
+      "cap": 1282245,
+      "data": {
+        "facts": [
+          {
+            "label": "Zero-dose children (2025)",
+            "value": "256k"
+          },
+          {
+            "label": "DTP1 coverage",
+            "value": "74%"
+          },
+          {
+            "label": "DTP3 coverage",
+            "value": "64%"
+          },
+          {
+            "label": "Measles (MCV1) coverage",
+            "value": "49%"
+          }
+        ],
+        "country": "Madagascar",
+        "iso3": "MDG",
+        "whoRegion": "AFRO",
+        "year": 2025,
+        "zeroDoseChildren": 256449,
+        "dtp1Coverage": 0.74,
+        "dtp3Coverage": 0.64,
+        "mcv1Coverage": 0.49
+      }
+    },
+    {
+      "id": "bangladesh",
+      "name": "Bangladesh",
+      "cap": 1187325,
+      "data": {
+        "facts": [
+          {
+            "label": "Zero-dose children (2025)",
+            "value": "237k"
+          },
+          {
+            "label": "DTP1 coverage",
+            "value": "93%"
+          },
+          {
+            "label": "DTP3 coverage",
+            "value": "92%"
+          },
+          {
+            "label": "Measles (MCV1) coverage",
+            "value": "90%"
+          }
+        ],
+        "country": "Bangladesh",
+        "iso3": "BGD",
+        "whoRegion": "SEARO",
+        "year": 2025,
+        "zeroDoseChildren": 237465,
+        "dtp1Coverage": 0.93,
+        "dtp3Coverage": 0.92,
+        "mcv1Coverage": 0.9
+      }
+    },
+    {
+      "id": "mexico",
+      "name": "Mexico",
+      "cap": 1092405,
+      "data": {
+        "facts": [
+          {
+            "label": "Zero-dose children (2025)",
+            "value": "218k"
+          },
+          {
+            "label": "DTP1 coverage",
+            "value": "89%"
+          },
+          {
+            "label": "DTP3 coverage",
+            "value": "89%"
+          },
+          {
+            "label": "Measles (MCV1) coverage",
+            "value": "88%"
+          }
+        ],
+        "country": "Mexico",
+        "iso3": "MEX",
+        "whoRegion": "AMRO",
+        "year": 2025,
+        "zeroDoseChildren": 218481,
+        "dtp1Coverage": 0.89,
+        "dtp3Coverage": 0.89,
+        "mcv1Coverage": 0.88
+      }
+    },
+    {
+      "id": "myanmar",
+      "name": "Myanmar",
+      "cap": 1036085,
+      "data": {
+        "facts": [
+          {
+            "label": "Zero-dose children (2025)",
+            "value": "207k"
+          },
+          {
+            "label": "DTP1 coverage",
+            "value": "76%"
+          },
+          {
+            "label": "DTP3 coverage",
+            "value": "71%"
+          },
+          {
+            "label": "Measles (MCV1) coverage",
+            "value": "71%"
+          }
+        ],
+        "country": "Myanmar",
+        "iso3": "MMR",
+        "whoRegion": "SEARO",
+        "year": 2025,
+        "zeroDoseChildren": 207217,
+        "dtp1Coverage": 0.76,
+        "dtp3Coverage": 0.71,
+        "mcv1Coverage": 0.71
+      }
+    },
+    {
+      "id": "venezuela",
+      "name": "Venezuela",
+      "cap": 925770,
+      "data": {
+        "facts": [
+          {
+            "label": "Zero-dose children (2025)",
+            "value": "185k"
+          },
+          {
+            "label": "DTP1 coverage",
+            "value": "57%"
+          },
+          {
+            "label": "DTP3 coverage",
+            "value": "50%"
+          },
+          {
+            "label": "Measles (MCV1) coverage",
+            "value": "53%"
+          }
+        ],
+        "country": "Venezuela (Bolivarian Republic of)",
+        "iso3": "VEN",
+        "whoRegion": "AMRO",
+        "year": 2025,
+        "zeroDoseChildren": 185154,
+        "dtp1Coverage": 0.57,
+        "dtp3Coverage": 0.5,
+        "mcv1Coverage": 0.53
+      }
+    },
+    {
+      "id": "somalia",
+      "name": "Somalia",
+      "cap": 898190,
+      "data": {
+        "facts": [
+          {
+            "label": "Zero-dose children (2025)",
+            "value": "180k"
+          },
+          {
+            "label": "DTP1 coverage",
+            "value": "77%"
+          },
+          {
+            "label": "DTP3 coverage",
+            "value": "72%"
+          },
+          {
+            "label": "Measles (MCV1) coverage",
+            "value": "61%"
+          }
+        ],
+        "country": "Somalia",
+        "iso3": "SOM",
+        "whoRegion": "EMRO",
+        "year": 2025,
+        "zeroDoseChildren": 179638,
+        "dtp1Coverage": 0.77,
+        "dtp3Coverage": 0.72,
+        "mcv1Coverage": 0.61
+      }
+    }
+  ],
+  "recommenders": [
+    {
+      "id": "rec-reach",
+      "name": "Reach",
+      "lens": "Every child counts the same; go where the most zero-dose children are."
+    },
+    {
+      "id": "rec-coverage-gap",
+      "name": "Coverage gap",
+      "lens": "Weight toward countries with the lowest DTP3 coverage, where routine systems are weakest."
+    },
+    {
+      "id": "rec-outbreak",
+      "name": "Outbreak risk",
+      "lens": "Weight toward the lowest measles (MCV1) coverage, where outbreaks are most likely."
+    }
+  ],
+  "funders": [
+    {
+      "id": "funder-meridian",
+      "name": "Beacon Child Health Fund",
+      "budget": 15000000,
+      "trust": {
+        "rec-reach": 60,
+        "rec-coverage-gap": 30,
+        "rec-outbreak": 40
+      }
+    },
+    {
+      "id": "funder-harbor",
+      "name": "Northwind Foundation",
+      "budget": 10000000,
+      "trust": {
+        "rec-reach": 20,
+        "rec-coverage-gap": 50,
+        "rec-outbreak": 70
+      }
+    }
+  ],
+  "curves": {
+    "rec-reach": {
+      "nigeria": {
+        "points": [
+          {
+            "x": 0,
+            "m": 30.9191
+          },
+          {
+            "x": 5434382,
+            "m": 24.4261
+          },
+          {
+            "x": 10868765,
+            "m": 12.3676
+          }
+        ]
+      },
+      "dr-congo": {
+        "points": [
+          {
+            "x": 0,
+            "m": 23.9948
+          },
+          {
+            "x": 1971138,
+            "m": 18.9559
+          },
+          {
+            "x": 3942275,
+            "m": 9.5979
+          }
+        ]
+      },
+      "yemen": {
+        "points": [
+          {
+            "x": 0,
+            "m": 23.2552
+          },
+          {
+            "x": 1739092,
+            "m": 18.3716
+          },
+          {
+            "x": 3478185,
+            "m": 9.3021
+          }
+        ]
+      },
+      "india": {
+        "points": [
+          {
+            "x": 0,
+            "m": 23.1128
+          },
+          {
+            "x": 1696888,
+            "m": 18.2591
+          },
+          {
+            "x": 3393775,
+            "m": 9.2451
+          }
+        ]
+      },
+      "indonesia": {
+        "points": [
+          {
+            "x": 0,
+            "m": 22.9222
+          },
+          {
+            "x": 1641620,
+            "m": 18.1086
+          },
+          {
+            "x": 3283240,
+            "m": 9.1689
+          }
+        ]
+      },
+      "ethiopia": {
+        "points": [
+          {
+            "x": 0,
+            "m": 22.8669
+          },
+          {
+            "x": 1625828,
+            "m": 18.0649
+          },
+          {
+            "x": 3251655,
+            "m": 9.1468
+          }
+        ]
+      },
+      "afghanistan": {
+        "points": [
+          {
+            "x": 0,
+            "m": 21.1986
+          },
+          {
+            "x": 1200802,
+            "m": 16.7469
+          },
+          {
+            "x": 2401605,
+            "m": 8.4794
+          }
+        ]
+      },
+      "pakistan": {
+        "points": [
+          {
+            "x": 0,
+            "m": 21.0258
+          },
+          {
+            "x": 1162120,
+            "m": 16.6103
+          },
+          {
+            "x": 2324240,
+            "m": 8.4103
+          }
+        ]
+      },
+      "angola": {
+        "points": [
+          {
+            "x": 0,
+            "m": 20.9008
+          },
+          {
+            "x": 1134730,
+            "m": 16.5116
+          },
+          {
+            "x": 2269460,
+            "m": 8.3603
+          }
+        ]
+      },
+      "philippines": {
+        "points": [
+          {
+            "x": 0,
+            "m": 20.0045
+          },
+          {
+            "x": 952265,
+            "m": 15.8036
+          },
+          {
+            "x": 1904530,
+            "m": 8.0018
+          }
+        ]
+      },
+      "south-africa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 19.9955
+          },
+          {
+            "x": 950542,
+            "m": 15.7964
+          },
+          {
+            "x": 1901085,
+            "m": 7.9982
+          }
+        ]
+      },
+      "tanzania": {
+        "points": [
+          {
+            "x": 0,
+            "m": 18.9526
+          },
+          {
+            "x": 767225,
+            "m": 14.9726
+          },
+          {
+            "x": 1534450,
+            "m": 7.5811
+          }
+        ]
+      },
+      "sudan": {
+        "points": [
+          {
+            "x": 0,
+            "m": 18.4028
+          },
+          {
+            "x": 681995,
+            "m": 14.5382
+          },
+          {
+            "x": 1363990,
+            "m": 7.3611
+          }
+        ]
+      },
+      "china": {
+        "points": [
+          {
+            "x": 0,
+            "m": 18.1817
+          },
+          {
+            "x": 649800,
+            "m": 14.3635
+          },
+          {
+            "x": 1299600,
+            "m": 7.2727
+          }
+        ]
+      },
+      "madagascar": {
+        "points": [
+          {
+            "x": 0,
+            "m": 18.1207
+          },
+          {
+            "x": 641122,
+            "m": 14.3153
+          },
+          {
+            "x": 1282245,
+            "m": 7.2483
+          }
+        ]
+      },
+      "bangladesh": {
+        "points": [
+          {
+            "x": 0,
+            "m": 17.7756
+          },
+          {
+            "x": 593662,
+            "m": 14.0427
+          },
+          {
+            "x": 1187325,
+            "m": 7.1102
+          }
+        ]
+      },
+      "mexico": {
+        "points": [
+          {
+            "x": 0,
+            "m": 17.4091
+          },
+          {
+            "x": 546202,
+            "m": 13.7532
+          },
+          {
+            "x": 1092405,
+            "m": 6.9637
+          }
+        ]
+      },
+      "myanmar": {
+        "points": [
+          {
+            "x": 0,
+            "m": 17.1803
+          },
+          {
+            "x": 518042,
+            "m": 13.5724
+          },
+          {
+            "x": 1036085,
+            "m": 6.8721
+          }
+        ]
+      },
+      "venezuela": {
+        "points": [
+          {
+            "x": 0,
+            "m": 16.7035
+          },
+          {
+            "x": 462885,
+            "m": 13.1958
+          },
+          {
+            "x": 925770,
+            "m": 6.6814
+          }
+        ]
+      },
+      "somalia": {
+        "points": [
+          {
+            "x": 0,
+            "m": 16.5777
+          },
+          {
+            "x": 449095,
+            "m": 13.0964
+          },
+          {
+            "x": 898190,
+            "m": 6.6311
+          }
+        ]
+      }
+    },
+    "rec-coverage-gap": {
+      "nigeria": {
+        "points": [
+          {
+            "x": 0,
+            "m": 37.9122
+          },
+          {
+            "x": 5434382,
+            "m": 29.9506
+          },
+          {
+            "x": 10868765,
+            "m": 15.1649
+          }
+        ]
+      },
+      "dr-congo": {
+        "points": [
+          {
+            "x": 0,
+            "m": 32.1624
+          },
+          {
+            "x": 1971138,
+            "m": 25.4083
+          },
+          {
+            "x": 3942275,
+            "m": 12.8649
+          }
+        ]
+      },
+      "yemen": {
+        "points": [
+          {
+            "x": 0,
+            "m": 97.6948
+          },
+          {
+            "x": 1739092,
+            "m": 77.1789
+          },
+          {
+            "x": 3478185,
+            "m": 39.0779
+          }
+        ]
+      },
+      "india": {
+        "points": [
+          {
+            "x": 0,
+            "m": 0.6564
+          },
+          {
+            "x": 1696888,
+            "m": 0.5185
+          },
+          {
+            "x": 3393775,
+            "m": 0.2625
+          }
+        ]
+      },
+      "indonesia": {
+        "points": [
+          {
+            "x": 0,
+            "m": 8.5066
+          },
+          {
+            "x": 1641620,
+            "m": 6.7202
+          },
+          {
+            "x": 3283240,
+            "m": 3.4026
+          }
+        ]
+      },
+      "ethiopia": {
+        "points": [
+          {
+            "x": 0,
+            "m": 9.4781
+          },
+          {
+            "x": 1625828,
+            "m": 7.4877
+          },
+          {
+            "x": 3251655,
+            "m": 3.7912
+          }
+        ]
+      },
+      "afghanistan": {
+        "points": [
+          {
+            "x": 0,
+            "m": 39.9338
+          },
+          {
+            "x": 1200802,
+            "m": 31.5477
+          },
+          {
+            "x": 2401605,
+            "m": 15.9735
+          }
+        ]
+      },
+      "pakistan": {
+        "points": [
+          {
+            "x": 0,
+            "m": 5.146
+          },
+          {
+            "x": 1162120,
+            "m": 4.0653
+          },
+          {
+            "x": 2324240,
+            "m": 2.0584
+          }
+        ]
+      },
+      "angola": {
+        "points": [
+          {
+            "x": 0,
+            "m": 60.4915
+          },
+          {
+            "x": 1134730,
+            "m": 47.7883
+          },
+          {
+            "x": 2269460,
+            "m": 24.1966
+          }
+        ]
+      },
+      "philippines": {
+        "points": [
+          {
+            "x": 0,
+            "m": 22.0804
+          },
+          {
+            "x": 952265,
+            "m": 17.4436
+          },
+          {
+            "x": 1904530,
+            "m": 8.8322
+          }
+        ]
+      },
+      "south-africa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 32.1624
+          },
+          {
+            "x": 950542,
+            "m": 25.4083
+          },
+          {
+            "x": 1901085,
+            "m": 12.8649
+          }
+        ]
+      },
+      "tanzania": {
+        "points": [
+          {
+            "x": 0,
+            "m": 7.5877
+          },
+          {
+            "x": 767225,
+            "m": 5.9943
+          },
+          {
+            "x": 1534450,
+            "m": 3.0351
+          }
+        ]
+      },
+      "sudan": {
+        "points": [
+          {
+            "x": 0,
+            "m": 22.0804
+          },
+          {
+            "x": 681995,
+            "m": 17.4436
+          },
+          {
+            "x": 1363990,
+            "m": 8.8322
+          }
+        ]
+      },
+      "china": {
+        "points": [
+          {
+            "x": 0,
+            "m": 0.2363
+          },
+          {
+            "x": 649800,
+            "m": 0.1867
+          },
+          {
+            "x": 1299600,
+            "m": 0.0945
+          }
+        ]
+      },
+      "madagascar": {
+        "points": [
+          {
+            "x": 0,
+            "m": 34.0265
+          },
+          {
+            "x": 641122,
+            "m": 26.8809
+          },
+          {
+            "x": 1282245,
+            "m": 13.6106
+          }
+        ]
+      },
+      "bangladesh": {
+        "points": [
+          {
+            "x": 0,
+            "m": 1.6803
+          },
+          {
+            "x": 593662,
+            "m": 1.3275
+          },
+          {
+            "x": 1187325,
+            "m": 0.6721
+          }
+        ]
+      },
+      "mexico": {
+        "points": [
+          {
+            "x": 0,
+            "m": 3.1769
+          },
+          {
+            "x": 546202,
+            "m": 2.5097
+          },
+          {
+            "x": 1092405,
+            "m": 1.2707
+          }
+        ]
+      },
+      "myanmar": {
+        "points": [
+          {
+            "x": 0,
+            "m": 22.0804
+          },
+          {
+            "x": 518042,
+            "m": 17.4436
+          },
+          {
+            "x": 1036085,
+            "m": 8.8322
+          }
+        ]
+      },
+      "venezuela": {
+        "points": [
+          {
+            "x": 0,
+            "m": 65.6375
+          },
+          {
+            "x": 462885,
+            "m": 51.8536
+          },
+          {
+            "x": 925770,
+            "m": 26.255
+          }
+        ]
+      },
+      "somalia": {
+        "points": [
+          {
+            "x": 0,
+            "m": 20.5839
+          },
+          {
+            "x": 449095,
+            "m": 16.2613
+          },
+          {
+            "x": 898190,
+            "m": 8.2336
+          }
+        ]
+      }
+    },
+    "rec-outbreak": {
+      "nigeria": {
+        "points": [
+          {
+            "x": 0,
+            "m": 46.0404
+          },
+          {
+            "x": 5434382,
+            "m": 36.3719
+          },
+          {
+            "x": 10868765,
+            "m": 18.4162
+          }
+        ]
+      },
+      "dr-congo": {
+        "points": [
+          {
+            "x": 0,
+            "m": 48.157
+          },
+          {
+            "x": 1971138,
+            "m": 38.044
+          },
+          {
+            "x": 3942275,
+            "m": 19.2628
+          }
+        ]
+      },
+      "yemen": {
+        "points": [
+          {
+            "x": 0,
+            "m": 82.7824
+          },
+          {
+            "x": 1739092,
+            "m": 65.3981
+          },
+          {
+            "x": 3478185,
+            "m": 33.113
+          }
+        ]
+      },
+      "india": {
+        "points": [
+          {
+            "x": 0,
+            "m": 0.0951
+          },
+          {
+            "x": 1696888,
+            "m": 0.0751
+          },
+          {
+            "x": 3393775,
+            "m": 0.038
+          }
+        ]
+      },
+      "indonesia": {
+        "points": [
+          {
+            "x": 0,
+            "m": 5.3508
+          },
+          {
+            "x": 1641620,
+            "m": 4.2271
+          },
+          {
+            "x": 3283240,
+            "m": 2.1403
+          }
+        ]
+      },
+      "ethiopia": {
+        "points": [
+          {
+            "x": 0,
+            "m": 12.5803
+          },
+          {
+            "x": 1625828,
+            "m": 9.9384
+          },
+          {
+            "x": 3251655,
+            "m": 5.0321
+          }
+        ]
+      },
+      "afghanistan": {
+        "points": [
+          {
+            "x": 0,
+            "m": 46.0404
+          },
+          {
+            "x": 1200802,
+            "m": 36.3719
+          },
+          {
+            "x": 2401605,
+            "m": 18.4162
+          }
+        ]
+      },
+      "pakistan": {
+        "points": [
+          {
+            "x": 0,
+            "m": 6.088
+          },
+          {
+            "x": 1162120,
+            "m": 4.8095
+          },
+          {
+            "x": 2324240,
+            "m": 2.4352
+          }
+        ]
+      },
+      "angola": {
+        "points": [
+          {
+            "x": 0,
+            "m": 20.0
+          },
+          {
+            "x": 1134730,
+            "m": 15.8
+          },
+          {
+            "x": 2269460,
+            "m": 8.0
+          }
+        ]
+      },
+      "philippines": {
+        "points": [
+          {
+            "x": 0,
+            "m": 18.6445
+          },
+          {
+            "x": 952265,
+            "m": 14.7291
+          },
+          {
+            "x": 1904530,
+            "m": 7.4578
+          }
+        ]
+      },
+      "south-africa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 27.4911
+          },
+          {
+            "x": 950542,
+            "m": 21.718
+          },
+          {
+            "x": 1901085,
+            "m": 10.9964
+          }
+        ]
+      },
+      "tanzania": {
+        "points": [
+          {
+            "x": 0,
+            "m": 6.088
+          },
+          {
+            "x": 767225,
+            "m": 4.8095
+          },
+          {
+            "x": 1534450,
+            "m": 2.4352
+          }
+        ]
+      },
+      "sudan": {
+        "points": [
+          {
+            "x": 0,
+            "m": 24.352
+          },
+          {
+            "x": 681995,
+            "m": 19.238
+          },
+          {
+            "x": 1363990,
+            "m": 9.7408
+          }
+        ]
+      },
+      "china": {
+        "points": [
+          {
+            "x": 0,
+            "m": 0.5945
+          },
+          {
+            "x": 649800,
+            "m": 0.4697
+          },
+          {
+            "x": 1299600,
+            "m": 0.2378
+          }
+        ]
+      },
+      "madagascar": {
+        "points": [
+          {
+            "x": 0,
+            "m": 61.8549
+          },
+          {
+            "x": 641122,
+            "m": 48.8654
+          },
+          {
+            "x": 1282245,
+            "m": 24.742
+          }
+        ]
+      },
+      "bangladesh": {
+        "points": [
+          {
+            "x": 0,
+            "m": 2.3781
+          },
+          {
+            "x": 593662,
+            "m": 1.8787
+          },
+          {
+            "x": 1187325,
+            "m": 0.9512
+          }
+        ]
+      },
+      "mexico": {
+        "points": [
+          {
+            "x": 0,
+            "m": 3.4245
+          },
+          {
+            "x": 546202,
+            "m": 2.7054
+          },
+          {
+            "x": 1092405,
+            "m": 1.3698
+          }
+        ]
+      },
+      "myanmar": {
+        "points": [
+          {
+            "x": 0,
+            "m": 20.0
+          },
+          {
+            "x": 518042,
+            "m": 15.8
+          },
+          {
+            "x": 1036085,
+            "m": 8.0
+          }
+        ]
+      },
+      "venezuela": {
+        "points": [
+          {
+            "x": 0,
+            "m": 52.5327
+          },
+          {
+            "x": 462885,
+            "m": 41.5008
+          },
+          {
+            "x": 925770,
+            "m": 21.0131
+          }
+        ]
+      },
+      "somalia": {
+        "points": [
+          {
+            "x": 0,
+            "m": 36.1712
+          },
+          {
+            "x": 449095,
+            "m": 28.5753
+          },
+          {
+            "x": 898190,
+            "m": 14.4685
+          }
+        ]
+      }
+    }
+  }
+}

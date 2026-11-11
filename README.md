@@ -10,10 +10,22 @@ disagree, and answers "what if we didn't have this recommender?". Everyone in a
 round sees changes in real time, and each person sees only what their role
 allows.
 
-The demo scenario uses CONALFA's 2023 literacy data for Guatemala's 22
-departments. The program costs are explicit, illustrative assumptions.
+Visitors start by picking a sample project, each built from public data with
+three recommenders who see it differently, or by starting a round with their own
+list of projects:
 
-- **Live demo:** https://allocation.calebweeks.com (one-click demo personas, no signup)
+| Sample | Source | Applications |
+|---|---|---|
+| Global health charities | GiveWell's 2021 cost-effectiveness workbook (funding gaps, multiples of cash) | 15 program × country funding gaps |
+| Open-source infrastructure | Debian package index (direct dependents), OSV.dev CVE history, GitHub commit activity | 18 widely depended-on projects |
+| US disaster mitigation | FEMA National Risk Index v1.20; NIBS *Mitigation Saves* benefit–cost ratios | 20 high-loss counties |
+| Childhood vaccination | WHO/UNICEF WUENIC 2025 revision (zero-dose children, DTP3, MCV1) | 20 countries |
+| Guatemala literacy | CONALFA 2023 projection (extracted from PDF) | 22 departments |
+
+Program costs, caps where a source doesn't give one, and each recommender's
+weighting are explicit, illustrative assumptions, listed with every sample.
+
+- **Live demo:** https://allocation.calebweeks.com (pick a sample, then a one-click demo role; no signup)
 - **Architecture, data flow, sequence diagrams and glossary:** https://allocation.calebweeks.com/architecture, versioned by hosting setup: [v1](https://allocation.calebweeks.com/architecture/v1) (one GCP VM, code at tag `infra-v1`) and [v2](https://allocation.calebweeks.com/architecture/v2) (Render + Neon, current), with a comparison of what changed (source: `apps/web/src/app/architecture`)
 - **The math:** [docs/math.md](docs/math.md)
 
@@ -23,7 +35,7 @@ departments. The program costs are explicit, illustrative assumptions.
 packages/engine   TypeScript allocation engine: curves, round-robin, water-filling, counterfactuals
 apps/api          Express + Socket.IO + Prisma/Postgres: auth, roles, audit log, realtime
 apps/web          Next.js + Tailwind: curve editor, allocation charts, live preview
-python/pipeline   Source data → scenario (CONALFA PDF → CSV → data/guatemala-literacy.json)
+python/pipeline   Public data → tidy CSVs → validated sample scenarios (data/*.json), one module per sample
 python/reference  Independent NumPy implementation that the TS engine is cross-checked against
 render.yaml       Render Blueprint for the API (web app on Vercel, database on Neon)
 docs/math.md      The model, both algorithms, convergence results, and how it's tested
@@ -79,7 +91,7 @@ cp apps/api/.env.example apps/api/.env          # set DATABASE_URL
 cp apps/web/.env.example apps/web/.env.local
 pnpm --filter @allocation-sim/engine build
 pnpm --filter @allocation-sim/api exec prisma migrate deploy
-pnpm --filter @allocation-sim/api demo:reset    # seed the demo round
+pnpm --filter @allocation-sim/api demo:reset    # seed one demo round per sample
 
 pnpm dev:api    # http://localhost:4000
 pnpm dev:web    # http://localhost:3000
@@ -94,12 +106,15 @@ cd python && python -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python -m reference.cross_check --check
 ```
 
-Rebuilding the data (needs poppler's `pdftotext`):
+Rebuilding the data. Each sample has an `extract_*.py` that fetches its source
+into a committed CSV (see each script's docstring for URLs and dates), and a
+module in `pipeline/scenarios/` whose `build()` turns that CSV into
+`data/<id>.json`. `pipeline/validate.py` checks every scenario.
 
 ```bash
 cd python
-.venv/bin/python -m pipeline.extract_conalfa   # PDF → pipeline/data/conalfa-2023.csv
-.venv/bin/python -m pipeline.build_seed        # CSV → data/guatemala-literacy.json
+.venv/bin/python -m pipeline.extract_conalfa   # e.g. PDF → pipeline/data/conalfa-2023.csv (needs pdftotext)
+.venv/bin/python -m pipeline.build_seed        # all CSVs → data/*.json (add a module name for just one)
 .venv/bin/python -m reference.cross_check      # regenerate engine fixtures if solvers change
 ```
 
@@ -110,7 +125,7 @@ cd python
   - The free instance sleeps after 15 minutes without traffic and takes about a minute to wake; the web app shows a "waking up" notice meanwhile (`apps/web/src/components/ServerWaking.tsx`).
 - **Database:** Neon free tier (Postgres 17). Use the direct (non-pooled) connection string with `sslmode=verify-full`; a single API instance doesn't need the pooler, and migrations need a direct connection. Neon keeps 6 hours of history for point-in-time restore.
 - **CI:** `.github/workflows/ci.yml` typechecks and runs the TypeScript, Python, and Postgres-backed API tests on every push and pull request.
-- **Demo reset:** `.github/workflows/demo-reset.yml` applies migrations and rebuilds the demo round nightly at 03:30 UTC (repository secret `DATABASE_URL`). Run it by hand to seed a fresh database.
+- **Demo reset:** `.github/workflows/demo-reset.yml` applies migrations and rebuilds every sample's demo round nightly at 03:30 UTC (repository secret `DATABASE_URL`). Run it by hand to seed a fresh database.
 - **DNS** (at the domain's registrar; the main calebweeks.com site is untouched):
   - `allocation` CNAME → the target Vercel shows when the domain is added;
   - `api` CNAME → the service's `onrender.com` hostname (shown under the service's Custom Domains).
@@ -119,11 +134,15 @@ cd python
 
 ## Data and attribution
 
-Literacy figures: CONALFA, *Proyección de población alfabeta y analfabeta de 15
-años y más según departamento, por sexo, año 2023*, based on INE's 2018 census
-and projections. The cost-per-learner, reach-per-round, and cost-escalation
-figures are illustrative assumptions, labeled as such in the app. Nothing here
-is funding advice or affiliated with any organization named.
+- **Global health:** GiveWell's 2021 top-charity cost-effectiveness analysis (funding gaps 2021–2023). These are GiveWell's estimates, dated, and not current GiveWell recommendations; the within-gap decline and the two recommender adjustments are illustrative.
+- **Open-source infrastructure:** Debian 13 package index, OSV.dev and the GitHub REST API, snapshot 2026-11-11. The projects are real; their funding needs and costs are illustrative, and none of them asked for this money.
+- **Disaster mitigation:** FEMA National Risk Index v1.20 (December 2025) via OpenFEMA; National Institute of Building Sciences, *Natural Hazard Mitigation Saves: 2019 Report*.
+- **Childhood vaccination:** WHO/UNICEF Estimates of National Immunization Coverage, 2025 revision (released July 2026), via WHO's immunization data portal.
+- **Guatemala literacy:** CONALFA, *Proyección de población alfabeta y analfabeta de 15 años y más según departamento, por sexo, año 2023*, based on INE's 2018 census and projections.
+
+Every sample lists its sources and assumptions in the app. Funder names are
+fictional. Nothing here is funding advice or affiliated with any organization
+named.
 
 The allocation mechanism is modeled on the public description of the Survival
 and Flourishing Fund's S-process. This is an independent implementation.

@@ -6,13 +6,13 @@ import { Changes } from "./Changes";
 import type { HostingContent } from "./content";
 import { glossaryFor } from "./glossary";
 import { C, Figure, Key, Note, Section } from "./primitives";
-import { editCurve, pipeline, runtime, signIn } from "./shared-diagrams";
+import { editCurve, runtime, signIn } from "./shared-diagrams";
 import { LATEST, versionIds, versions, type ArchVersionId } from "./versions";
 
 const hosting: Record<ArchVersionId, HostingContent> = { v1, v2 };
 
 // The shared figures don't depend on the version, so draw them once per build.
-const shared = { pipeline: pipeline(), runtime: runtime(), signIn: signIn(), editCurve: editCurve() };
+const shared = { runtime: runtime(), signIn: signIn(), editCurve: editCurve() };
 
 function VersionPicker({ current }: { current: ArchVersionId }) {
   return (
@@ -123,10 +123,8 @@ export function ArchitectureView({ version }: { version: ArchVersionId }) {
         title="Data flow"
         intro="Data moves twice: once at build time, from public data into the database, and on every change, from the database to each member's screen, filtered by role."
       >
-        <Figure title="From source data to the demo round" svg={shared.pipeline}>
-          The top row is the scenario pipeline in <C>python/pipeline</C>. The bottom row is how the math is verified: an
-          independent NumPy solver writes expected answers that the TypeScript engine must reproduce. CI regenerates both
-          JSON files and fails if either differs from the committed copy.
+        <Figure title={version === "v1" ? "From source data to the demo round" : "From public data to the sample projects"} svg={h.pipelineSvg}>
+          {h.pipelineCaption}
         </Figure>
         <Key items={[["acc", "engine"], ["amb", "trust weights (private to the owner and that funder)"]]} />
         <Figure title="From the database to each member's screen" svg={shared.runtime}>

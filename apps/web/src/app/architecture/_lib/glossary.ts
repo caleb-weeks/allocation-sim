@@ -5,7 +5,16 @@ import type { ArchVersionId } from "./versions";
 type Term = [term: string, definition: string, where: string | null];
 export type GlossaryGroup = { id: string; title: string; terms: Term[] };
 
-const byVersion: Record<ArchVersionId, { demoReset: Term; migration: Term; hosting: Term[] }> = {
+type VersionTerms = {
+  demoReset: Term;
+  migration: Term;
+  hosting: Term[];
+  demoData: Term[];
+  /** Replacements for shared terms whose examples quote this version's demo data. */
+  overrides?: Term[];
+};
+
+const byVersion: Record<ArchVersionId, VersionTerms> = {
   v1: {
     demoReset: ["Demo reset", "Rebuilds the demo round from the scenario file, undoing visitors' edits. Runs nightly at 03:30 on the server.", "pnpm demo:reset"],
     migration: ["Migration", "A versioned SQL file that changes the database schema. prisma migrate deploy applies any new ones on every deploy.", "prisma/migrations"],
@@ -22,9 +31,15 @@ const byVersion: Record<ArchVersionId, { demoReset: Term; migration: Term; hosti
       ["DNS records", "At Hover: allocation is a CNAME pointing to Vercel; api is an A record pointing to the VM's static IP, 34.29.103.145.", null],
       ["Static IP", "A reserved public address that survives VM restarts, so the api DNS record never goes stale.", "provision.sh"],
     ],
+    demoData: [
+      ["CONALFA", "Guatemala's National Literacy Committee. Its 2023 projection, based on the 2018 census, gives literate and illiterate population aged 15 and over by department and sex.", "python/pipeline/raw"],
+      ["Department", "One of Guatemala's 22 top-level administrative regions, such as Alta Verapaz or Quiché.", null],
+      ["Illiteracy rate", "The share of people aged 15 and over who can't read and write. The Equity and Gender gap lenses weight curves by how far a department's rate is above the national rate.", null],
+      ["Program assumptions", "The illustrative economics behind the demo, not sourced estimates: about $100 per learner, at most 2% of a department's illiterate population reached per round, and the last learners costing 2.5× the first.", "ASSUMPTIONS in build_seed.py"],
+    ],
   },
   v2: {
-    demoReset: ["Demo reset", "Rebuilds the demo round from the scenario file, undoing visitors' edits. Runs nightly at 03:30 UTC from GitHub Actions.", ".github/workflows/demo-reset.yml"],
+    demoReset: ["Demo reset", "Rebuilds every sample's demo round from its scenario file, undoing visitors' edits. Runs nightly at 03:30 UTC from GitHub Actions.", ".github/workflows/demo-reset.yml"],
     migration: ["Migration", "A versioned SQL file that changes the database schema. prisma migrate deploy applies any new ones at the end of every Render build.", "prisma/migrations"],
     hosting: [
       ["Render", "Hosts the API on its free plan: it builds from main once CI passes, terminates HTTPS for api.calebweeks.com, and runs one Node process. It sleeps after 15 minutes without traffic.", "render.yaml"],
@@ -36,12 +51,40 @@ const byVersion: Record<ArchVersionId, { demoReset: Term; migration: Term; hosti
       ["GitHub Actions", "Runs CI on every push (typecheck, engine and web tests, Python tests, API tests against a real Postgres) and the nightly demo reset.", ".github/workflows"],
       ["DNS records", "At Hover: allocation is a CNAME pointing to Vercel, and api is a CNAME pointing to the Render service.", null],
     ],
+    demoData: [
+      ["Sample project", "One of the ready-made scenarios on the landing page, each built from public data with three recommenders who see it differently: GiveWell global health, open-source infrastructure, US disaster mitigation, childhood vaccination, and Guatemala literacy.", "data/*.json"],
+      ["Scenario file", "A sample's applications, caps, curves, recommenders and funders as JSON, written by the Python pipeline and read by both the seed script and the web app's build.", "python -m pipeline.build_seed"],
+      ["Scenario validator", "Checks every sample against what the app needs: valid curves (the database's rules), one persona per role slot, a budget that can't fund everything, and lenses whose top picks differ.", "python/pipeline/validate.py"],
+      ["Persona slot", "Each sample's two funders and three recommenders map, in order, onto the same seven demo users, so one sign-in works across every sample's demo round.", "prisma/seed.ts"],
+      ["Multiple of cash", "GiveWell's unit: 10× means a dollar there does ten times the good of a dollar given directly to a household through GiveDirectly. The global health sample uses GiveWell's 2021 estimates.", "global_health.py"],
+      ["Funding gap", "How much more a charity's program could use, as GiveWell assessed it. It's the cap for each global health application.", "global-health.csv"],
+      ["Direct dependents", "How many Debian packages name a project in their Depends field. The open-source sample's Reach lens uses it; it undercounts code used through npm or PyPI and transitive use.", "open-source-infrastructure.csv"],
+      ["Maintainer fragility", "The open-source sample's lens for the xz-utils lesson: important projects that depend on very few active people, from one year of GitHub commits.", "open_source_infrastructure.py"],
+      ["Expected annual loss", "FEMA's National Risk Index estimate of a county's average yearly losses from natural hazards, in dollars. It sizes each county's program in the disaster sample.", "disaster_resilience.py"],
+      ["Benefit–cost ratio", "Dollars of future losses avoided per dollar of mitigation. The disaster sample uses the National Institute of Building Sciences' figures for federal grants (about 6:1 overall).", "disaster_resilience.py"],
+      ["Zero-dose children", "Children who received no routine vaccines, measured as missing the first diphtheria-tetanus-pertussis dose (DTP1). WHO/UNICEF counted 13.5 million in 2025.", "childhood_vaccination.py"],
+      ["DTP3 and MCV1 coverage", "The share of infants who got all three DTP doses, and their first measles dose. Low DTP3 signals a weak routine system; low MCV1 signals outbreak risk.", "childhood-vaccination.csv"],
+      ["CONALFA", "Guatemala's National Literacy Committee. Its 2023 projection of illiteracy by department and sex, extracted from a PDF, is the source for the original sample.", "python/pipeline/raw"],
+    ],
+    overrides: [
+      ["Application", "Anything that can receive a grant: a charity's program in one country, an open-source project, a county's mitigation program, or whatever an owner lists in their own round.", "Application table"],
+      ["Cap", "The most an application can usefully absorb: GiveWell's funding gap in the global health sample, an explicit illustrative assumption in the others, or the owner's figure in their own round.", "Application.cap"],
+      ["Value, V(x)", "The total value of granting x: the area under the marginal value curve up to x. Each sample has its own unit, such as multiples of cash or zero-dose children reached per $1,000.", "totalValue() in curve.ts"],
+      ["Lens", "A recommender's stated point of view. Every sample has three that disagree, such as Reach, Coverage gap and Outbreak risk in the vaccination sample.", "Membership.lens"],
+      ["Funder", "A person with a budget who decides how much to trust each recommender. Each sample has two, with fictional names.", "role FUNDER"],
+      ["Pool (Pᵣ)", "The total a recommender directs, summed over every funder's delegation to them.", "poolsByRecommender() in state.ts"],
+      ["Step (Δ)", "The dollars placed per round-robin turn: the budget ÷ 2,000, rounded to $100 (for example $25,000 for a $50M budget). Smaller steps get closer to the exact optimum.", "stepFor() in state.ts"],
+      ["Round", "One allocation exercise: a set of applications plus the people taking part. Each sample has one shared demo round; signed-in users create their own.", "Round table"],
+      ["Owner", "Runs the round. Sees all shared curves, every funder's trust, and the activity log, and can manage members (except in the demo rounds).", "role OWNER"],
+      ["Demo persona", "One of the seven one-click sign-ins on a sample's page. The same seven users belong to every sample's demo round, in different roles' names.", "prisma/seed.ts"],
+    ],
   },
 };
 
 export function glossaryFor(version: ArchVersionId): GlossaryGroup[] {
-  const { demoReset: DEMO_RESET, migration: MIGRATION, hosting: HOSTING } = byVersion[version];
-  return [
+  const { demoReset: DEMO_RESET, migration: MIGRATION, hosting: HOSTING, demoData: DEMO_DATA, overrides = [] } = byVersion[version];
+  const replaced = new Map(overrides.map((t) => [t[0], t]));
+  const groups: GlossaryGroup[] = [
   {
     id: "g-model",
     title: "The allocation model",
@@ -125,12 +168,8 @@ export function glossaryFor(version: ArchVersionId): GlossaryGroup[] {
   {
     id: "g-data",
     title: "The demo data",
-    terms: [
-      ["CONALFA", "Guatemala's National Literacy Committee. Its 2023 projection, based on the 2018 census, gives literate and illiterate population aged 15 and over by department and sex.", "python/pipeline/raw"],
-      ["Department", "One of Guatemala's 22 top-level administrative regions, such as Alta Verapaz or Quiché.", null],
-      ["Illiteracy rate", "The share of people aged 15 and over who can't read and write. The Equity and Gender gap lenses weight curves by how far a department's rate is above the national rate.", null],
-      ["Program assumptions", "The illustrative economics behind the demo, not sourced estimates: about $100 per learner, at most 2% of a department's illiterate population reached per round, and the last learners costing 2.5× the first.", "ASSUMPTIONS in build_seed.py"],
-    ],
+    terms: DEMO_DATA,
   },
 ];
+  return groups.map((g) => ({ ...g, terms: g.terms.map((t) => replaced.get(t[0]) ?? t) }));
 }

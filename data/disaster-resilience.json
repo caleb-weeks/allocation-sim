@@ -1,0 +1,1701 @@
+{
+  "id": "disaster-resilience",
+  "title": "Disaster mitigation in 20 high-risk US counties",
+  "summary": "Natural-hazard mitigation programs in 20 US counties with high expected yearly disaster losses (at most two per state), from FEMA's National Risk Index. Returns follow the National Institute of Building Sciences' finding that federal mitigation grants save about $6 per $1. Program sizes and diminishing returns are illustrative assumptions.",
+  "valueUnit": "dollars of losses avoided per $1,000 (lens-weighted)",
+  "sources": [
+    {
+      "name": "FEMA — National Risk Index v1.20 (December 2025), county table",
+      "url": "https://www.fema.gov/about/openfema/data-sets/national-risk-index-data"
+    },
+    {
+      "name": "National Institute of Building Sciences — Natural Hazard Mitigation Saves: 2019 Report",
+      "url": "https://nibs.org/wp-content/uploads/2025/04/NIBS_MMC_MitigationSaves_2019.pdf"
+    }
+  ],
+  "assumptions": {
+    "program_share_of_covered_eal": 0.005,
+    "nibs_federal_grant_bcr": {
+      "ifld": 7.0,
+      "hrcn": 5.0,
+      "trnd": 5.0,
+      "erqk": 3.0,
+      "wfir": 3.0
+    },
+    "curve_multiples_first_middle_last": [
+      1.6,
+      1.0,
+      0.4
+    ],
+    "note": "Counties: the 20 with the highest total expected annual loss (EAL) in FEMA's National Risk Index v1.20 (Dec 2025), at most 2 per state, skipping any without vulnerability or resilience scores. Program size (cap): 0.5% of one year of the county's EAL from the hazards mitigated (inland flooding, hurricane, tornado, earthquake, wildfire), rounded to $10,000; an illustrative sizing, not a sourced cost estimate. Average return: each county's mix of those hazards, weighted by their dollar EAL, applied to the NIBS 2019 federal-grant benefit-cost ratios (flood 7:1, wind 5:1, earthquake 3:1, wildfire 3:1). Other hazards (coastal flooding, heat, drought, etc.) are left out because NIBS reports no grant ratio for them. Diminishing returns: best projects first, so the first dollar returns 1.6x the county average, the midpoint 1.0x and the last 0.4x, averaging to the NIBS ratio. Lens weights: Social vulnerability multiplies by NRI SoVI score / 50; Low resilience by (100 - NRI resilience score) / 50 (both scores are national percentiles, so a median county counts 1:1). EAL includes NRI's dollar value of expected deaths and injuries."
+  },
+  "applications": [
+    {
+      "id": "los-angeles-county-ca",
+      "name": "Los Angeles County, CA",
+      "cap": 37740000,
+      "data": {
+        "facts": [
+          {
+            "label": "Expected annual loss",
+            "value": "$7.6B"
+          },
+          {
+            "label": "Top hazard",
+            "value": "Earthquake (60% of loss)"
+          },
+          {
+            "label": "Social vulnerability",
+            "value": "Relatively moderate"
+          },
+          {
+            "label": "Community resilience",
+            "value": "Very low"
+          }
+        ],
+        "county_fips": "06037",
+        "state": "California",
+        "population": 10005712,
+        "expected_annual_loss_usd": 7601846373,
+        "mitigated_hazards_eal_usd": 7547970617,
+        "average_benefit_cost_ratio": 4.493,
+        "social_vulnerability_score": 55.38,
+        "community_resilience_score": 13.55
+      }
+    },
+    {
+      "id": "cook-county-il",
+      "name": "Cook County, IL",
+      "cap": 7500000,
+      "data": {
+        "facts": [
+          {
+            "label": "Expected annual loss",
+            "value": "$2.4B"
+          },
+          {
+            "label": "Top hazard",
+            "value": "Inland flooding (45% of loss)"
+          },
+          {
+            "label": "Social vulnerability",
+            "value": "Relatively high"
+          },
+          {
+            "label": "Community resilience",
+            "value": "Relatively high"
+          }
+        ],
+        "county_fips": "17031",
+        "state": "Illinois",
+        "population": 5272775,
+        "expected_annual_loss_usd": 2424304449,
+        "mitigated_hazards_eal_usd": 1499011566,
+        "average_benefit_cost_ratio": 6.387,
+        "social_vulnerability_score": 61.74,
+        "community_resilience_score": 73.28
+      }
+    },
+    {
+      "id": "riverside-county-ca",
+      "name": "Riverside County, CA",
+      "cap": 11220000,
+      "data": {
+        "facts": [
+          {
+            "label": "Expected annual loss",
+            "value": "$2.3B"
+          },
+          {
+            "label": "Top hazard",
+            "value": "Inland flooding (50% of loss)"
+          },
+          {
+            "label": "Social vulnerability",
+            "value": "Relatively low"
+          },
+          {
+            "label": "Community resilience",
+            "value": "Very low"
+          }
+        ],
+        "county_fips": "06065",
+        "state": "California",
+        "population": 2416838,
+        "expected_annual_loss_usd": 2265637643,
+        "mitigated_hazards_eal_usd": 2243287880,
+        "average_benefit_cost_ratio": 5.015,
+        "social_vulnerability_score": 33.33,
+        "community_resilience_score": 13.04
+      }
+    },
+    {
+      "id": "harris-county-tx",
+      "name": "Harris County, TX",
+      "cap": 9970000,
+      "data": {
+        "facts": [
+          {
+            "label": "Expected annual loss",
+            "value": "$2.2B"
+          },
+          {
+            "label": "Top hazard",
+            "value": "Inland flooding (51% of loss)"
+          },
+          {
+            "label": "Social vulnerability",
+            "value": "Relatively high"
+          },
+          {
+            "label": "Community resilience",
+            "value": "Very low"
+          }
+        ],
+        "county_fips": "48201",
+        "state": "Texas",
+        "population": 4726200,
+        "expected_annual_loss_usd": 2217702383,
+        "mitigated_hazards_eal_usd": 1993797734,
+        "average_benefit_cost_ratio": 6.119,
+        "social_vulnerability_score": 67.94,
+        "community_resilience_score": 17.88
+      }
+    },
+    {
+      "id": "maricopa-county-az",
+      "name": "Maricopa County, AZ",
+      "cap": 5990000,
+      "data": {
+        "facts": [
+          {
+            "label": "Expected annual loss",
+            "value": "$2.2B"
+          },
+          {
+            "label": "Top hazard",
+            "value": "Inland flooding (51% of loss)"
+          },
+          {
+            "label": "Social vulnerability",
+            "value": "Relatively low"
+          },
+          {
+            "label": "Community resilience",
+            "value": "Very low"
+          }
+        ],
+        "county_fips": "04013",
+        "state": "Arizona",
+        "population": 4418836,
+        "expected_annual_loss_usd": 2195561910,
+        "mitigated_hazards_eal_usd": 1197793862,
+        "average_benefit_cost_ratio": 6.748,
+        "social_vulnerability_score": 27.1,
+        "community_resilience_score": 18.03
+      }
+    },
+    {
+      "id": "king-county-wa",
+      "name": "King County, WA",
+      "cap": 8180000,
+      "data": {
+        "facts": [
+          {
+            "label": "Expected annual loss",
+            "value": "$1.7B"
+          },
+          {
+            "label": "Top hazard",
+            "value": "Earthquake (72% of loss)"
+          },
+          {
+            "label": "Social vulnerability",
+            "value": "Very low"
+          },
+          {
+            "label": "Community resilience",
+            "value": "Very high"
+          }
+        ],
+        "county_fips": "53033",
+        "state": "Washington",
+        "population": 2268178,
+        "expected_annual_loss_usd": 1680266355,
+        "mitigated_hazards_eal_usd": 1635610139,
+        "average_benefit_cost_ratio": 4.024,
+        "social_vulnerability_score": 14.76,
+        "community_resilience_score": 87.4
+      }
+    },
+    {
+      "id": "dallas-county-tx",
+      "name": "Dallas County, TX",
+      "cap": 2220000,
+      "data": {
+        "facts": [
+          {
+            "label": "Expected annual loss",
+            "value": "$973M"
+          },
+          {
+            "label": "Top hazard",
+            "value": "Inland flooding (33% of loss)"
+          },
+          {
+            "label": "Social vulnerability",
+            "value": "Relatively moderate"
+          },
+          {
+            "label": "Community resilience",
+            "value": "Very low"
+          }
+        ],
+        "county_fips": "48113",
+        "state": "Texas",
+        "population": 2607218,
+        "expected_annual_loss_usd": 973176569,
+        "mitigated_hazards_eal_usd": 444931085,
+        "average_benefit_cost_ratio": 6.429,
+        "social_vulnerability_score": 59.13,
+        "community_resilience_score": 12.95
+      }
+    },
+    {
+      "id": "miami-dade-county-fl",
+      "name": "Miami-Dade County, FL",
+      "cap": 3580000,
+      "data": {
+        "facts": [
+          {
+            "label": "Expected annual loss",
+            "value": "$825M"
+          },
+          {
+            "label": "Top hazard",
+            "value": "Inland flooding (43% of loss)"
+          },
+          {
+            "label": "Social vulnerability",
+            "value": "Relatively high"
+          },
+          {
+            "label": "Community resilience",
+            "value": "Relatively moderate"
+          }
+        ],
+        "county_fips": "12086",
+        "state": "Florida",
+        "population": 2698679,
+        "expected_annual_loss_usd": 824686737,
+        "mitigated_hazards_eal_usd": 716782067,
+        "average_benefit_cost_ratio": 5.977,
+        "social_vulnerability_score": 75.86,
+        "community_resilience_score": 42.91
+      }
+    },
+    {
+      "id": "clark-county-nv",
+      "name": "Clark County, NV",
+      "cap": 2550000,
+      "data": {
+        "facts": [
+          {
+            "label": "Expected annual loss",
+            "value": "$813M"
+          },
+          {
+            "label": "Top hazard",
+            "value": "Inland flooding (45% of loss)"
+          },
+          {
+            "label": "Social vulnerability",
+            "value": "Relatively moderate"
+          },
+          {
+            "label": "Community resilience",
+            "value": "Very low"
+          }
+        ],
+        "county_fips": "32003",
+        "state": "Nevada",
+        "population": 2260510,
+        "expected_annual_loss_usd": 812587961,
+        "mitigated_hazards_eal_usd": 510808542,
+        "average_benefit_cost_ratio": 5.836,
+        "social_vulnerability_score": 46.06,
+        "community_resilience_score": 6.55
+      }
+    },
+    {
+      "id": "st-louis-county-mo",
+      "name": "St. Louis County, MO",
+      "cap": 2040000,
+      "data": {
+        "facts": [
+          {
+            "label": "Expected annual loss",
+            "value": "$753M"
+          },
+          {
+            "label": "Top hazard",
+            "value": "Heat wave (34% of loss)"
+          },
+          {
+            "label": "Social vulnerability",
+            "value": "Relatively low"
+          },
+          {
+            "label": "Community resilience",
+            "value": "Relatively high"
+          }
+        ],
+        "county_fips": "29189",
+        "state": "Missouri",
+        "population": 1003734,
+        "expected_annual_loss_usd": 752688924,
+        "mitigated_hazards_eal_usd": 407264351,
+        "average_benefit_cost_ratio": 5.49,
+        "social_vulnerability_score": 31.17,
+        "community_resilience_score": 79.74
+      }
+    },
+    {
+      "id": "philadelphia-county-pa",
+      "name": "Philadelphia County, PA",
+      "cap": 1700000,
+      "data": {
+        "facts": [
+          {
+            "label": "Expected annual loss",
+            "value": "$667M"
+          },
+          {
+            "label": "Top hazard",
+            "value": "Inland flooding (40% of loss)"
+          },
+          {
+            "label": "Social vulnerability",
+            "value": "Very high"
+          },
+          {
+            "label": "Community resilience",
+            "value": "Relatively moderate"
+          }
+        ],
+        "county_fips": "42101",
+        "state": "Pennsylvania",
+        "population": 1602305,
+        "expected_annual_loss_usd": 667071998,
+        "mitigated_hazards_eal_usd": 340818788,
+        "average_benefit_cost_ratio": 6.317,
+        "social_vulnerability_score": 88.1,
+        "community_resilience_score": 48.47
+      }
+    },
+    {
+      "id": "broward-county-fl",
+      "name": "Broward County, FL",
+      "cap": 2950000,
+      "data": {
+        "facts": [
+          {
+            "label": "Expected annual loss",
+            "value": "$648M"
+          },
+          {
+            "label": "Top hazard",
+            "value": "Inland flooding (45% of loss)"
+          },
+          {
+            "label": "Social vulnerability",
+            "value": "Relatively moderate"
+          },
+          {
+            "label": "Community resilience",
+            "value": "Relatively moderate"
+          }
+        ],
+        "county_fips": "12011",
+        "state": "Florida",
+        "population": 1940829,
+        "expected_annual_loss_usd": 647973333,
+        "mitigated_hazards_eal_usd": 589676084,
+        "average_benefit_cost_ratio": 5.957,
+        "social_vulnerability_score": 55.38,
+        "community_resilience_score": 44.18
+      }
+    },
+    {
+      "id": "salt-lake-county-ut",
+      "name": "Salt Lake County, UT",
+      "cap": 2980000,
+      "data": {
+        "facts": [
+          {
+            "label": "Expected annual loss",
+            "value": "$622M"
+          },
+          {
+            "label": "Top hazard",
+            "value": "Earthquake (78% of loss)"
+          },
+          {
+            "label": "Social vulnerability",
+            "value": "Very low"
+          },
+          {
+            "label": "Community resilience",
+            "value": "Relatively high"
+          }
+        ],
+        "county_fips": "49035",
+        "state": "Utah",
+        "population": 1185141,
+        "expected_annual_loss_usd": 621743321,
+        "mitigated_hazards_eal_usd": 595903887,
+        "average_benefit_cost_ratio": 3.545,
+        "social_vulnerability_score": 10.62,
+        "community_resilience_score": 66.44
+      }
+    },
+    {
+      "id": "shelby-county-tn",
+      "name": "Shelby County, TN",
+      "cap": 2200000,
+      "data": {
+        "facts": [
+          {
+            "label": "Expected annual loss",
+            "value": "$555M"
+          },
+          {
+            "label": "Top hazard",
+            "value": "Earthquake (39% of loss)"
+          },
+          {
+            "label": "Social vulnerability",
+            "value": "Relatively high"
+          },
+          {
+            "label": "Community resilience",
+            "value": "Relatively moderate"
+          }
+        ],
+        "county_fips": "47157",
+        "state": "Tennessee",
+        "population": 929552,
+        "expected_annual_loss_usd": 554679744,
+        "mitigated_hazards_eal_usd": 439513397,
+        "average_benefit_cost_ratio": 4.72,
+        "social_vulnerability_score": 72.58,
+        "community_resilience_score": 57.51
+      }
+    },
+    {
+      "id": "pierce-county-wa",
+      "name": "Pierce County, WA",
+      "cap": 2430000,
+      "data": {
+        "facts": [
+          {
+            "label": "Expected annual loss",
+            "value": "$532M"
+          },
+          {
+            "label": "Top hazard",
+            "value": "Earthquake (68% of loss)"
+          },
+          {
+            "label": "Social vulnerability",
+            "value": "Very low"
+          },
+          {
+            "label": "Community resilience",
+            "value": "Relatively high"
+          }
+        ],
+        "county_fips": "53053",
+        "state": "Washington",
+        "population": 920483,
+        "expected_annual_loss_usd": 531856679,
+        "mitigated_hazards_eal_usd": 486928367,
+        "average_benefit_cost_ratio": 4.003,
+        "social_vulnerability_score": 14.38,
+        "community_resilience_score": 60.08
+      }
+    },
+    {
+      "id": "pima-county-az",
+      "name": "Pima County, AZ",
+      "cap": 1960000,
+      "data": {
+        "facts": [
+          {
+            "label": "Expected annual loss",
+            "value": "$531M"
+          },
+          {
+            "label": "Top hazard",
+            "value": "Inland flooding (65% of loss)"
+          },
+          {
+            "label": "Social vulnerability",
+            "value": "Relatively moderate"
+          },
+          {
+            "label": "Community resilience",
+            "value": "Relatively low"
+          }
+        ],
+        "county_fips": "04019",
+        "state": "Arizona",
+        "population": 1042716,
+        "expected_annual_loss_usd": 531351354,
+        "mitigated_hazards_eal_usd": 391935671,
+        "average_benefit_cost_ratio": 6.549,
+        "social_vulnerability_score": 50.86,
+        "community_resilience_score": 20.32
+      }
+    },
+    {
+      "id": "honolulu-county-hi",
+      "name": "Honolulu County, HI",
+      "cap": 2250000,
+      "data": {
+        "facts": [
+          {
+            "label": "Expected annual loss",
+            "value": "$517M"
+          },
+          {
+            "label": "Top hazard",
+            "value": "Inland flooding (64% of loss)"
+          },
+          {
+            "label": "Social vulnerability",
+            "value": "Relatively low"
+          },
+          {
+            "label": "Community resilience",
+            "value": "Relatively high"
+          }
+        ],
+        "county_fips": "15003",
+        "state": "Hawaii",
+        "population": 1013620,
+        "expected_annual_loss_usd": 517254499,
+        "mitigated_hazards_eal_usd": 450588002,
+        "average_benefit_cost_ratio": 5.934,
+        "social_vulnerability_score": 25.89,
+        "community_resilience_score": 62.63
+      }
+    },
+    {
+      "id": "charleston-county-sc",
+      "name": "Charleston County, SC",
+      "cap": 2250000,
+      "data": {
+        "facts": [
+          {
+            "label": "Expected annual loss",
+            "value": "$500M"
+          },
+          {
+            "label": "Top hazard",
+            "value": "Hurricane (56% of loss)"
+          },
+          {
+            "label": "Social vulnerability",
+            "value": "Relatively low"
+          },
+          {
+            "label": "Community resilience",
+            "value": "Very high"
+          }
+        ],
+        "county_fips": "45019",
+        "state": "South Carolina",
+        "population": 407722,
+        "expected_annual_loss_usd": 499798733,
+        "mitigated_hazards_eal_usd": 449633147,
+        "average_benefit_cost_ratio": 4.658,
+        "social_vulnerability_score": 22.42,
+        "community_resilience_score": 96.12
+      }
+    },
+    {
+      "id": "hennepin-county-mn",
+      "name": "Hennepin County, MN",
+      "cap": 1360000,
+      "data": {
+        "facts": [
+          {
+            "label": "Expected annual loss",
+            "value": "$456M"
+          },
+          {
+            "label": "Top hazard",
+            "value": "Inland flooding (41% of loss)"
+          },
+          {
+            "label": "Social vulnerability",
+            "value": "Relatively low"
+          },
+          {
+            "label": "Community resilience",
+            "value": "Very high"
+          }
+        ],
+        "county_fips": "27053",
+        "state": "Minnesota",
+        "population": 1281172,
+        "expected_annual_loss_usd": 456424882,
+        "mitigated_hazards_eal_usd": 272000578,
+        "average_benefit_cost_ratio": 6.38,
+        "social_vulnerability_score": 20.32,
+        "community_resilience_score": 98.09
+      }
+    },
+    {
+      "id": "multnomah-county-or",
+      "name": "Multnomah County, OR",
+      "cap": 2090000,
+      "data": {
+        "facts": [
+          {
+            "label": "Expected annual loss",
+            "value": "$440M"
+          },
+          {
+            "label": "Top hazard",
+            "value": "Earthquake (74% of loss)"
+          },
+          {
+            "label": "Social vulnerability",
+            "value": "Relatively low"
+          },
+          {
+            "label": "Community resilience",
+            "value": "Very high"
+          }
+        ],
+        "county_fips": "41051",
+        "state": "Oregon",
+        "population": 814167,
+        "expected_annual_loss_usd": 440430645,
+        "mitigated_hazards_eal_usd": 418742921,
+        "average_benefit_cost_ratio": 3.877,
+        "social_vulnerability_score": 29.77,
+        "community_resilience_score": 95.52
+      }
+    }
+  ],
+  "recommenders": [
+    {
+      "id": "rec-losses",
+      "name": "Losses avoided",
+      "lens": "A dollar of loss is a dollar wherever it falls; fund the hazard mixes where mitigation returns the most."
+    },
+    {
+      "id": "rec-vulnerability",
+      "name": "Social vulnerability",
+      "lens": "Weight avoided losses toward places whose residents are least able to absorb them (NRI social vulnerability)."
+    },
+    {
+      "id": "rec-resilience",
+      "name": "Low resilience",
+      "lens": "Weight avoided losses toward communities with the least capacity to prepare and bounce back (NRI resilience)."
+    }
+  ],
+  "funders": [
+    {
+      "id": "funder-bedrock",
+      "name": "Bedrock Foundation",
+      "budget": 30000000,
+      "trust": {
+        "rec-losses": 60,
+        "rec-vulnerability": 25,
+        "rec-resilience": 15
+      }
+    },
+    {
+      "id": "funder-harbor",
+      "name": "Cornerstone Trust",
+      "budget": 18000000,
+      "trust": {
+        "rec-losses": 20,
+        "rec-vulnerability": 50,
+        "rec-resilience": 30
+      }
+    }
+  ],
+  "curves": {
+    "rec-losses": {
+      "los-angeles-county-ca": {
+        "points": [
+          {
+            "x": 0,
+            "m": 7189.32
+          },
+          {
+            "x": 18870000,
+            "m": 4493.32
+          },
+          {
+            "x": 37740000,
+            "m": 1797.33
+          }
+        ]
+      },
+      "cook-county-il": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10219.22
+          },
+          {
+            "x": 3750000,
+            "m": 6387.01
+          },
+          {
+            "x": 7500000,
+            "m": 2554.8
+          }
+        ]
+      },
+      "riverside-county-ca": {
+        "points": [
+          {
+            "x": 0,
+            "m": 8023.65
+          },
+          {
+            "x": 5610000,
+            "m": 5014.78
+          },
+          {
+            "x": 11220000,
+            "m": 2005.91
+          }
+        ]
+      },
+      "harris-county-tx": {
+        "points": [
+          {
+            "x": 0,
+            "m": 9790.53
+          },
+          {
+            "x": 4985000,
+            "m": 6119.08
+          },
+          {
+            "x": 9970000,
+            "m": 2447.63
+          }
+        ]
+      },
+      "maricopa-county-az": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10796.04
+          },
+          {
+            "x": 2995000,
+            "m": 6747.53
+          },
+          {
+            "x": 5990000,
+            "m": 2699.01
+          }
+        ]
+      },
+      "king-county-wa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 6438.11
+          },
+          {
+            "x": 4090000,
+            "m": 4023.82
+          },
+          {
+            "x": 8180000,
+            "m": 1609.53
+          }
+        ]
+      },
+      "dallas-county-tx": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10287.06
+          },
+          {
+            "x": 1110000,
+            "m": 6429.41
+          },
+          {
+            "x": 2220000,
+            "m": 2571.77
+          }
+        ]
+      },
+      "miami-dade-county-fl": {
+        "points": [
+          {
+            "x": 0,
+            "m": 9563.48
+          },
+          {
+            "x": 1790000,
+            "m": 5977.18
+          },
+          {
+            "x": 3580000,
+            "m": 2390.87
+          }
+        ]
+      },
+      "clark-county-nv": {
+        "points": [
+          {
+            "x": 0,
+            "m": 9338.08
+          },
+          {
+            "x": 1275000,
+            "m": 5836.3
+          },
+          {
+            "x": 2550000,
+            "m": 2334.52
+          }
+        ]
+      },
+      "st-louis-county-mo": {
+        "points": [
+          {
+            "x": 0,
+            "m": 8783.43
+          },
+          {
+            "x": 1020000,
+            "m": 5489.64
+          },
+          {
+            "x": 2040000,
+            "m": 2195.86
+          }
+        ]
+      },
+      "philadelphia-county-pa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10107.1
+          },
+          {
+            "x": 850000,
+            "m": 6316.94
+          },
+          {
+            "x": 1700000,
+            "m": 2526.78
+          }
+        ]
+      },
+      "broward-county-fl": {
+        "points": [
+          {
+            "x": 0,
+            "m": 9531.91
+          },
+          {
+            "x": 1475000,
+            "m": 5957.44
+          },
+          {
+            "x": 2950000,
+            "m": 2382.98
+          }
+        ]
+      },
+      "salt-lake-county-ut": {
+        "points": [
+          {
+            "x": 0,
+            "m": 5672.58
+          },
+          {
+            "x": 1490000,
+            "m": 3545.36
+          },
+          {
+            "x": 2980000,
+            "m": 1418.14
+          }
+        ]
+      },
+      "shelby-county-tn": {
+        "points": [
+          {
+            "x": 0,
+            "m": 7551.38
+          },
+          {
+            "x": 1100000,
+            "m": 4719.61
+          },
+          {
+            "x": 2200000,
+            "m": 1887.85
+          }
+        ]
+      },
+      "pierce-county-wa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 6405.5
+          },
+          {
+            "x": 1215000,
+            "m": 4003.44
+          },
+          {
+            "x": 2430000,
+            "m": 1601.37
+          }
+        ]
+      },
+      "pima-county-az": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10477.73
+          },
+          {
+            "x": 980000,
+            "m": 6548.58
+          },
+          {
+            "x": 1960000,
+            "m": 2619.43
+          }
+        ]
+      },
+      "honolulu-county-hi": {
+        "points": [
+          {
+            "x": 0,
+            "m": 9494.1
+          },
+          {
+            "x": 1125000,
+            "m": 5933.81
+          },
+          {
+            "x": 2250000,
+            "m": 2373.52
+          }
+        ]
+      },
+      "charleston-county-sc": {
+        "points": [
+          {
+            "x": 0,
+            "m": 7452.99
+          },
+          {
+            "x": 1125000,
+            "m": 4658.12
+          },
+          {
+            "x": 2250000,
+            "m": 1863.25
+          }
+        ]
+      },
+      "hennepin-county-mn": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10208.72
+          },
+          {
+            "x": 680000,
+            "m": 6380.45
+          },
+          {
+            "x": 1360000,
+            "m": 2552.18
+          }
+        ]
+      },
+      "multnomah-county-or": {
+        "points": [
+          {
+            "x": 0,
+            "m": 6202.87
+          },
+          {
+            "x": 1045000,
+            "m": 3876.79
+          },
+          {
+            "x": 2090000,
+            "m": 1550.72
+          }
+        ]
+      }
+    },
+    "rec-vulnerability": {
+      "los-angeles-county-ca": {
+        "points": [
+          {
+            "x": 0,
+            "m": 7962.89
+          },
+          {
+            "x": 18870000,
+            "m": 4976.8
+          },
+          {
+            "x": 37740000,
+            "m": 1990.72
+          }
+        ]
+      },
+      "cook-county-il": {
+        "points": [
+          {
+            "x": 0,
+            "m": 12618.69
+          },
+          {
+            "x": 3750000,
+            "m": 7886.68
+          },
+          {
+            "x": 7500000,
+            "m": 3154.67
+          }
+        ]
+      },
+      "riverside-county-ca": {
+        "points": [
+          {
+            "x": 0,
+            "m": 5348.56
+          },
+          {
+            "x": 5610000,
+            "m": 3342.85
+          },
+          {
+            "x": 11220000,
+            "m": 1337.14
+          }
+        ]
+      },
+      "harris-county-tx": {
+        "points": [
+          {
+            "x": 0,
+            "m": 13303.37
+          },
+          {
+            "x": 4985000,
+            "m": 8314.6
+          },
+          {
+            "x": 9970000,
+            "m": 3325.84
+          }
+        ]
+      },
+      "maricopa-county-az": {
+        "points": [
+          {
+            "x": 0,
+            "m": 5851.46
+          },
+          {
+            "x": 2995000,
+            "m": 3657.16
+          },
+          {
+            "x": 5990000,
+            "m": 1462.86
+          }
+        ]
+      },
+      "king-county-wa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 1900.53
+          },
+          {
+            "x": 4090000,
+            "m": 1187.83
+          },
+          {
+            "x": 8180000,
+            "m": 475.13
+          }
+        ]
+      },
+      "dallas-county-tx": {
+        "points": [
+          {
+            "x": 0,
+            "m": 12165.48
+          },
+          {
+            "x": 1110000,
+            "m": 7603.42
+          },
+          {
+            "x": 2220000,
+            "m": 3041.37
+          }
+        ]
+      },
+      "miami-dade-county-fl": {
+        "points": [
+          {
+            "x": 0,
+            "m": 14509.71
+          },
+          {
+            "x": 1790000,
+            "m": 9068.57
+          },
+          {
+            "x": 3580000,
+            "m": 3627.43
+          }
+        ]
+      },
+      "clark-county-nv": {
+        "points": [
+          {
+            "x": 0,
+            "m": 8602.24
+          },
+          {
+            "x": 1275000,
+            "m": 5376.4
+          },
+          {
+            "x": 2550000,
+            "m": 2150.56
+          }
+        ]
+      },
+      "st-louis-county-mo": {
+        "points": [
+          {
+            "x": 0,
+            "m": 5475.59
+          },
+          {
+            "x": 1020000,
+            "m": 3422.24
+          },
+          {
+            "x": 2040000,
+            "m": 1368.9
+          }
+        ]
+      },
+      "philadelphia-county-pa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 17808.71
+          },
+          {
+            "x": 850000,
+            "m": 11130.45
+          },
+          {
+            "x": 1700000,
+            "m": 4452.18
+          }
+        ]
+      },
+      "broward-county-fl": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10557.54
+          },
+          {
+            "x": 1475000,
+            "m": 6598.47
+          },
+          {
+            "x": 2950000,
+            "m": 2639.39
+          }
+        ]
+      },
+      "salt-lake-county-ut": {
+        "points": [
+          {
+            "x": 0,
+            "m": 1204.86
+          },
+          {
+            "x": 1490000,
+            "m": 753.03
+          },
+          {
+            "x": 2980000,
+            "m": 301.21
+          }
+        ]
+      },
+      "shelby-county-tn": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10961.58
+          },
+          {
+            "x": 1100000,
+            "m": 6850.99
+          },
+          {
+            "x": 2200000,
+            "m": 2740.4
+          }
+        ]
+      },
+      "pierce-county-wa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 1842.22
+          },
+          {
+            "x": 1215000,
+            "m": 1151.39
+          },
+          {
+            "x": 2430000,
+            "m": 460.56
+          }
+        ]
+      },
+      "pima-county-az": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10657.94
+          },
+          {
+            "x": 980000,
+            "m": 6661.21
+          },
+          {
+            "x": 1960000,
+            "m": 2664.49
+          }
+        ]
+      },
+      "honolulu-county-hi": {
+        "points": [
+          {
+            "x": 0,
+            "m": 4916.04
+          },
+          {
+            "x": 1125000,
+            "m": 3072.53
+          },
+          {
+            "x": 2250000,
+            "m": 1229.01
+          }
+        ]
+      },
+      "charleston-county-sc": {
+        "points": [
+          {
+            "x": 0,
+            "m": 3341.92
+          },
+          {
+            "x": 1125000,
+            "m": 2088.7
+          },
+          {
+            "x": 2250000,
+            "m": 835.48
+          }
+        ]
+      },
+      "hennepin-county-mn": {
+        "points": [
+          {
+            "x": 0,
+            "m": 4148.82
+          },
+          {
+            "x": 680000,
+            "m": 2593.02
+          },
+          {
+            "x": 1360000,
+            "m": 1037.21
+          }
+        ]
+      },
+      "multnomah-county-or": {
+        "points": [
+          {
+            "x": 0,
+            "m": 3693.19
+          },
+          {
+            "x": 1045000,
+            "m": 2308.24
+          },
+          {
+            "x": 2090000,
+            "m": 923.3
+          }
+        ]
+      }
+    },
+    "rec-resilience": {
+      "los-angeles-county-ca": {
+        "points": [
+          {
+            "x": 0,
+            "m": 12430.33
+          },
+          {
+            "x": 18870000,
+            "m": 7768.96
+          },
+          {
+            "x": 37740000,
+            "m": 3107.58
+          }
+        ]
+      },
+      "cook-county-il": {
+        "points": [
+          {
+            "x": 0,
+            "m": 5461.15
+          },
+          {
+            "x": 3750000,
+            "m": 3413.22
+          },
+          {
+            "x": 7500000,
+            "m": 1365.29
+          }
+        ]
+      },
+      "riverside-county-ca": {
+        "points": [
+          {
+            "x": 0,
+            "m": 13954.72
+          },
+          {
+            "x": 5610000,
+            "m": 8721.7
+          },
+          {
+            "x": 11220000,
+            "m": 3488.68
+          }
+        ]
+      },
+      "harris-county-tx": {
+        "points": [
+          {
+            "x": 0,
+            "m": 16079.96
+          },
+          {
+            "x": 4985000,
+            "m": 10049.97
+          },
+          {
+            "x": 9970000,
+            "m": 4019.99
+          }
+        ]
+      },
+      "maricopa-county-az": {
+        "points": [
+          {
+            "x": 0,
+            "m": 17699.03
+          },
+          {
+            "x": 2995000,
+            "m": 11061.9
+          },
+          {
+            "x": 5990000,
+            "m": 4424.76
+          }
+        ]
+      },
+      "king-county-wa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 1622.4
+          },
+          {
+            "x": 4090000,
+            "m": 1014.0
+          },
+          {
+            "x": 8180000,
+            "m": 405.6
+          }
+        ]
+      },
+      "dallas-county-tx": {
+        "points": [
+          {
+            "x": 0,
+            "m": 17909.77
+          },
+          {
+            "x": 1110000,
+            "m": 11193.61
+          },
+          {
+            "x": 2220000,
+            "m": 4477.44
+          }
+        ]
+      },
+      "miami-dade-county-fl": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10919.58
+          },
+          {
+            "x": 1790000,
+            "m": 6824.74
+          },
+          {
+            "x": 3580000,
+            "m": 2729.9
+          }
+        ]
+      },
+      "clark-county-nv": {
+        "points": [
+          {
+            "x": 0,
+            "m": 17452.87
+          },
+          {
+            "x": 1275000,
+            "m": 10908.05
+          },
+          {
+            "x": 2550000,
+            "m": 4363.22
+          }
+        ]
+      },
+      "st-louis-county-mo": {
+        "points": [
+          {
+            "x": 0,
+            "m": 3559.05
+          },
+          {
+            "x": 1020000,
+            "m": 2224.4
+          },
+          {
+            "x": 2040000,
+            "m": 889.76
+          }
+        ]
+      },
+      "philadelphia-county-pa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10416.38
+          },
+          {
+            "x": 850000,
+            "m": 6510.24
+          },
+          {
+            "x": 1700000,
+            "m": 2604.09
+          }
+        ]
+      },
+      "broward-county-fl": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10641.43
+          },
+          {
+            "x": 1475000,
+            "m": 6650.89
+          },
+          {
+            "x": 2950000,
+            "m": 2660.36
+          }
+        ]
+      },
+      "salt-lake-county-ut": {
+        "points": [
+          {
+            "x": 0,
+            "m": 3807.44
+          },
+          {
+            "x": 1490000,
+            "m": 2379.65
+          },
+          {
+            "x": 2980000,
+            "m": 951.86
+          }
+        ]
+      },
+      "shelby-county-tn": {
+        "points": [
+          {
+            "x": 0,
+            "m": 6417.16
+          },
+          {
+            "x": 1100000,
+            "m": 4010.73
+          },
+          {
+            "x": 2200000,
+            "m": 1604.29
+          }
+        ]
+      },
+      "pierce-county-wa": {
+        "points": [
+          {
+            "x": 0,
+            "m": 5114.15
+          },
+          {
+            "x": 1215000,
+            "m": 3196.34
+          },
+          {
+            "x": 2430000,
+            "m": 1278.54
+          }
+        ]
+      },
+      "pima-county-az": {
+        "points": [
+          {
+            "x": 0,
+            "m": 16697.3
+          },
+          {
+            "x": 980000,
+            "m": 10435.81
+          },
+          {
+            "x": 1960000,
+            "m": 4174.33
+          }
+        ]
+      },
+      "honolulu-county-hi": {
+        "points": [
+          {
+            "x": 0,
+            "m": 7095.89
+          },
+          {
+            "x": 1125000,
+            "m": 4434.93
+          },
+          {
+            "x": 2250000,
+            "m": 1773.97
+          }
+        ]
+      },
+      "charleston-county-sc": {
+        "points": [
+          {
+            "x": 0,
+            "m": 578.35
+          },
+          {
+            "x": 1125000,
+            "m": 361.47
+          },
+          {
+            "x": 2250000,
+            "m": 144.59
+          }
+        ]
+      },
+      "hennepin-county-mn": {
+        "points": [
+          {
+            "x": 0,
+            "m": 389.97
+          },
+          {
+            "x": 680000,
+            "m": 243.73
+          },
+          {
+            "x": 1360000,
+            "m": 97.49
+          }
+        ]
+      },
+      "multnomah-county-or": {
+        "points": [
+          {
+            "x": 0,
+            "m": 555.78
+          },
+          {
+            "x": 1045000,
+            "m": 347.36
+          },
+          {
+            "x": 2090000,
+            "m": 138.94
+          }
+        ]
+      }
+    }
+  }
+}

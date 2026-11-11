@@ -1,6 +1,7 @@
 {
   "id": "guatemala-literacy",
   "title": "Guatemala literacy programs, by department",
+  "summary": "Youth and adult literacy programs in Guatemala's 22 departments, sized from CONALFA's 2023 projection of illiteracy by department and sex. Program costs are illustrative assumptions.",
   "valueUnit": "learners reached per $1,000 (need-weighted)",
   "sources": [
     {
@@ -17,9 +18,23 @@
   "applications": [
     {
       "id": "guatemala",
-      "name": "Literacy program — Guatemala",
+      "name": "Guatemala",
       "cap": 291362,
       "data": {
+        "facts": [
+          {
+            "label": "Illiterate, age 15+",
+            "value": "145,681"
+          },
+          {
+            "label": "Illiteracy rate",
+            "value": "5.4%"
+          },
+          {
+            "label": "Female illiteracy rate",
+            "value": "7.1%"
+          }
+        ],
         "department": "Guatemala",
         "illiterate_15plus": 145681,
         "illiteracy_rate": 0.054000000000000006,
@@ -29,9 +44,23 @@
     },
     {
       "id": "el-progreso",
-      "name": "Literacy program — El Progreso",
+      "name": "El Progreso",
       "cap": 31028,
       "data": {
+        "facts": [
+          {
+            "label": "Illiterate, age 15+",
+            "value": "15,514"
+          },
+          {
+            "label": "Illiteracy rate",
+            "value": "11.1%"
+          },
+          {
+            "label": "Female illiteracy rate",
+            "value": "12.6%"
+          }
+        ],
         "department": "El Progreso",
         "illiterate_15plus": 15514,
         "illiteracy_rate": 0.1108,
@@ -41,9 +70,23 @@
     },
     {
       "id": "sacatepequez",
-      "name": "Literacy program — Sacatepéquez",
+      "name": "Sacatepéquez",
       "cap": 52168,
       "data": {
+        "facts": [
+          {
+            "label": "Illiterate, age 15+",
+            "value": "26,084"
+          },
+          {
+            "label": "Illiteracy rate",
+            "value": "8.5%"
+          },
+          {
+            "label": "Female illiteracy rate",
+            "value": "11.5%"
+          }
+        ],
         "department": "Sacatepéquez",
         "illiterate_15plus": 26084,
         "illiteracy_rate": 0.085,
@@ -53,9 +96,23 @@
     },
     {
       "id": "chimaltenango",
-      "name": "Literacy program — Chimaltenango",
+      "name": "Chimaltenango",
       "cap": 134080,
       "data": {
+        "facts": [
+          {
+            "label": "Illiterate, age 15+",
+            "value": "67,040"
+          },
+          {
+            "label": "Illiteracy rate",
+            "value": "12.4%"
+          },
+          {
+            "label": "Female illiteracy rate",
+            "value": "16.5%"
+          }
+        ],
         "department": "Chimaltenango",
         "illiterate_15plus": 67040,
         "illiteracy_rate": 0.1243,
@@ -65,9 +122,23 @@
     },
     {
       "id": "escuintla",
-      "name": "Literacy program — Escuintla",
+      "name": "Escuintla",
       "cap": 132416,
       "data": {
+        "facts": [
+          {
+            "label": "Illiterate, age 15+",
+            "value": "66,208"
+          },
+          {
+            "label": "Illiteracy rate",
+            "value": "11.2%"
+          },
+          {
+            "label": "Female illiteracy rate",
+            "value": "13.7%"
+          }
+        ],
         "department": "Escuintla",
         "illiterate_15plus": 66208,
         "illiteracy_rate": 0.1124,
@@ -77,9 +148,23 @@
     },
     {
       "id": "santa-rosa",
-      "name": "Literacy program — Santa Rosa",
+      "name": "Santa Rosa",
       "cap": 76842,
       "data": {
+        "facts": [
+          {
+            "label": "Illiterate, age 15+",
+            "value": "38,421"
+          },
+          {
+            "label": "Illiteracy rate",
+            "value": "11.6%"
+          },
+          {
+            "label": "Female illiteracy rate",
+            "value": "13.4%"
+          }
+        ],
         "department": "Santa Rosa",
         "illiterate_15plus": 38421,
         "illiteracy_rate": 0.1162,
@@ -89,9 +174,23 @@
     },
     {
       "id": "solola",
-      "name": "Literacy program — Sololá",
+      "name": "Sololá",
       "cap": 155592,
       "data": {
+        "facts": [
+          {
+            "label": "Illiterate, age 15+",
+            "value": "77,796"
+          },
+          {
+            "label": "Illiteracy rate",
+            "value": "22.8%"
+          },
+          {
+            "label": "Female illiteracy rate",
+            "value": "28.1%"
+          }
+        ],
         "department": "Sololá",
         "illiterate_15plus": 77796,
         "illiteracy_rate": 0.2281,
@@ -101,9 +200,23 @@
     },
     {
       "id": "totonicapan",
-      "name": "Literacy program — Totonicapán",
+      "name": "Totonicapán",
       "cap": 149206,
       "data": {
+        "facts": [
+          {
+            "label": "Illiterate, age 15+",
+            "value": "74,603"
+          },
+          {
+            "label": "Illiteracy rate",
+            "value": "22.5%"
+          },
+          {
+            "label": "Female illiteracy rate",
+            "value": "28.9%"
+          }
+        ],
         "department": "Totonicapán",
         "illiterate_15plus": 74603,
         "illiteracy_rate": 0.2254,
@@ -113,9 +226,23 @@
     },
     {
       "id": "quetzaltenango",
-      "name": "Literacy program — Quetzaltenango",
+      "name": "Quetzaltenango",
       "cap": 172264,
       "data": {
+        "facts": [
+          {
+            "label": "Illiterate, age 15+",
+            "value": "86,132"
+          },
+          {
+            "label": "Illiteracy rate",
+            "value": "13.4%"
+          },
+          {
+            "label": "Female illiteracy rate",
+            "value": "16.7%"
+          }
+        ],
         "department": "Quetzaltenango",
         "illiterate_15plus": 86132,
         "illiteracy_rate": 0.1338,
@@ -125,9 +252,23 @@
     },
     {
       "id": "suchitepequez",
-      "name": "Literacy program — Suchitepéquez",
+      "name": "Suchitepéquez",
       "cap": 138774,
       "data": {
+        "facts": [
+          {
+            "label": "Illiterate, age 15+",
+            "value": "69,387"
+          },
+          {
+            "label": "Illiteracy rate",
+            "value": "16.2%"
+          },
+          {
+            "label": "Female illiteracy rate",
+            "value": "20.9%"
+          }
+        ],
         "department": "Suchitepéquez",
         "illiterate_15plus": 69387,
         "illiteracy_rate": 0.162,
@@ -137,9 +278,23 @@
     },
     {
       "id": "retalhuleu",
-      "name": "Literacy program — Retalhuleu",
+      "name": "Retalhuleu",
       "cap": 72060,
       "data": {
+        "facts": [
+          {
+            "label": "Illiterate, age 15+",
+            "value": "36,030"
+          },
+          {
+            "label": "Illiteracy rate",
+            "value": "13.4%"
+          },
+          {
+            "label": "Female illiteracy rate",
+            "value": "17.3%"
+          }
+        ],
         "department": "Retalhuleu",
         "illiterate_15plus": 36030,
         "illiteracy_rate": 0.13449999999999998,
@@ -149,9 +304,23 @@
     },
     {
       "id": "san-marcos",
-      "name": "Literacy program — San Marcos",
+      "name": "San Marcos",
       "cap": 277394,
       "data": {
+        "facts": [
+          {
+            "label": "Illiterate, age 15+",
+            "value": "138,697"
+          },
+          {
+            "label": "Illiteracy rate",
+            "value": "17.5%"
+          },
+          {
+            "label": "Female illiteracy rate",
+            "value": "22.3%"
+          }
+        ],
         "department": "San Marcos",
         "illiterate_15plus": 138697,
         "illiteracy_rate": 0.1751,
@@ -161,9 +330,23 @@
     },
     {
       "id": "huehuetenango",
-      "name": "Literacy program — Huehuetenango",
+      "name": "Huehuetenango",
       "cap": 451518,
       "data": {
+        "facts": [
+          {
+            "label": "Illiterate, age 15+",
+            "value": "225,759"
+          },
+          {
+            "label": "Illiteracy rate",
+            "value": "24.7%"
+          },
+          {
+            "label": "Female illiteracy rate",
+            "value": "31.1%"
+          }
+        ],
         "department": "Huehuetenango",
         "illiterate_15plus": 225759,
         "illiteracy_rate": 0.247,
@@ -173,9 +356,23 @@
     },
     {
       "id": "quiche",
-      "name": "Literacy program — Quiché",
+      "name": "Quiché",
       "cap": 423092,
       "data": {
+        "facts": [
+          {
+            "label": "Illiterate, age 15+",
+            "value": "211,546"
+          },
+          {
+            "label": "Illiteracy rate",
+            "value": "30.1%"
+          },
+          {
+            "label": "Female illiteracy rate",
+            "value": "37.3%"
+          }
+        ],
         "department": "Quiché",
         "illiterate_15plus": 211546,
         "illiteracy_rate": 0.3015,
@@ -185,9 +382,23 @@
     },
     {
       "id": "baja-verapaz",
-      "name": "Literacy program — Baja Verapaz",
+      "name": "Baja Verapaz",
       "cap": 97068,
       "data": {
+        "facts": [
+          {
+            "label": "Illiterate, age 15+",
+            "value": "48,534"
+          },
+          {
+            "label": "Illiteracy rate",
+            "value": "21.2%"
+          },
+          {
+            "label": "Female illiteracy rate",
+            "value": "26.6%"
+          }
+        ],
         "department": "Baja Verapaz",
         "illiterate_15plus": 48534,
         "illiteracy_rate": 0.21170000000000003,
@@ -197,9 +408,23 @@
     },
     {
       "id": "alta-verapaz",
-      "name": "Literacy program — Alta Verapaz",
+      "name": "Alta Verapaz",
       "cap": 521520,
       "data": {
+        "facts": [
+          {
+            "label": "Illiterate, age 15+",
+            "value": "260,760"
+          },
+          {
+            "label": "Illiteracy rate",
+            "value": "28.8%"
+          },
+          {
+            "label": "Female illiteracy rate",
+            "value": "35.7%"
+          }
+        ],
         "department": "Alta Verapaz",
         "illiterate_15plus": 260760,
         "illiteracy_rate": 0.2876,
@@ -209,9 +434,23 @@
     },
     {
       "id": "peten",
-      "name": "Literacy program — Petén",
+      "name": "Petén",
       "cap": 161556,
       "data": {
+        "facts": [
+          {
+            "label": "Illiterate, age 15+",
+            "value": "80,778"
+          },
+          {
+            "label": "Illiteracy rate",
+            "value": "19.1%"
+          },
+          {
+            "label": "Female illiteracy rate",
+            "value": "21.5%"
+          }
+        ],
         "department": "Petén",
         "illiterate_15plus": 80778,
         "illiteracy_rate": 0.1911,
@@ -221,9 +460,23 @@
     },
     {
       "id": "izabal",
-      "name": "Literacy program — Izabal",
+      "name": "Izabal",
       "cap": 98976,
       "data": {
+        "facts": [
+          {
+            "label": "Illiterate, age 15+",
+            "value": "49,488"
+          },
+          {
+            "label": "Illiteracy rate",
+            "value": "15.8%"
+          },
+          {
+            "label": "Female illiteracy rate",
+            "value": "18.0%"
+          }
+        ],
         "department": "Izabal",
         "illiterate_15plus": 49488,
         "illiteracy_rate": 0.1577,
@@ -233,9 +486,23 @@
     },
     {
       "id": "zacapa",
-      "name": "Literacy program — Zacapa",
+      "name": "Zacapa",
       "cap": 59758,
       "data": {
+        "facts": [
+          {
+            "label": "Illiterate, age 15+",
+            "value": "29,879"
+          },
+          {
+            "label": "Illiteracy rate",
+            "value": "15.7%"
+          },
+          {
+            "label": "Female illiteracy rate",
+            "value": "16.8%"
+          }
+        ],
         "department": "Zacapa",
         "illiterate_15plus": 29879,
         "illiteracy_rate": 0.15689999999999998,
@@ -245,9 +512,23 @@
     },
     {
       "id": "chiquimula",
-      "name": "Literacy program — Chiquimula",
+      "name": "Chiquimula",
       "cap": 145246,
       "data": {
+        "facts": [
+          {
+            "label": "Illiterate, age 15+",
+            "value": "72,623"
+          },
+          {
+            "label": "Illiteracy rate",
+            "value": "23.8%"
+          },
+          {
+            "label": "Female illiteracy rate",
+            "value": "25.7%"
+          }
+        ],
         "department": "Chiquimula",
         "illiterate_15plus": 72623,
         "illiteracy_rate": 0.23829999999999998,
@@ -257,9 +538,23 @@
     },
     {
       "id": "jalapa",
-      "name": "Literacy program — Jalapa",
+      "name": "Jalapa",
       "cap": 102554,
       "data": {
+        "facts": [
+          {
+            "label": "Illiterate, age 15+",
+            "value": "51,277"
+          },
+          {
+            "label": "Illiteracy rate",
+            "value": "18.3%"
+          },
+          {
+            "label": "Female illiteracy rate",
+            "value": "21.6%"
+          }
+        ],
         "department": "Jalapa",
         "illiterate_15plus": 51277,
         "illiteracy_rate": 0.18280000000000002,
@@ -269,9 +564,23 @@
     },
     {
       "id": "jutiapa",
-      "name": "Literacy program — Jutiapa",
+      "name": "Jutiapa",
       "cap": 121534,
       "data": {
+        "facts": [
+          {
+            "label": "Illiterate, age 15+",
+            "value": "60,767"
+          },
+          {
+            "label": "Illiteracy rate",
+            "value": "15.1%"
+          },
+          {
+            "label": "Female illiteracy rate",
+            "value": "17.8%"
+          }
+        ],
         "department": "Jutiapa",
         "illiterate_15plus": 60767,
         "illiteracy_rate": 0.15109999999999998,
@@ -300,7 +609,7 @@
   "funders": [
     {
       "id": "funder-north",
-      "name": "North Star Fund (example)",
+      "name": "North Star Fund",
       "budget": 1000000,
       "trust": {
         "rec-reach": 1,
@@ -310,7 +619,7 @@
     },
     {
       "id": "funder-river",
-      "name": "River Trust (example)",
+      "name": "River Trust",
       "budget": 500000,
       "trust": {
         "rec-reach": 2,

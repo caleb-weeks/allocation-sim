@@ -3,7 +3,7 @@ import { rateLimit } from "express-rate-limit";
 import { z } from "zod";
 import { createSession, destroySession, hashPassword, verifyPassword } from "../auth.js";
 import { prisma } from "../db.js";
-import { DEMO_ROUND_KEY } from "../state.js";
+import { demoRoundKey, isTemplateId } from "../templates.js";
 
 export const authRouter = Router();
 
@@ -47,14 +47,18 @@ authRouter.post("/logout", async (req, res) => {
   res.status(204).end();
 });
 
-/** The demo round's personas, so visitors can try each role without an account. */
-authRouter.get("/demo-personas", async (_req, res) => {
+/** A sample's shared demo round and its personas, so visitors can try each role without an account. */
+authRouter.get("/demo-personas", async (req, res) => {
+  const sample = String(req.query.sample ?? "");
+  if (!isTemplateId(sample)) return void res.status(404).json({ error: "Unknown sample" });
   const round = await prisma.round.findUnique({
-    where: { key: DEMO_ROUND_KEY },
+    where: { key: demoRoundKey(sample) },
     include: { memberships: { include: { user: true }, orderBy: [{ role: "asc" }, { displayName: "asc" }] } },
   });
+  if (!round) return void res.status(404).json({ error: "That sample's demo round isn't set up yet" });
   res.json({
-    personas: (round?.memberships ?? [])
+    roundId: round.id,
+    personas: round.memberships
       .filter((m) => m.user.isDemo)
       .map((m) => ({ email: m.user.email, name: m.user.name, role: m.role, displayName: m.displayName, lens: m.lens })),
   });

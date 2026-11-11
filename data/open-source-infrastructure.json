@@ -1,0 +1,1797 @@
+{
+  "id": "open-source-infrastructure",
+  "title": "Critical open-source infrastructure",
+  "summary": "Security and maintenance funding for 18 open-source projects much of the internet runs on, from curl and OpenSSL to zlib and XZ Utils, using Debian dependents, OSV.dev CVE history and GitHub maintainer activity as of November 2026. The projects are real; funding needs and costs are illustrative, and no project asked for this money.",
+  "valueUnit": "maintainer-weeks of security work per $10,000",
+  "sources": [
+    {
+      "name": "Debian 13 (trixie) main/amd64 package index",
+      "url": "https://deb.debian.org/debian/dists/trixie/main/binary-amd64/Packages.xz"
+    },
+    {
+      "name": "OSV.dev vulnerability database (Debian ecosystem)",
+      "url": "https://osv.dev/"
+    },
+    {
+      "name": "GitHub REST API: repository commits and languages",
+      "url": "https://docs.github.com/en/rest/commits/commits"
+    }
+  ],
+  "assumptions": {
+    "maintainer_year_usd": 200000,
+    "audit_usd": 100000,
+    "cap_rule": "audit + maintainer-years = max(1, sqrt(MB of code on GitHub)), rounded to $10k",
+    "urgency_multiples": [
+      2.0,
+      1.4,
+      0.8,
+      0.4
+    ],
+    "urgency_breakpoints": [
+      0,
+      0.25,
+      0.6,
+      1.0
+    ],
+    "note": "Projects and data are real (Debian 13 package index, OSV.dev and GitHub, retrieved 2026-11-11); costs and needs are illustrative, and no project asked for this money. A maintainer-year costs $200,000 fully loaded, so $10,000 buys 2.6 maintainer-weeks. Each project's cap is one $100,000 security audit plus max(1, sqrt(MB of source code)) maintainer-years, so bigger codebases can absorb more but not proportionally more. The first quarter of the cap (audit, fuzzing, urgent fixes) is worth 2x a routine week, falling to 1.4x at 25%, 0.8x at 60% and 0.4x at the cap. Reach is direct dependents among Debian packages, which undercounts tools (OpenSSH, sudo) and code used mainly via npm/PyPI/Maven. Security exposure counts CVEs Debian tracked against the project since 2016-11-11, which partly reflects how carefully a project files CVEs (curl files many), not only how buggy it is. Core contributors are people with 12+ non-merge, non-bot commits on the default branch from 2025-11-11 to 2026-11-11; mirrors (libxml2, GnuPG, SQLite) and multiple identities make this approximate. Lens weights: Reach = sqrt(dependents / median); Security exposure = sqrt(CVEs / median) x (dependents / median)^0.25; Maintainer fragility = sqrt(dependents / median) x sqrt(top author share / median) / sqrt(core contributors). Funders are fictional."
+  },
+  "applications": [
+    {
+      "id": "curl",
+      "name": "curl",
+      "cap": 790000,
+      "data": {
+        "facts": [
+          {
+            "label": "Debian packages depending on it",
+            "value": "578"
+          },
+          {
+            "label": "CVEs tracked by Debian (10 yr)",
+            "value": "185"
+          },
+          {
+            "label": "Core contributors (12 mo)",
+            "value": "9"
+          },
+          {
+            "label": "Top author's share of commits",
+            "value": "43%"
+          }
+        ],
+        "githubRepo": "curl/curl",
+        "debianSource": "curl",
+        "debianDependents": 578,
+        "cves10y": 185,
+        "cvesAll": 222,
+        "commits12mo": 3464,
+        "authors12mo": 199,
+        "coreContributors12mo": 9,
+        "topAuthorShare": 0.431,
+        "codeMb": 11.9
+      }
+    },
+    {
+      "id": "openssl",
+      "name": "OpenSSL",
+      "cap": 1420000,
+      "data": {
+        "facts": [
+          {
+            "label": "Debian packages depending on it",
+            "value": "1,079"
+          },
+          {
+            "label": "CVEs tracked by Debian (10 yr)",
+            "value": "146"
+          },
+          {
+            "label": "Core contributors (12 mo)",
+            "value": "33"
+          },
+          {
+            "label": "Top author's share of commits",
+            "value": "10%"
+          }
+        ],
+        "githubRepo": "openssl/openssl",
+        "debianSource": "openssl",
+        "debianDependents": 1079,
+        "cves10y": 146,
+        "cvesAll": 296,
+        "commits12mo": 3279,
+        "authors12mo": 324,
+        "coreContributors12mo": 33,
+        "topAuthorShare": 0.096,
+        "codeMb": 43.8
+      }
+    },
+    {
+      "id": "zlib",
+      "name": "zlib",
+      "cap": 390000,
+      "data": {
+        "facts": [
+          {
+            "label": "Debian packages depending on it",
+            "value": "2,756"
+          },
+          {
+            "label": "CVEs tracked by Debian (10 yr)",
+            "value": "11"
+          },
+          {
+            "label": "Core contributors (12 mo)",
+            "value": "2"
+          },
+          {
+            "label": "Top author's share of commits",
+            "value": "37%"
+          }
+        ],
+        "githubRepo": "madler/zlib",
+        "debianSource": "zlib",
+        "debianDependents": 2756,
+        "cves10y": 11,
+        "cvesAll": 15,
+        "commits12mo": 367,
+        "authors12mo": 59,
+        "coreContributors12mo": 2,
+        "topAuthorShare": 0.368,
+        "codeMb": 2.1
+      }
+    },
+    {
+      "id": "libxml2",
+      "name": "libxml2",
+      "cap": 630000,
+      "data": {
+        "facts": [
+          {
+            "label": "Debian packages depending on it",
+            "value": "742"
+          },
+          {
+            "label": "CVEs tracked by Debian (10 yr)",
+            "value": "68"
+          },
+          {
+            "label": "Core contributors (12 mo)",
+            "value": "1"
+          },
+          {
+            "label": "Top author's share of commits",
+            "value": "40%"
+          }
+        ],
+        "githubRepo": "GNOME/libxml2",
+        "debianSource": "libxml2",
+        "debianDependents": 742,
+        "cves10y": 68,
+        "cvesAll": 125,
+        "commits12mo": 126,
+        "authors12mo": 38,
+        "coreContributors12mo": 1,
+        "topAuthorShare": 0.405,
+        "codeMb": 7.0
+      }
+    },
+    {
+      "id": "xz-utils",
+      "name": "XZ Utils",
+      "cap": 410000,
+      "data": {
+        "facts": [
+          {
+            "label": "Debian packages depending on it",
+            "value": "218"
+          },
+          {
+            "label": "CVEs tracked by Debian (10 yr)",
+            "value": "4"
+          },
+          {
+            "label": "Core contributors (12 mo)",
+            "value": "1"
+          },
+          {
+            "label": "Top author's share of commits",
+            "value": "92%"
+          }
+        ],
+        "githubRepo": "tukaani-project/xz",
+        "debianSource": "xz-utils",
+        "debianDependents": 218,
+        "cves10y": 4,
+        "cvesAll": 4,
+        "commits12mo": 197,
+        "authors12mo": 12,
+        "coreContributors12mo": 1,
+        "topAuthorShare": 0.919,
+        "codeMb": 2.4
+      }
+    },
+    {
+      "id": "openssh",
+      "name": "OpenSSH",
+      "cap": 630000,
+      "data": {
+        "facts": [
+          {
+            "label": "Debian packages depending on it",
+            "value": "98"
+          },
+          {
+            "label": "CVEs tracked by Debian (10 yr)",
+            "value": "66"
+          },
+          {
+            "label": "Core contributors (12 mo)",
+            "value": "3"
+          },
+          {
+            "label": "Top author's share of commits",
+            "value": "52%"
+          }
+        ],
+        "githubRepo": "openssh/openssh-portable",
+        "debianSource": "openssh",
+        "debianDependents": 98,
+        "cves10y": 66,
+        "cvesAll": 120,
+        "commits12mo": 769,
+        "authors12mo": 40,
+        "coreContributors12mo": 3,
+        "topAuthorShare": 0.524,
+        "codeMb": 7.0
+      }
+    },
+    {
+      "id": "sqlite",
+      "name": "SQLite",
+      "cap": 980000,
+      "data": {
+        "facts": [
+          {
+            "label": "Debian packages depending on it",
+            "value": "489"
+          },
+          {
+            "label": "CVEs tracked by Debian (10 yr)",
+            "value": "71"
+          },
+          {
+            "label": "Core contributors (12 mo)",
+            "value": "4"
+          },
+          {
+            "label": "Top author's share of commits",
+            "value": "61%"
+          }
+        ],
+        "githubRepo": "sqlite/sqlite",
+        "debianSource": "sqlite3",
+        "debianDependents": 489,
+        "cves10y": 71,
+        "cvesAll": 76,
+        "commits12mo": 2149,
+        "authors12mo": 6,
+        "coreContributors12mo": 4,
+        "topAuthorShare": 0.607,
+        "codeMb": 19.2
+      }
+    },
+    {
+      "id": "libpng",
+      "name": "libpng",
+      "cap": 470000,
+      "data": {
+        "facts": [
+          {
+            "label": "Debian packages depending on it",
+            "value": "563"
+          },
+          {
+            "label": "CVEs tracked by Debian (10 yr)",
+            "value": "24"
+          },
+          {
+            "label": "Core contributors (12 mo)",
+            "value": "1"
+          },
+          {
+            "label": "Top author's share of commits",
+            "value": "68%"
+          }
+        ],
+        "githubRepo": "pnggroup/libpng",
+        "debianSource": "libpng1.6",
+        "debianDependents": 563,
+        "cves10y": 24,
+        "cvesAll": 30,
+        "commits12mo": 149,
+        "authors12mo": 18,
+        "coreContributors12mo": 1,
+        "topAuthorShare": 0.678,
+        "codeMb": 3.4
+      }
+    },
+    {
+      "id": "expat",
+      "name": "Expat",
+      "cap": 380000,
+      "data": {
+        "facts": [
+          {
+            "label": "Debian packages depending on it",
+            "value": "214"
+          },
+          {
+            "label": "CVEs tracked by Debian (10 yr)",
+            "value": "63"
+          },
+          {
+            "label": "Core contributors (12 mo)",
+            "value": "3"
+          },
+          {
+            "label": "Top author's share of commits",
+            "value": "73%"
+          }
+        ],
+        "githubRepo": "libexpat/libexpat",
+        "debianSource": "expat",
+        "debianDependents": 214,
+        "cves10y": 63,
+        "cvesAll": 73,
+        "commits12mo": 718,
+        "authors12mo": 47,
+        "coreContributors12mo": 3,
+        "topAuthorShare": 0.727,
+        "codeMb": 2.0
+      }
+    },
+    {
+      "id": "gnupg",
+      "name": "GnuPG",
+      "cap": 810000,
+      "data": {
+        "facts": [
+          {
+            "label": "Debian packages depending on it",
+            "value": "75"
+          },
+          {
+            "label": "CVEs tracked by Debian (10 yr)",
+            "value": "14"
+          },
+          {
+            "label": "Core contributors (12 mo)",
+            "value": "3"
+          },
+          {
+            "label": "Top author's share of commits",
+            "value": "61%"
+          }
+        ],
+        "githubRepo": "gpg/gnupg",
+        "debianSource": "gnupg2",
+        "debianDependents": 75,
+        "cves10y": 14,
+        "cvesAll": 26,
+        "commits12mo": 339,
+        "authors12mo": 16,
+        "coreContributors12mo": 3,
+        "topAuthorShare": 0.611,
+        "codeMb": 12.6
+      }
+    },
+    {
+      "id": "sudo",
+      "name": "sudo",
+      "cap": 650000,
+      "data": {
+        "facts": [
+          {
+            "label": "Debian packages depending on it",
+            "value": "41"
+          },
+          {
+            "label": "CVEs tracked by Debian (10 yr)",
+            "value": "26"
+          },
+          {
+            "label": "Core contributors (12 mo)",
+            "value": "3"
+          },
+          {
+            "label": "Top author's share of commits",
+            "value": "74%"
+          }
+        ],
+        "githubRepo": "sudo-project/sudo",
+        "debianSource": "sudo",
+        "debianDependents": 41,
+        "cves10y": 26,
+        "cvesAll": 49,
+        "commits12mo": 269,
+        "authors12mo": 21,
+        "coreContributors12mo": 3,
+        "topAuthorShare": 0.74,
+        "codeMb": 7.6
+      }
+    },
+    {
+      "id": "systemd",
+      "name": "systemd",
+      "cap": 1570000,
+      "data": {
+        "facts": [
+          {
+            "label": "Debian packages depending on it",
+            "value": "668"
+          },
+          {
+            "label": "CVEs tracked by Debian (10 yr)",
+            "value": "52"
+          },
+          {
+            "label": "Core contributors (12 mo)",
+            "value": "41"
+          },
+          {
+            "label": "Top author's share of commits",
+            "value": "15%"
+          }
+        ],
+        "githubRepo": "systemd/systemd",
+        "debianSource": "systemd",
+        "debianDependents": 668,
+        "cves10y": 52,
+        "cvesAll": 63,
+        "commits12mo": 8339,
+        "authors12mo": 598,
+        "coreContributors12mo": 41,
+        "topAuthorShare": 0.15,
+        "codeMb": 53.8
+      }
+    },
+    {
+      "id": "zstd",
+      "name": "Zstandard (zstd)",
+      "cap": 590000,
+      "data": {
+        "facts": [
+          {
+            "label": "Debian packages depending on it",
+            "value": "1,094"
+          },
+          {
+            "label": "CVEs tracked by Debian (10 yr)",
+            "value": "4"
+          },
+          {
+            "label": "Core contributors (12 mo)",
+            "value": "1"
+          },
+          {
+            "label": "Top author's share of commits",
+            "value": "53%"
+          }
+        ],
+        "githubRepo": "facebook/zstd",
+        "debianSource": "libzstd",
+        "debianDependents": 1094,
+        "cves10y": 4,
+        "cvesAll": 4,
+        "commits12mo": 100,
+        "authors12mo": 26,
+        "coreContributors12mo": 1,
+        "topAuthorShare": 0.53,
+        "codeMb": 6.1
+      }
+    },
+    {
+      "id": "pcre2",
+      "name": "PCRE2",
+      "cap": 520000,
+      "data": {
+        "facts": [
+          {
+            "label": "Debian packages depending on it",
+            "value": "248"
+          },
+          {
+            "label": "CVEs tracked by Debian (10 yr)",
+            "value": "15"
+          },
+          {
+            "label": "Core contributors (12 mo)",
+            "value": "2"
+          },
+          {
+            "label": "Top author's share of commits",
+            "value": "73%"
+          }
+        ],
+        "githubRepo": "PCRE2Project/pcre2",
+        "debianSource": "pcre2",
+        "debianDependents": 248,
+        "cves10y": 15,
+        "cvesAll": 16,
+        "commits12mo": 230,
+        "authors12mo": 29,
+        "coreContributors12mo": 2,
+        "topAuthorShare": 0.726,
+        "codeMb": 4.4
+      }
+    },
+    {
+      "id": "libjpeg-turbo",
+      "name": "libjpeg-turbo",
+      "cap": 620000,
+      "data": {
+        "facts": [
+          {
+            "label": "Debian packages depending on it",
+            "value": "481"
+          },
+          {
+            "label": "CVEs tracked by Debian (10 yr)",
+            "value": "15"
+          },
+          {
+            "label": "Core contributors (12 mo)",
+            "value": "1"
+          },
+          {
+            "label": "Top author's share of commits",
+            "value": "98%"
+          }
+        ],
+        "githubRepo": "libjpeg-turbo/libjpeg-turbo",
+        "debianSource": "libjpeg-turbo",
+        "debianDependents": 481,
+        "cves10y": 15,
+        "cvesAll": 17,
+        "commits12mo": 269,
+        "authors12mo": 4,
+        "coreContributors12mo": 1,
+        "topAuthorShare": 0.981,
+        "codeMb": 6.7
+      }
+    },
+    {
+      "id": "numpy",
+      "name": "NumPy",
+      "cap": 1040000,
+      "data": {
+        "facts": [
+          {
+            "label": "Debian packages depending on it",
+            "value": "614"
+          },
+          {
+            "label": "CVEs tracked by Debian (10 yr)",
+            "value": "4"
+          },
+          {
+            "label": "Core contributors (12 mo)",
+            "value": "23"
+          },
+          {
+            "label": "Top author's share of commits",
+            "value": "39%"
+          }
+        ],
+        "githubRepo": "numpy/numpy",
+        "debianSource": "numpy",
+        "debianDependents": 614,
+        "cves10y": 4,
+        "cvesAll": 4,
+        "commits12mo": 1818,
+        "authors12mo": 236,
+        "coreContributors12mo": 23,
+        "topAuthorShare": 0.389,
+        "codeMb": 22.2
+      }
+    },
+    {
+      "id": "requests",
+      "name": "Requests",
+      "cap": 300000,
+      "data": {
+        "facts": [
+          {
+            "label": "Debian packages depending on it",
+            "value": "611"
+          },
+          {
+            "label": "CVEs tracked by Debian (10 yr)",
+            "value": "5"
+          },
+          {
+            "label": "Core contributors (12 mo)",
+            "value": "1"
+          },
+          {
+            "label": "Top author's share of commits",
+            "value": "67%"
+          }
+        ],
+        "githubRepo": "psf/requests",
+        "debianSource": "requests",
+        "debianDependents": 611,
+        "cves10y": 5,
+        "cvesAll": 8,
+        "commits12mo": 75,
+        "authors12mo": 23,
+        "coreContributors12mo": 1,
+        "topAuthorShare": 0.667,
+        "codeMb": 0.4
+      }
+    },
+    {
+      "id": "urllib3",
+      "name": "urllib3",
+      "cap": 330000,
+      "data": {
+        "facts": [
+          {
+            "label": "Debian packages depending on it",
+            "value": "91"
+          },
+          {
+            "label": "CVEs tracked by Debian (10 yr)",
+            "value": "21"
+          },
+          {
+            "label": "Core contributors (12 mo)",
+            "value": "1"
+          },
+          {
+            "label": "Top author's share of commits",
+            "value": "43%"
+          }
+        ],
+        "githubRepo": "urllib3/urllib3",
+        "debianSource": "python-urllib3",
+        "debianDependents": 91,
+        "cves10y": 21,
+        "cvesAll": 22,
+        "commits12mo": 132,
+        "authors12mo": 51,
+        "coreContributors12mo": 1,
+        "topAuthorShare": 0.432,
+        "codeMb": 1.3
+      }
+    }
+  ],
+  "recommenders": [
+    {
+      "id": "rec-reach",
+      "name": "Reach",
+      "lens": "Fund what the most software depends on: weight by how many Debian packages depend on the project directly."
+    },
+    {
+      "id": "rec-security",
+      "name": "Security exposure",
+      "lens": "Fund where vulnerabilities keep turning up: weight by CVEs in the last 10 years, nudged up by how widely the code is deployed."
+    },
+    {
+      "id": "rec-fragility",
+      "name": "Maintainer fragility",
+      "lens": "The xz lesson: weight by importance per active maintainer, highest where one person writes most of the code."
+    }
+  ],
+  "funders": [
+    {
+      "id": "funder-keystone",
+      "name": "Keystone Commons Fund",
+      "budget": 3000000,
+      "trust": {
+        "rec-reach": 40,
+        "rec-security": 60,
+        "rec-fragility": 20
+      }
+    },
+    {
+      "id": "funder-lattice",
+      "name": "Lattice Software Trust",
+      "budget": 1500000,
+      "trust": {
+        "rec-reach": 20,
+        "rec-security": 20,
+        "rec-fragility": 80
+      }
+    }
+  ],
+  "curves": {
+    "rec-reach": {
+      "curl": {
+        "points": [
+          {
+            "x": 0,
+            "m": 5.451
+          },
+          {
+            "x": 197500,
+            "m": 3.8157
+          },
+          {
+            "x": 474000,
+            "m": 2.1804
+          },
+          {
+            "x": 790000,
+            "m": 1.0902
+          }
+        ]
+      },
+      "openssl": {
+        "points": [
+          {
+            "x": 0,
+            "m": 7.4477
+          },
+          {
+            "x": 355000,
+            "m": 5.2134
+          },
+          {
+            "x": 852000,
+            "m": 2.9791
+          },
+          {
+            "x": 1420000,
+            "m": 1.4895
+          }
+        ]
+      },
+      "zlib": {
+        "points": [
+          {
+            "x": 0,
+            "m": 11.9028
+          },
+          {
+            "x": 97500,
+            "m": 8.332
+          },
+          {
+            "x": 234000,
+            "m": 4.7611
+          },
+          {
+            "x": 390000,
+            "m": 2.3806
+          }
+        ]
+      },
+      "libxml2": {
+        "points": [
+          {
+            "x": 0,
+            "m": 6.1761
+          },
+          {
+            "x": 157500,
+            "m": 4.3233
+          },
+          {
+            "x": 378000,
+            "m": 2.4704
+          },
+          {
+            "x": 630000,
+            "m": 1.2352
+          }
+        ]
+      },
+      "xz-utils": {
+        "points": [
+          {
+            "x": 0,
+            "m": 3.3476
+          },
+          {
+            "x": 102500,
+            "m": 2.3433
+          },
+          {
+            "x": 246000,
+            "m": 1.3391
+          },
+          {
+            "x": 410000,
+            "m": 0.6695
+          }
+        ]
+      },
+      "openssh": {
+        "points": [
+          {
+            "x": 0,
+            "m": 2.2445
+          },
+          {
+            "x": 157500,
+            "m": 1.5712
+          },
+          {
+            "x": 378000,
+            "m": 0.8978
+          },
+          {
+            "x": 630000,
+            "m": 0.4489
+          }
+        ]
+      },
+      "sqlite": {
+        "points": [
+          {
+            "x": 0,
+            "m": 5.0138
+          },
+          {
+            "x": 245000,
+            "m": 3.5096
+          },
+          {
+            "x": 588000,
+            "m": 2.0055
+          },
+          {
+            "x": 980000,
+            "m": 1.0028
+          }
+        ]
+      },
+      "libpng": {
+        "points": [
+          {
+            "x": 0,
+            "m": 5.3798
+          },
+          {
+            "x": 117500,
+            "m": 3.7658
+          },
+          {
+            "x": 282000,
+            "m": 2.1519
+          },
+          {
+            "x": 470000,
+            "m": 1.076
+          }
+        ]
+      },
+      "expat": {
+        "points": [
+          {
+            "x": 0,
+            "m": 3.3168
+          },
+          {
+            "x": 95000,
+            "m": 2.3217
+          },
+          {
+            "x": 228000,
+            "m": 1.3267
+          },
+          {
+            "x": 380000,
+            "m": 0.6634
+          }
+        ]
+      },
+      "gnupg": {
+        "points": [
+          {
+            "x": 0,
+            "m": 1.9635
+          },
+          {
+            "x": 202500,
+            "m": 1.3745
+          },
+          {
+            "x": 486000,
+            "m": 0.7854
+          },
+          {
+            "x": 810000,
+            "m": 0.3927
+          }
+        ]
+      },
+      "sudo": {
+        "points": [
+          {
+            "x": 0,
+            "m": 1.4518
+          },
+          {
+            "x": 162500,
+            "m": 1.0162
+          },
+          {
+            "x": 390000,
+            "m": 0.5807
+          },
+          {
+            "x": 650000,
+            "m": 0.2904
+          }
+        ]
+      },
+      "systemd": {
+        "points": [
+          {
+            "x": 0,
+            "m": 5.86
+          },
+          {
+            "x": 392500,
+            "m": 4.102
+          },
+          {
+            "x": 942000,
+            "m": 2.344
+          },
+          {
+            "x": 1570000,
+            "m": 1.172
+          }
+        ]
+      },
+      "zstd": {
+        "points": [
+          {
+            "x": 0,
+            "m": 7.4993
+          },
+          {
+            "x": 147500,
+            "m": 5.2495
+          },
+          {
+            "x": 354000,
+            "m": 2.9997
+          },
+          {
+            "x": 590000,
+            "m": 1.4999
+          }
+        ]
+      },
+      "pcre2": {
+        "points": [
+          {
+            "x": 0,
+            "m": 3.5706
+          },
+          {
+            "x": 130000,
+            "m": 2.4994
+          },
+          {
+            "x": 312000,
+            "m": 1.4282
+          },
+          {
+            "x": 520000,
+            "m": 0.7141
+          }
+        ]
+      },
+      "libjpeg-turbo": {
+        "points": [
+          {
+            "x": 0,
+            "m": 4.9726
+          },
+          {
+            "x": 155000,
+            "m": 3.4808
+          },
+          {
+            "x": 372000,
+            "m": 1.989
+          },
+          {
+            "x": 620000,
+            "m": 0.9945
+          }
+        ]
+      },
+      "numpy": {
+        "points": [
+          {
+            "x": 0,
+            "m": 5.6182
+          },
+          {
+            "x": 260000,
+            "m": 3.9327
+          },
+          {
+            "x": 624000,
+            "m": 2.2473
+          },
+          {
+            "x": 1040000,
+            "m": 1.1236
+          }
+        ]
+      },
+      "requests": {
+        "points": [
+          {
+            "x": 0,
+            "m": 5.6044
+          },
+          {
+            "x": 75000,
+            "m": 3.9231
+          },
+          {
+            "x": 180000,
+            "m": 2.2418
+          },
+          {
+            "x": 300000,
+            "m": 1.1209
+          }
+        ]
+      },
+      "urllib3": {
+        "points": [
+          {
+            "x": 0,
+            "m": 2.1629
+          },
+          {
+            "x": 82500,
+            "m": 1.514
+          },
+          {
+            "x": 198000,
+            "m": 0.8651
+          },
+          {
+            "x": 330000,
+            "m": 0.4326
+          }
+        ]
+      }
+    },
+    "rec-security": {
+      "curl": {
+        "points": [
+          {
+            "x": 0,
+            "m": 15.2663
+          },
+          {
+            "x": 197500,
+            "m": 10.6864
+          },
+          {
+            "x": 474000,
+            "m": 6.1065
+          },
+          {
+            "x": 790000,
+            "m": 3.0533
+          }
+        ]
+      },
+      "openssl": {
+        "points": [
+          {
+            "x": 0,
+            "m": 15.8525
+          },
+          {
+            "x": 355000,
+            "m": 11.0967
+          },
+          {
+            "x": 852000,
+            "m": 6.341
+          },
+          {
+            "x": 1420000,
+            "m": 3.1705
+          }
+        ]
+      },
+      "zlib": {
+        "points": [
+          {
+            "x": 0,
+            "m": 5.5009
+          },
+          {
+            "x": 97500,
+            "m": 3.8506
+          },
+          {
+            "x": 234000,
+            "m": 2.2004
+          },
+          {
+            "x": 390000,
+            "m": 1.1002
+          }
+        ]
+      },
+      "libxml2": {
+        "points": [
+          {
+            "x": 0,
+            "m": 9.8519
+          },
+          {
+            "x": 157500,
+            "m": 6.8963
+          },
+          {
+            "x": 378000,
+            "m": 3.9408
+          },
+          {
+            "x": 630000,
+            "m": 1.9704
+          }
+        ]
+      },
+      "xz-utils": {
+        "points": [
+          {
+            "x": 0,
+            "m": 1.7592
+          },
+          {
+            "x": 102500,
+            "m": 1.2314
+          },
+          {
+            "x": 246000,
+            "m": 0.7037
+          },
+          {
+            "x": 410000,
+            "m": 0.3518
+          }
+        ]
+      },
+      "openssh": {
+        "points": [
+          {
+            "x": 0,
+            "m": 5.8512
+          },
+          {
+            "x": 157500,
+            "m": 4.0958
+          },
+          {
+            "x": 378000,
+            "m": 2.3405
+          },
+          {
+            "x": 630000,
+            "m": 1.1702
+          }
+        ]
+      },
+      "sqlite": {
+        "points": [
+          {
+            "x": 0,
+            "m": 9.0703
+          },
+          {
+            "x": 245000,
+            "m": 6.3492
+          },
+          {
+            "x": 588000,
+            "m": 3.6281
+          },
+          {
+            "x": 980000,
+            "m": 1.8141
+          }
+        ]
+      },
+      "libpng": {
+        "points": [
+          {
+            "x": 0,
+            "m": 5.4626
+          },
+          {
+            "x": 117500,
+            "m": 3.8238
+          },
+          {
+            "x": 282000,
+            "m": 2.185
+          },
+          {
+            "x": 470000,
+            "m": 1.0925
+          }
+        ]
+      },
+      "expat": {
+        "points": [
+          {
+            "x": 0,
+            "m": 6.9493
+          },
+          {
+            "x": 95000,
+            "m": 4.8645
+          },
+          {
+            "x": 228000,
+            "m": 2.7797
+          },
+          {
+            "x": 380000,
+            "m": 1.3899
+          }
+        ]
+      },
+      "gnupg": {
+        "points": [
+          {
+            "x": 0,
+            "m": 2.5205
+          },
+          {
+            "x": 202500,
+            "m": 1.7644
+          },
+          {
+            "x": 486000,
+            "m": 1.0082
+          },
+          {
+            "x": 810000,
+            "m": 0.5041
+          }
+        ]
+      },
+      "sudo": {
+        "points": [
+          {
+            "x": 0,
+            "m": 2.9536
+          },
+          {
+            "x": 162500,
+            "m": 2.0675
+          },
+          {
+            "x": 390000,
+            "m": 1.1814
+          },
+          {
+            "x": 650000,
+            "m": 0.5907
+          }
+        ]
+      },
+      "systemd": {
+        "points": [
+          {
+            "x": 0,
+            "m": 8.3919
+          },
+          {
+            "x": 392500,
+            "m": 5.8743
+          },
+          {
+            "x": 942000,
+            "m": 3.3568
+          },
+          {
+            "x": 1570000,
+            "m": 1.6784
+          }
+        ]
+      },
+      "zstd": {
+        "points": [
+          {
+            "x": 0,
+            "m": 2.633
+          },
+          {
+            "x": 147500,
+            "m": 1.8431
+          },
+          {
+            "x": 354000,
+            "m": 1.0532
+          },
+          {
+            "x": 590000,
+            "m": 0.5266
+          }
+        ]
+      },
+      "pcre2": {
+        "points": [
+          {
+            "x": 0,
+            "m": 3.5182
+          },
+          {
+            "x": 130000,
+            "m": 2.4628
+          },
+          {
+            "x": 312000,
+            "m": 1.4073
+          },
+          {
+            "x": 520000,
+            "m": 0.7036
+          }
+        ]
+      },
+      "libjpeg-turbo": {
+        "points": [
+          {
+            "x": 0,
+            "m": 4.1519
+          },
+          {
+            "x": 155000,
+            "m": 2.9063
+          },
+          {
+            "x": 372000,
+            "m": 1.6608
+          },
+          {
+            "x": 620000,
+            "m": 0.8304
+          }
+        ]
+      },
+      "numpy": {
+        "points": [
+          {
+            "x": 0,
+            "m": 2.279
+          },
+          {
+            "x": 260000,
+            "m": 1.5953
+          },
+          {
+            "x": 624000,
+            "m": 0.9116
+          },
+          {
+            "x": 1040000,
+            "m": 0.4558
+          }
+        ]
+      },
+      "requests": {
+        "points": [
+          {
+            "x": 0,
+            "m": 2.5448
+          },
+          {
+            "x": 75000,
+            "m": 1.7814
+          },
+          {
+            "x": 180000,
+            "m": 1.0179
+          },
+          {
+            "x": 300000,
+            "m": 0.509
+          }
+        ]
+      },
+      "urllib3": {
+        "points": [
+          {
+            "x": 0,
+            "m": 3.2399
+          },
+          {
+            "x": 82500,
+            "m": 2.268
+          },
+          {
+            "x": 198000,
+            "m": 1.296
+          },
+          {
+            "x": 330000,
+            "m": 0.648
+          }
+        ]
+      }
+    },
+    "rec-fragility": {
+      "curl": {
+        "points": [
+          {
+            "x": 0,
+            "m": 1.5821
+          },
+          {
+            "x": 197500,
+            "m": 1.1075
+          },
+          {
+            "x": 474000,
+            "m": 0.6328
+          },
+          {
+            "x": 790000,
+            "m": 0.3164
+          }
+        ]
+      },
+      "openssl": {
+        "points": [
+          {
+            "x": 0,
+            "m": 0.5328
+          },
+          {
+            "x": 355000,
+            "m": 0.3729
+          },
+          {
+            "x": 852000,
+            "m": 0.2131
+          },
+          {
+            "x": 1420000,
+            "m": 0.1066
+          }
+        ]
+      },
+      "zlib": {
+        "points": [
+          {
+            "x": 0,
+            "m": 6.7716
+          },
+          {
+            "x": 97500,
+            "m": 4.7401
+          },
+          {
+            "x": 234000,
+            "m": 2.7087
+          },
+          {
+            "x": 390000,
+            "m": 1.3543
+          }
+        ]
+      },
+      "libxml2": {
+        "points": [
+          {
+            "x": 0,
+            "m": 5.2128
+          },
+          {
+            "x": 157500,
+            "m": 3.649
+          },
+          {
+            "x": 378000,
+            "m": 2.0851
+          },
+          {
+            "x": 630000,
+            "m": 1.0426
+          }
+        ]
+      },
+      "xz-utils": {
+        "points": [
+          {
+            "x": 0,
+            "m": 4.2563
+          },
+          {
+            "x": 102500,
+            "m": 2.9794
+          },
+          {
+            "x": 246000,
+            "m": 1.7025
+          },
+          {
+            "x": 410000,
+            "m": 0.8513
+          }
+        ]
+      },
+      "openssh": {
+        "points": [
+          {
+            "x": 0,
+            "m": 1.2441
+          },
+          {
+            "x": 157500,
+            "m": 0.8709
+          },
+          {
+            "x": 378000,
+            "m": 0.4976
+          },
+          {
+            "x": 630000,
+            "m": 0.2488
+          }
+        ]
+      },
+      "sqlite": {
+        "points": [
+          {
+            "x": 0,
+            "m": 2.5904
+          },
+          {
+            "x": 245000,
+            "m": 1.8133
+          },
+          {
+            "x": 588000,
+            "m": 1.0362
+          },
+          {
+            "x": 980000,
+            "m": 0.5181
+          }
+        ]
+      },
+      "libpng": {
+        "points": [
+          {
+            "x": 0,
+            "m": 5.8751
+          },
+          {
+            "x": 117500,
+            "m": 4.1126
+          },
+          {
+            "x": 282000,
+            "m": 2.35
+          },
+          {
+            "x": 470000,
+            "m": 1.175
+          }
+        ]
+      },
+      "expat": {
+        "points": [
+          {
+            "x": 0,
+            "m": 2.1655
+          },
+          {
+            "x": 95000,
+            "m": 1.5159
+          },
+          {
+            "x": 228000,
+            "m": 0.8662
+          },
+          {
+            "x": 380000,
+            "m": 0.4331
+          }
+        ]
+      },
+      "gnupg": {
+        "points": [
+          {
+            "x": 0,
+            "m": 1.1753
+          },
+          {
+            "x": 202500,
+            "m": 0.8227
+          },
+          {
+            "x": 486000,
+            "m": 0.4701
+          },
+          {
+            "x": 810000,
+            "m": 0.2351
+          }
+        ]
+      },
+      "sudo": {
+        "points": [
+          {
+            "x": 0,
+            "m": 0.9563
+          },
+          {
+            "x": 162500,
+            "m": 0.6694
+          },
+          {
+            "x": 390000,
+            "m": 0.3825
+          },
+          {
+            "x": 650000,
+            "m": 0.1913
+          }
+        ]
+      },
+      "systemd": {
+        "points": [
+          {
+            "x": 0,
+            "m": 0.4701
+          },
+          {
+            "x": 392500,
+            "m": 0.3291
+          },
+          {
+            "x": 942000,
+            "m": 0.188
+          },
+          {
+            "x": 1570000,
+            "m": 0.094
+          }
+        ]
+      },
+      "zstd": {
+        "points": [
+          {
+            "x": 0,
+            "m": 7.2409
+          },
+          {
+            "x": 147500,
+            "m": 5.0686
+          },
+          {
+            "x": 354000,
+            "m": 2.8964
+          },
+          {
+            "x": 590000,
+            "m": 1.4482
+          }
+        ]
+      },
+      "pcre2": {
+        "points": [
+          {
+            "x": 0,
+            "m": 2.8531
+          },
+          {
+            "x": 130000,
+            "m": 1.9972
+          },
+          {
+            "x": 312000,
+            "m": 1.1413
+          },
+          {
+            "x": 520000,
+            "m": 0.5706
+          }
+        ]
+      },
+      "libjpeg-turbo": {
+        "points": [
+          {
+            "x": 0,
+            "m": 6.5321
+          },
+          {
+            "x": 155000,
+            "m": 4.5725
+          },
+          {
+            "x": 372000,
+            "m": 2.6128
+          },
+          {
+            "x": 620000,
+            "m": 1.3064
+          }
+        ]
+      },
+      "numpy": {
+        "points": [
+          {
+            "x": 0,
+            "m": 0.969
+          },
+          {
+            "x": 260000,
+            "m": 0.6783
+          },
+          {
+            "x": 624000,
+            "m": 0.3876
+          },
+          {
+            "x": 1040000,
+            "m": 0.1938
+          }
+        ]
+      },
+      "requests": {
+        "points": [
+          {
+            "x": 0,
+            "m": 6.0706
+          },
+          {
+            "x": 75000,
+            "m": 4.2494
+          },
+          {
+            "x": 180000,
+            "m": 2.4282
+          },
+          {
+            "x": 300000,
+            "m": 1.2141
+          }
+        ]
+      },
+      "urllib3": {
+        "points": [
+          {
+            "x": 0,
+            "m": 1.8854
+          },
+          {
+            "x": 82500,
+            "m": 1.3198
+          },
+          {
+            "x": 198000,
+            "m": 0.7542
+          },
+          {
+            "x": 330000,
+            "m": 0.3771
+          }
+        ]
+      }
+    }
+  }
+}

@@ -62,3 +62,43 @@ export const ship = () =>
     ],
     "Ship sequence: a push to main runs CI on GitHub Actions and, independently, a Vercel build of the web app. Render deploys the API only after CI passes, and only when API, engine or lockfile files changed: it builds, applies migrations to Neon, starts the new instance and switches traffic once /health answers.",
   );
+
+/* ---------- build-time data + verification: five samples ---------- */
+export function pipeline() {
+  const id = "pl";
+  let b = "";
+  b += `<text x="20" y="30" class="tz">Public data → five samples → demo rounds and sample pages</text>`;
+  b += box(20, 44, 200, 120, "Public sources", ["GiveWell CEA workbook", "Debian · OSV · GitHub", "FEMA NRI · NIBS ratios", "WHO/UNICEF WUENIC", "CONALFA PDF"]);
+  b += box(310, 62, 170, 72, "Tidy CSVs", ["pipeline/data/", "one per sample"]);
+  b += box(580, 62, 170, 72, "data/*.json", ["5 scenario files", "validated"], "acc");
+  b += box(900, 40, 160, 62, "Postgres", ["5 demo rounds"]);
+  b += box(900, 118, 160, 62, "Sample pages", ["static, at next build"]);
+  b += edge(id, [[220, 98], [310, 98]]);
+  b += label(265, 90, "extract_*.py");
+  b += edge(id, [[480, 98], [580, 98]], { cls: "acc" });
+  b += label(530, 90, "build_seed", "middle", "acc");
+  b += label(530, 116, "validate.py");
+  b += edge(id, [[750, 98], [800, 98], [800, 71], [900, 71]]);
+  b += label(850, 63, "seed.ts");
+  b += edge(id, [[800, 98], [800, 149], [900, 149]]);
+  b += label(850, 141, "samples.ts");
+  b += `<text x="20" y="214" class="tz">Two implementations must agree</text>`;
+  const xs = [20, 310, 600, 890] as const, w = 170;
+  b += box(xs[0], 230, w, 72, "Python reference", ["solvers.py · NumPy", "exact breakpoints"]);
+  b += box(xs[1], 230, w, 72, "cross-check.json", ["40 random cases", "seed 20261013"]);
+  b += box(xs[2], 230, w, 72, "Engine tests", ["vitest · fast-check", "match within 1e-6"], "acc");
+  b += box(xs[3], 230, w, 72, "GitHub Actions", ["fails if any", "JSON is stale"]);
+  const arrow = (i: 0 | 1 | 2, top: string, bottom: string | null) => {
+    const from = xs[i] + w, to = xs[(i + 1) as 1 | 2 | 3];
+    let s = edge(id, [[from, 266], [to, 266]]);
+    s += label((from + to) / 2, 258, top);
+    if (bottom) s += label((from + to) / 2, 284, bottom);
+    return s;
+  };
+  b += arrow(0, "cross_check.py", "writes");
+  b += arrow(1, "replayed by", null);
+  b += arrow(2, "run in CI", null);
+  b += edge(id, [[975, 230], [975, 196], [665, 196], [665, 134]], { dashed: true });
+  b += label(820, 190, "build_seed --check");
+  return svg(id, 1080, 316, "Data pipeline: five public sources are extracted into tidy CSVs, built and validated into five scenario files, which seed one demo round per sample and are read by the web app's build for the sample pages. Separately, a Python reference solver writes a fixture of 40 cases that the TypeScript engine must reproduce, and CI fails if any JSON file is stale.", b);
+}

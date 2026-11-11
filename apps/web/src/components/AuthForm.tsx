@@ -2,14 +2,23 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ApiError, api } from "@/lib/api";
 import { announceAuthChange } from "@/lib/session";
+
+/** Where to go after signing in: a same-site path from ?next=, else the rounds list. */
+function nextPath(): string | null {
+  const next = new URLSearchParams(window.location.search).get("next");
+  return next && next.startsWith("/") && !next.startsWith("//") ? next : null;
+}
 
 export function AuthForm({ mode }: { mode: "login" | "register" }) {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [next, setNext] = useState<string | null>(null);
+  useEffect(() => setNext(nextPath()), []);
+  const keepNext = (href: string) => (next ? `${href}?next=${encodeURIComponent(next)}` : href);
 
   async function submit(form: FormData) {
     setBusy(true);
@@ -20,7 +29,7 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
         body: Object.fromEntries(["email", "password", ...(mode === "register" ? ["name"] : [])].map((k) => [k, form.get(k)])),
       });
       announceAuthChange();
-      router.push("/rounds");
+      router.push(nextPath() ?? "/rounds");
     } catch (e) {
       setError(e instanceof ApiError ? e.message : "Couldn't reach the server");
       setBusy(false);
@@ -68,12 +77,12 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
       <p className="text-center text-sm text-ink-2">
         {mode === "login" ? (
           <>
-            New here? <Link href="/register" className="underline underline-offset-2">Create an account</Link> or{" "}
+            New here? <Link href={keepNext("/register")} className="underline underline-offset-2">Create an account</Link> or{" "}
             <Link href="/" className="underline underline-offset-2">try the demo</Link>.
           </>
         ) : (
           <>
-            Have an account? <Link href="/login" className="underline underline-offset-2">Sign in</Link>.
+            Have an account? <Link href={keepNext("/login")} className="underline underline-offset-2">Sign in</Link>.
           </>
         )}
       </p>

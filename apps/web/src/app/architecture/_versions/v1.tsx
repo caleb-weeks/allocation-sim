@@ -1,12 +1,20 @@
 import { C, Note } from "../_lib/primitives";
 import type { HostingContent } from "../_lib/content";
-import { architecture, ship } from "./v1-diagrams";
+import { architecture, pipeline, ship } from "./v1-diagrams";
 
 export const v1: HostingContent = {
   apiSummary: "Express + Socket.IO on a GCP e2-micro",
   architectureIntro:
     "Two hosts serve the app. Vercel serves the web pages; one Node process on a small GCP VM serves both the REST API and the live WebSocket, behind Caddy, with Postgres on the same machine.",
   architectureSvg: architecture(),
+  pipelineSvg: pipeline(),
+  pipelineCaption: (
+    <>
+      The top row is the scenario pipeline in <C>python/pipeline</C>. The bottom row is how the math is verified: an
+      independent NumPy solver writes expected answers that the TypeScript engine must reproduce. CI regenerates both
+      JSON files and fails if either differs from the committed copy.
+    </>
+  ),
   notes: (
     <>
       <Note title="Caddy only terminates TLS.">

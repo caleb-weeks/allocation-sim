@@ -1,0 +1,21 @@
+stcofips,county,county_type,state,state_abbr,population,eal_total,eal_ifld,eal_hrcn,eal_trnd,eal_erqk,eal_wfir,top_hazard,top_hazard_eal,sovi_score,sovi_rating,resl_score,resl_rating,nri_version
+06037,Los Angeles,County,California,CA,10005712,7601846373,2808736524,0,18305914,4565736367,155191812,Earthquake,4565736367,55.38,Relatively Moderate,13.55,Very Low,December 2025
+17031,Cook,County,Illinois,IL,5272775,2424304449,1096923384,56776,344681902,57293394,56110,Inland flooding,1096923384,61.74,Relatively High,73.28,Relatively High,December 2025
+06065,Riverside,County,California,CA,2416838,2265637643,1127003661,2672,5854192,763784550,346642805,Inland flooding,1127003661,33.33,Relatively Low,13.04,Very Low,December 2025
+48201,Harris,County,Texas,TX,4726200,2217702383,1122079278,457859275,407387921,5909099,562161,Inland flooding,1122079278,67.94,Relatively High,17.88,Very Low,December 2025
+04013,Maricopa,County,Arizona,AZ,4418836,2195561910,1119501534,11770,5367715,30724390,42188453,Inland flooding,1119501534,27.1,Relatively Low,18.03,Very Low,December 2025
+53033,King,County,Washington,WA,2268178,1680266355,416875117,0,3535635,1214712330,487057,Earthquake,1214712330,14.76,Very Low,87.4,Very High,December 2025
+48113,Dallas,County,Texas,TX,2607218,973176569,323744956,676444,114760019,5400882,348784,Inland flooding,323744956,59.13,Relatively Moderate,12.95,Very Low,December 2025
+12086,Miami-Dade,County,Florida,FL,2698679,824686737,355791326,330598603,24811662,384767,5195709,Inland flooding,355791326,75.86,Relatively High,42.91,Relatively Moderate,December 2025
+32003,Clark,County,Nevada,NV,2260510,812587961,362175961,0,51292,124124685,24456604,Inland flooding,362175961,46.06,Relatively Moderate,6.55,Very Low,December 2025
+29189,St. Louis,County,Missouri,MO,1003734,752688924,240321494,48380,26280161,140513568,100748,Heat wave,253179209,31.17,Relatively Low,79.74,Relatively High,December 2025
+42101,Philadelphia,County,Pennsylvania,PA,1602305,667071998,266057136,12020719,21102550,41629578,8805,Inland flooding,266057136,88.1,Very High,48.47,Relatively Moderate,December 2025
+12011,Broward,County,Florida,FL,1940829,647973333,288975890,280368508,13646787,142370,6542529,Inland flooding,288975890,55.38,Relatively Moderate,44.18,Relatively Moderate,December 2025
+49035,Salt Lake,County,Utah,UT,1185141,621743321,79338744,0,3814137,487568473,25182533,Earthquake,487568473,10.62,Very Low,66.44,Relatively High,December 2025
+47157,Shelby,County,Tennessee,TN,929552,554679744,153711620,349654,70123556,215183553,145014,Earthquake,215183553,72.58,Relatively High,57.51,Relatively Moderate,December 2025
+53053,Pierce,County,Washington,WA,920483,531856679,121581168,0,1138162,363823475,385562,Earthquake,363823475,14.38,Very Low,60.08,Relatively High,December 2025
+04019,Pima,County,Arizona,AZ,1042716,531351354,347357076,4770,688346,6323740,37561739,Inland flooding,347357076,50.86,Relatively Moderate,20.32,Relatively Low,December 2025
+15003,Honolulu,County,Hawaii,HI,1013620,517254499,329700823,880426,687813,92550972,26767968,Inland flooding,329700823,25.89,Relatively Low,62.63,Relatively High,December 2025
+45019,Charleston,County,South Carolina,SC,407722,499798733,44209893,281333148,3019263,117992986,3077857,Hurricane,281333148,22.42,Relatively Low,96.12,Very High,December 2025
+27053,Hennepin,County,Minnesota,MN,1281172,456424882,188376120,0,82990111,325256,309091,Inland flooding,188376120,20.32,Relatively Low,98.09,Very High,December 2025
+41051,Multnomah,County,Oregon,OR,814167,440430645,91170854,0,1233598,326183786,154683,Earthquake,326183786,29.77,Relatively Low,95.52,Very High,December 2025

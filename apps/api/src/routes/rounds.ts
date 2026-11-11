@@ -6,8 +6,8 @@ import { type Action, can } from "../authz.js";
 import { prisma } from "../db.js";
 import { notifyRoundChanged } from "../events.js";
 import { Prisma } from "../generated/prisma/client.js";
-import { DEMO_ROUND_KEY, allocate, compute, loadRound, viewFor } from "../state.js";
-import { TEMPLATE_IDS, loadTemplate } from "../templates.js";
+import { allocate, compute, loadRound, viewFor } from "../state.js";
+import { availableTemplates, isDemoRoundKey, isTemplateId, loadTemplate } from "../templates.js";
 
 export const roundsRouter = Router();
 roundsRouter.use(requireUser);
@@ -51,28 +51,68 @@ roundsRouter.get("/", async (req, res) => {
   });
   res.json({
     rounds: memberships.map((m) => ({ ...m.round, role: m.role, displayName: m.displayName })),
-    templates: TEMPLATE_IDS,
+    templates: availableTemplates(),
   });
 });
 
-/** Start a new round from a scenario template; the creator becomes its owner. */
+const title = z.string().trim().min(1).max(120);
+
+/** Either copy a sample's applications, or bring your own list. */
+const newRound = z.union([
+  z.object({ title, template: z.string().refine(isTemplateId, "Unknown sample") }),
+  z.object({
+    title,
+    valueUnit: z.string().trim().min(1).max(60),
+    applications: z
+      .array(z.object({ name: z.string().trim().min(1).max(80), cap: z.number().int().min(1).max(1_000_000_000) }))
+      .min(1)
+      .max(50)
+      .refine((apps) => new Set(apps.map((a) => a.name.toLowerCase())).size === apps.length, "Application names must be unique"),
+  }),
+]);
+
+function slug(name: string, taken: Set<string>): string {
+  const base = name.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40) || "application";
+  let key = base;
+  for (let i = 2; taken.has(key); i++) key = `${base}-${i}`;
+  taken.add(key);
+  return key;
+}
+
+/** Start a new round, from a sample's applications or the caller's own; the creator becomes its owner. */
 roundsRouter.post("/", async (req, res) => {
   if (req.user!.isDemo) return void res.status(403).json({ error: "Demo personas can't create rounds; create an account instead" });
-  const body = z.object({ title: z.string().trim().min(1).max(120), template: z.enum(TEMPLATE_IDS) }).safeParse(req.body);
+  const body = newRound.safeParse(req.body);
   if (!body.success) return void res.status(400).json({ error: "Invalid round", issues: body.error.issues });
-  const t = loadTemplate(body.data.template);
+
+  const fromTemplate = "template" in body.data && isTemplateId(body.data.template) ? loadTemplate(body.data.template) : null;
+  const taken = new Set<string>();
+  const source = fromTemplate
+    ? {
+        valueUnit: fromTemplate.valueUnit,
+        sources: fromTemplate.sources,
+        assumptions: fromTemplate.assumptions as Prisma.InputJsonObject,
+        applications: fromTemplate.applications.map((a) => ({ key: a.id, name: a.name, cap: a.cap, data: a.data as Prisma.InputJsonObject })),
+      }
+    : {
+        valueUnit: "valueUnit" in body.data ? body.data.valueUnit : "",
+        sources: [],
+        assumptions: {},
+        applications: ("applications" in body.data ? body.data.applications : []).map((a) => ({ key: slug(a.name, taken), name: a.name, cap: a.cap, data: {} })),
+      };
+
   const round = await prisma.$transaction(async (tx) => {
     const round = await tx.round.create({
       data: {
         title: body.data.title,
-        valueUnit: t.valueUnit,
-        sources: t.sources,
-        assumptions: t.assumptions as Prisma.InputJsonObject,
-        applications: { create: t.applications.map((a) => ({ key: a.id, name: a.name, cap: a.cap, data: a.data as Prisma.InputJsonObject })) },
+        valueUnit: source.valueUnit,
+        sources: source.sources,
+        assumptions: source.assumptions,
+        applications: { create: source.applications },
         memberships: { create: { userId: req.user!.id, role: "OWNER", displayName: req.user!.name } },
       },
     });
-    await audit(tx, round.id, req.user!.id, "round.create", round.id, { template: body.data.template });
+    await audit(tx, round.id, req.user!.id, "round.create", round.id, fromTemplate ? { template: fromTemplate.id } : { applications: source.applications.length });
     return round;
   });
   res.status(201).json({ id: round.id });
@@ -239,7 +279,7 @@ async function authorizeMembers(req: Request, res: Response) {
   const membership = await authorize(req, res, { type: "members:manage" });
   if (!membership) return null;
   const round = await prisma.round.findUnique({ where: { id: membership.roundId } });
-  if (round?.key === DEMO_ROUND_KEY) {
+  if (isDemoRoundKey(round?.key)) {
     res.status(403).json({ error: "Membership in the shared demo round can't be changed" });
     return null;
   }

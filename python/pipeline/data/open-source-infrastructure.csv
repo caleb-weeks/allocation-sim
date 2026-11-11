@@ -1,0 +1,19 @@
+id,name,debian_source,github_repo,debian_dependents,cves_10y,cves_all,commits_12mo,authors_12mo,core_contributors_12mo,top_author_share,code_mb
+curl,curl,curl,curl/curl,578,185,222,3464,199,9,0.431,11.9
+openssl,OpenSSL,openssl,openssl/openssl,1079,146,296,3279,324,33,0.096,43.8
+zlib,zlib,zlib,madler/zlib,2756,11,15,367,59,2,0.368,2.1
+libxml2,libxml2,libxml2,GNOME/libxml2,742,68,125,126,38,1,0.405,7.0
+xz-utils,XZ Utils,xz-utils,tukaani-project/xz,218,4,4,197,12,1,0.919,2.4
+openssh,OpenSSH,openssh,openssh/openssh-portable,98,66,120,769,40,3,0.524,7.0
+sqlite,SQLite,sqlite3,sqlite/sqlite,489,71,76,2149,6,4,0.607,19.2
+libpng,libpng,libpng1.6,pnggroup/libpng,563,24,30,149,18,1,0.678,3.4
+expat,Expat,expat,libexpat/libexpat,214,63,73,718,47,3,0.727,2.0
+gnupg,GnuPG,gnupg2,gpg/gnupg,75,14,26,339,16,3,0.611,12.6
+sudo,sudo,sudo,sudo-project/sudo,41,26,49,269,21,3,0.74,7.6
+systemd,systemd,systemd,systemd/systemd,668,52,63,8339,598,41,0.15,53.8
+zstd,Zstandard (zstd),libzstd,facebook/zstd,1094,4,4,100,26,1,0.53,6.1
+pcre2,PCRE2,pcre2,PCRE2Project/pcre2,248,15,16,230,29,2,0.726,4.4
+libjpeg-turbo,libjpeg-turbo,libjpeg-turbo,libjpeg-turbo/libjpeg-turbo,481,15,17,269,4,1,0.981,6.7
+numpy,NumPy,numpy,numpy/numpy,614,4,4,1818,236,23,0.389,22.2
+requests,Requests,requests,psf/requests,611,5,8,75,23,1,0.667,0.4
+urllib3,urllib3,python-urllib3,urllib3/urllib3,91,21,22,132,51,1,0.432,1.3

@@ -1,41 +1,6 @@
-// Diagrams that are the same in every hosting version: the data pipeline, per-member data flow,
-// and the sign-in and curve-edit sequences (none of them depend on where the API runs).
+// Diagrams that are the same in every version: per-member data flow and the sign-in and
+// curve-edit sequences (none of them depend on where the API runs or which samples exist).
 import { box, chip, edge, label, sequence, svg, type Line } from "./draw";
-
-/* ---------- build-time data + verification ---------- */
-export function pipeline() {
-  const id = "pl";
-  let b = "";
-  const xs = [20, 310, 600, 890] as const;
-  const w = 170;
-  b += `<text x="20" y="34" class="tz">Source data → demo round</text>`;
-  b += box(xs[0], 50, w, 72, "CONALFA PDF", ["2023 projection", "22 departments"]);
-  b += box(xs[1], 50, w, 72, "conalfa-2023.csv", ["counts + rates", "by sex"]);
-  b += box(xs[2], 50, w, 72, "Scenario JSON", ["3 lenses · 2 funders", "cost assumptions"]);
-  b += box(xs[3], 50, w, 72, "Postgres", ["demo round", "7 demo personas"]);
-  const arrow = (i: 0 | 1 | 2, y: number, top: string, bottom: string | null, cls = "") => {
-    const from = xs[i] + w;
-    const to = xs[(i + 1) as 1 | 2 | 3];
-    let s = edge(id, [[from, y], [to, y]], { cls });
-    s += label((from + to) / 2, y - 8, top, "middle", cls);
-    if (bottom) s += label((from + to) / 2, y + 18, bottom);
-    return s;
-  };
-  b += arrow(0, 86, "extract_conalfa", "pdftotext");
-  b += arrow(1, 86, "build_seed.py", "curve per lens");
-  b += arrow(2, 86, "prisma/seed.ts", "demo:reset");
-  b += `<text x="20" y="190" class="tz">Two implementations must agree</text>`;
-  b += box(xs[0], 206, w, 72, "Python reference", ["solvers.py · NumPy", "exact breakpoints"]);
-  b += box(xs[1], 206, w, 72, "cross-check.json", ["40 random cases", "seed 20261013"]);
-  b += box(xs[2], 206, w, 72, "Engine tests", ["vitest · fast-check", "match within 1e-6"], "acc");
-  b += box(xs[3], 206, w, 72, "GitHub Actions", ["fails if either", "JSON is stale"]);
-  b += arrow(0, 242, "cross_check.py", "writes");
-  b += arrow(1, 242, "replayed by", null);
-  b += arrow(2, 242, "run in CI", null);
-  b += edge(id, [[975, 206], [975, 160], [685, 160], [685, 122]], { dashed: true });
-  b += label(830, 154, "build_seed --check");
-  return svg(id, 1080, 292, "Data pipeline: the CONALFA PDF becomes a CSV, then a scenario JSON, then the seeded demo round. Separately, a Python reference solver writes a fixture of 40 cases that the TypeScript engine tests must reproduce, and CI fails if either JSON file is stale.", b);
-}
 
 /* ---------- runtime: what each member receives ---------- */
 export function runtime() {

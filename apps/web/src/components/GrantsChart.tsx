@@ -28,10 +28,6 @@ export interface GrantsChartProps {
 const NEUTRAL = "var(--ink-2)";
 const BAR_PX = 16;
 
-function shortName(name: string) {
-  return name.replace(/^Literacy program — /, "");
-}
-
 export function GrantsChart(props: GrantsChartProps) {
   const { applications, grants, byRecommender, recommenders, compare, showDelta, selectedId, onSelect, watchers } = props;
   const [table, setTable] = useState(false);
@@ -109,7 +105,7 @@ export function GrantsChart(props: GrantsChartProps) {
             <tbody>
               {rows.map((a) => (
                 <tr key={a.id} className="border-b border-border">
-                  <td className="py-1.5 pr-3">{shortName(a.name)}</td>
+                  <td className="py-1.5 pr-3">{a.name}</td>
                   <td className="py-1.5 pr-3 text-right">{moneyExact(grants[a.id] ?? 0)}</td>
                   {stacked && recommenders.map((r) => <td key={r.id} className="py-1.5 pr-3 text-right">{moneyExact(byRecommender![r.id]?.[a.id] ?? 0)}</td>)}
                   {compare && <td className="py-1.5 pr-3 text-right">{moneyExact(compare.grants[a.id] ?? 0)}</td>}
@@ -139,13 +135,13 @@ export function GrantsChart(props: GrantsChartProps) {
                     onFocus={(e) => showTip(a.id, null, e.currentTarget)}
                     onBlur={() => setTip(null)}
                     aria-pressed={selectedId === a.id}
-                    aria-label={`${shortName(a.name)}: ${moneyExact(value)}${compare ? `, ${compare.label} ${moneyExact(compare.grants[a.id] ?? 0)}` : ""}`}
+                    aria-label={`${a.name}: ${moneyExact(value)}${compare ? `, ${compare.label} ${moneyExact(compare.grants[a.id] ?? 0)}` : ""}`}
                     className={`grid w-full items-center gap-3 rounded-md px-2 py-1 text-left text-sm ${
-                      showDelta ? "grid-cols-[minmax(6rem,9rem)_1fr_4.5rem_5.5rem]" : "grid-cols-[minmax(6rem,9rem)_1fr_4.5rem]"
+                      showDelta ? "grid-cols-[minmax(6rem,13rem)_1fr_4.5rem_5.5rem]" : "grid-cols-[minmax(6rem,13rem)_1fr_4.5rem]"
                     } ${selectedId === a.id ? "bg-surface-2" : "hover:bg-surface-2"}`}
                   >
                     <span className="flex min-w-0 items-center gap-1.5">
-                      <span className="truncate">{shortName(a.name)}</span>
+                      <span className="truncate" title={a.name}>{a.name}</span>
                       {others.length > 0 && (
                         <span className="shrink-0 rounded-full border border-border px-1.5 text-[10px] text-ink-2" title={`${others.join(", ")} looking`}>
                           {others.length} here
@@ -205,7 +201,7 @@ export function GrantsChart(props: GrantsChartProps) {
               style={{ left: Math.min(Math.max(tip.x, 100), (wrap.current?.clientWidth ?? 400) - 100), top: tip.y }}
             >
               <div className="tabular text-base font-semibold text-ink">{moneyExact(grants[tipApp.id] ?? 0)}</div>
-              <div className="mb-2 text-ink-2">{shortName(tipApp.name)}</div>
+              <div className="mb-2 text-ink-2">{tipApp.name}</div>
               {stacked &&
                 recommenders.map((r) => (
                   <div key={r.id} className="flex items-center justify-between gap-4">

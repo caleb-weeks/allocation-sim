@@ -1,0 +1,1142 @@
+{
+  "id": "global-health",
+  "title": "Global health charities, by GiveWell funding gap",
+  "summary": "Top-charity funding gaps — bednets, malaria chemoprevention, vitamin A, vaccine incentives, deworming and cash — sized and valued with GiveWell's 2021 cost-effectiveness estimates (1× = a dollar of cash to GiveDirectly). Lens adjustments and funders are illustrative, not GiveWell's.",
+  "valueUnit": "value per $ in multiples of cash (GiveDirectly = 1×)",
+  "sources": [
+    {
+      "name": "GiveWell — 2021 top-charity cost-effectiveness analysis (funding gaps 2021-2023)",
+      "url": "https://docs.google.com/spreadsheets/d/1g_dfZa6xciKkMiiUPVAF02CQLSVHULFpjP5wN7FrpSI/edit"
+    },
+    {
+      "name": "GiveWell — Cost-effectiveness models (current and past versions)",
+      "url": "https://www.givewell.org/how-we-work/our-criteria/cost-effectiveness/cost-effectiveness-models"
+    }
+  ],
+  "assumptions": {
+    "under_review_weight": 0.5,
+    "non_mortality_value_weight": 0.25,
+    "within_gap_slope": 0.25,
+    "note": "All cost-effectiveness numbers, funding-gap sizes, shares of value from averted deaths and costs per life saved are GiveWell's, from its 2021 cost-effectiveness workbook (funding gaps for 2021-2023); they are dated and not current GiveWell recommendations. Choices made here: (1) one application per funding gap, except Helen Keller's four Nigerian state gaps and SCI Foundation's four yearly tranches, which share one GiveWell estimate and are each combined into one application; (2) GiveWell gives one estimate per gap, so it is used as the average over the gap, with value falling linearly from 1.25x to 0.75x of it across the gap (best-targeted areas first) — the shape is illustrative, the average is GiveWell's; (3) GiveDirectly appears only with its $23.5M 'maintain rolling programs' gap, as the cash benchmark — its scale-up gaps ($432M) and a Sightsavers survey gap GiveWell only assesses qualitatively are left out; (4) the Evidence strength lens counts gaps GiveWell marks as still under investigation at 0.5x — an illustrative discount, not GiveWell's; (5) the Lives saved first lens keeps the share of value GiveWell attributes to averted deaths and counts the rest (income and development gains) at 0.25x, also illustrative; (6) the funders and their budgets are fictional."
+  },
+  "applications": [
+    {
+      "id": "vas-nigeria-hki",
+      "name": "Vitamin A — Nigeria (4 states)",
+      "cap": 5361884,
+      "data": {
+        "facts": [
+          {
+            "label": "GiveWell estimate",
+            "value": "28.8× cash"
+          },
+          {
+            "label": "Charity",
+            "value": "Helen Keller International"
+          },
+          {
+            "label": "Cost per life saved",
+            "value": "$2,022"
+          },
+          {
+            "label": "GiveWell status",
+            "value": "Still under review"
+          }
+        ],
+        "charity": "Helen Keller International",
+        "program": "Vitamin A supplementation",
+        "givewell_gaps": [
+          "Nigeria - Niger state",
+          "Nigeria - Plateau state",
+          "Nigeria - Akwa Ibom state",
+          "Nigeria - Adamawa state"
+        ],
+        "multiple_of_cash": 28.8402,
+        "mortality_share": 0.8866,
+        "cost_per_life_saved_usd": 2022,
+        "deaths_averted_per_100k_usd": 49.5,
+        "givewell_priority": "Investigation of this funding gap is ongoing"
+      }
+    },
+    {
+      "id": "vas-cameroon-hki",
+      "name": "Vitamin A — Cameroon",
+      "cap": 3786127,
+      "data": {
+        "facts": [
+          {
+            "label": "GiveWell estimate",
+            "value": "27.1× cash"
+          },
+          {
+            "label": "Charity",
+            "value": "Helen Keller International"
+          },
+          {
+            "label": "Cost per life saved",
+            "value": "$2,278"
+          },
+          {
+            "label": "GiveWell status",
+            "value": "Still under review"
+          }
+        ],
+        "charity": "Helen Keller International",
+        "program": "Vitamin A supplementation",
+        "givewell_gaps": [
+          "Cameroon"
+        ],
+        "multiple_of_cash": 27.062,
+        "mortality_share": 0.8389,
+        "cost_per_life_saved_usd": 2278,
+        "deaths_averted_per_100k_usd": 43.9,
+        "givewell_priority": "Investigation of this funding gap is ongoing"
+      }
+    },
+    {
+      "id": "vas-kenya-hki",
+      "name": "Vitamin A — Kenya",
+      "cap": 3546132,
+      "data": {
+        "facts": [
+          {
+            "label": "GiveWell estimate",
+            "value": "7.1× cash"
+          },
+          {
+            "label": "Charity",
+            "value": "Helen Keller International"
+          },
+          {
+            "label": "Cost per life saved",
+            "value": "$10,731"
+          },
+          {
+            "label": "GiveWell status",
+            "value": "Still under review"
+          }
+        ],
+        "charity": "Helen Keller International",
+        "program": "Vitamin A supplementation",
+        "givewell_gaps": [
+          "Kenya"
+        ],
+        "multiple_of_cash": 7.1046,
+        "mortality_share": 0.6783,
+        "cost_per_life_saved_usd": 10731,
+        "deaths_averted_per_100k_usd": 9.3,
+        "givewell_priority": "Cost-effectiveness estimate is currently relatively low, but investigation of this funding gap is ongoing"
+      }
+    },
+    {
+      "id": "smc-burkina-faso-mc",
+      "name": "Malaria SMC — Burkina Faso",
+      "cap": 3143892,
+      "data": {
+        "facts": [
+          {
+            "label": "GiveWell estimate",
+            "value": "14.7× cash"
+          },
+          {
+            "label": "Charity",
+            "value": "Malaria Consortium"
+          },
+          {
+            "label": "Cost per life saved",
+            "value": "$3,981"
+          },
+          {
+            "label": "GiveWell status",
+            "value": "Vetted"
+          }
+        ],
+        "charity": "Malaria Consortium",
+        "program": "Seasonal malaria chemoprevention",
+        "givewell_gaps": [
+          "Burkina Faso"
+        ],
+        "multiple_of_cash": 14.6781,
+        "mortality_share": 0.7079,
+        "cost_per_life_saved_usd": 3981,
+        "deaths_averted_per_100k_usd": 25.1,
+        "givewell_priority": "Very high cost-effectiveness (>10x) that has been sufficiently vetted"
+      }
+    },
+    {
+      "id": "smc-nigeria-mc",
+      "name": "Malaria SMC — Nigeria",
+      "cap": 9062469,
+      "data": {
+        "facts": [
+          {
+            "label": "GiveWell estimate",
+            "value": "10.2× cash"
+          },
+          {
+            "label": "Charity",
+            "value": "Malaria Consortium"
+          },
+          {
+            "label": "Cost per life saved",
+            "value": "$5,387"
+          },
+          {
+            "label": "GiveWell status",
+            "value": "Vetted"
+          }
+        ],
+        "charity": "Malaria Consortium",
+        "program": "Seasonal malaria chemoprevention",
+        "givewell_gaps": [
+          "Nigeria"
+        ],
+        "multiple_of_cash": 10.1853,
+        "mortality_share": 0.7354,
+        "cost_per_life_saved_usd": 5387,
+        "deaths_averted_per_100k_usd": 18.6,
+        "givewell_priority": "High cost-effectiveness (8-10x) that has been sufficiently vetted"
+      }
+    },
+    {
+      "id": "smc-togo-mc",
+      "name": "Malaria SMC — Togo",
+      "cap": 743205,
+      "data": {
+        "facts": [
+          {
+            "label": "GiveWell estimate",
+            "value": "9.2× cash"
+          },
+          {
+            "label": "Charity",
+            "value": "Malaria Consortium"
+          },
+          {
+            "label": "Cost per life saved",
+            "value": "$7,945"
+          },
+          {
+            "label": "GiveWell status",
+            "value": "Vetted"
+          }
+        ],
+        "charity": "Malaria Consortium",
+        "program": "Seasonal malaria chemoprevention",
+        "givewell_gaps": [
+          "Togo"
+        ],
+        "multiple_of_cash": 9.1668,
+        "mortality_share": 0.5582,
+        "cost_per_life_saved_usd": 7945,
+        "deaths_averted_per_100k_usd": 12.6,
+        "givewell_priority": "High cost-effectiveness (8-10x) that has been sufficiently vetted"
+      }
+    },
+    {
+      "id": "smc-chad-mc",
+      "name": "Malaria SMC — Chad",
+      "cap": 8414210,
+      "data": {
+        "facts": [
+          {
+            "label": "GiveWell estimate",
+            "value": "6.2× cash"
+          },
+          {
+            "label": "Charity",
+            "value": "Malaria Consortium"
+          },
+          {
+            "label": "Cost per life saved",
+            "value": "$8,671"
+          },
+          {
+            "label": "GiveWell status",
+            "value": "Still under review"
+          }
+        ],
+        "charity": "Malaria Consortium",
+        "program": "Seasonal malaria chemoprevention",
+        "givewell_gaps": [
+          "Chad"
+        ],
+        "multiple_of_cash": 6.2323,
+        "mortality_share": 0.7481,
+        "cost_per_life_saved_usd": 8671,
+        "deaths_averted_per_100k_usd": 11.5,
+        "givewell_priority": "Cost-effectiveness estimate is currently relatively low, but investigation of this funding gap is ongoing"
+      }
+    },
+    {
+      "id": "bednets-dr-congo-amf",
+      "name": "Bednets — DR Congo",
+      "cap": 14704499,
+      "data": {
+        "facts": [
+          {
+            "label": "GiveWell estimate",
+            "value": "10.3× cash"
+          },
+          {
+            "label": "Charity",
+            "value": "Against Malaria Foundation"
+          },
+          {
+            "label": "Cost per life saved",
+            "value": "$9,207"
+          },
+          {
+            "label": "GiveWell status",
+            "value": "Vetted"
+          }
+        ],
+        "charity": "Against Malaria Foundation",
+        "program": "Insecticide-treated bednets",
+        "givewell_gaps": [
+          "DRC distributions (last ~$20 million)"
+        ],
+        "multiple_of_cash": 10.2522,
+        "mortality_share": 0.5683,
+        "cost_per_life_saved_usd": 9207,
+        "deaths_averted_per_100k_usd": 10.9,
+        "givewell_priority": "High cost-effectiveness (8-10x) that has been sufficiently vetted"
+      }
+    },
+    {
+      "id": "vaccines-nigeria-ni",
+      "name": "Vaccine incentives — N. Nigeria",
+      "cap": 16222838,
+      "data": {
+        "facts": [
+          {
+            "label": "GiveWell estimate",
+            "value": "10.8× cash"
+          },
+          {
+            "label": "Charity",
+            "value": "New Incentives"
+          },
+          {
+            "label": "Cost per life saved",
+            "value": "$4,222"
+          },
+          {
+            "label": "GiveWell status",
+            "value": "Still under review"
+          }
+        ],
+        "charity": "New Incentives",
+        "program": "Incentives for childhood vaccination",
+        "givewell_gaps": [
+          "Scale-up in Northern Nigeria"
+        ],
+        "multiple_of_cash": 10.8436,
+        "mortality_share": 0.6755,
+        "cost_per_life_saved_usd": 4222,
+        "deaths_averted_per_100k_usd": 23.7,
+        "givewell_priority": "Investigation of this funding gap is ongoing"
+      }
+    },
+    {
+      "id": "deworming-chad-sightsavers",
+      "name": "Deworming — Chad",
+      "cap": 5384079,
+      "data": {
+        "facts": [
+          {
+            "label": "GiveWell estimate",
+            "value": "14.1× cash"
+          },
+          {
+            "label": "Charity",
+            "value": "Sightsavers"
+          },
+          {
+            "label": "Cost per life saved",
+            "value": "Not modeled (no mortality effect)"
+          },
+          {
+            "label": "GiveWell status",
+            "value": "Still under review"
+          }
+        ],
+        "charity": "Sightsavers",
+        "program": "Deworming",
+        "givewell_gaps": [
+          "Chad"
+        ],
+        "multiple_of_cash": 14.1379,
+        "mortality_share": 0.0,
+        "cost_per_life_saved_usd": null,
+        "deaths_averted_per_100k_usd": null,
+        "givewell_priority": "Investigation of this funding gap is ongoing"
+      }
+    },
+    {
+      "id": "deworming-senegal-sightsavers",
+      "name": "Deworming — Senegal",
+      "cap": 1292810,
+      "data": {
+        "facts": [
+          {
+            "label": "GiveWell estimate",
+            "value": "3.5× cash"
+          },
+          {
+            "label": "Charity",
+            "value": "Sightsavers"
+          },
+          {
+            "label": "Cost per life saved",
+            "value": "Not modeled (no mortality effect)"
+          },
+          {
+            "label": "GiveWell status",
+            "value": "Still under review"
+          }
+        ],
+        "charity": "Sightsavers",
+        "program": "Deworming",
+        "givewell_gaps": [
+          "Senegal"
+        ],
+        "multiple_of_cash": 3.5092,
+        "mortality_share": 0.0,
+        "cost_per_life_saved_usd": null,
+        "deaths_averted_per_100k_usd": null,
+        "givewell_priority": "Cost-effectiveness estimate is currently relatively low, but investigation of this funding gap is ongoing"
+      }
+    },
+    {
+      "id": "deworming-sci",
+      "name": "Deworming — multi-country (SCI)",
+      "cap": 22915464,
+      "data": {
+        "facts": [
+          {
+            "label": "GiveWell estimate",
+            "value": "9.9× cash"
+          },
+          {
+            "label": "Charity",
+            "value": "SCI Foundation"
+          },
+          {
+            "label": "Cost per life saved",
+            "value": "Not modeled (no mortality effect)"
+          },
+          {
+            "label": "GiveWell status",
+            "value": "Still under review"
+          }
+        ],
+        "charity": "SCI Foundation",
+        "program": "Deworming",
+        "givewell_gaps": [
+          "Maintenance of 2021 scale",
+          "Expansion in 2022",
+          "Maintenance of 2022 expansion",
+          "Expansion in 2023"
+        ],
+        "multiple_of_cash": 9.8863,
+        "mortality_share": 0.0,
+        "cost_per_life_saved_usd": null,
+        "deaths_averted_per_100k_usd": null,
+        "givewell_priority": "Investigation of this funding gap is ongoing"
+      }
+    },
+    {
+      "id": "deworming-lagos-dtw",
+      "name": "Deworming — Lagos, Nigeria",
+      "cap": 269485,
+      "data": {
+        "facts": [
+          {
+            "label": "GiveWell estimate",
+            "value": "5.4× cash"
+          },
+          {
+            "label": "Charity",
+            "value": "Deworm the World"
+          },
+          {
+            "label": "Cost per life saved",
+            "value": "Not modeled (no mortality effect)"
+          },
+          {
+            "label": "GiveWell status",
+            "value": "Lower priority"
+          }
+        ],
+        "charity": "Deworm the World",
+        "program": "Deworming",
+        "givewell_gaps": [
+          "Nigeria, Lagos State, program expansion and extension"
+        ],
+        "multiple_of_cash": 5.3505,
+        "mortality_share": 0.0,
+        "cost_per_life_saved_usd": null,
+        "deaths_averted_per_100k_usd": null,
+        "givewell_priority": "Not currently highly prioritized—more cost-effective funding gaps exist"
+      }
+    },
+    {
+      "id": "deworming-pakistan-dtw",
+      "name": "Deworming — Pakistan",
+      "cap": 2249172,
+      "data": {
+        "facts": [
+          {
+            "label": "GiveWell estimate",
+            "value": "5.1× cash"
+          },
+          {
+            "label": "Charity",
+            "value": "Deworm the World"
+          },
+          {
+            "label": "Cost per life saved",
+            "value": "Not modeled (no mortality effect)"
+          },
+          {
+            "label": "GiveWell status",
+            "value": "Lower priority"
+          }
+        ],
+        "charity": "Deworm the World",
+        "program": "Deworming",
+        "givewell_gaps": [
+          "Pakistan, program extension"
+        ],
+        "multiple_of_cash": 5.1221,
+        "mortality_share": 0.0,
+        "cost_per_life_saved_usd": null,
+        "deaths_averted_per_100k_usd": null,
+        "givewell_priority": "Not currently highly prioritized—more cost-effective funding gaps exist"
+      }
+    },
+    {
+      "id": "cash-givedirectly",
+      "name": "Cash transfers — GiveDirectly",
+      "cap": 23450834,
+      "data": {
+        "facts": [
+          {
+            "label": "GiveWell estimate",
+            "value": "1.0× cash"
+          },
+          {
+            "label": "Charity",
+            "value": "GiveDirectly"
+          },
+          {
+            "label": "Cost per life saved",
+            "value": "Not modeled (no mortality effect)"
+          },
+          {
+            "label": "GiveWell status",
+            "value": "Lower priority"
+          }
+        ],
+        "charity": "GiveDirectly",
+        "program": "Unconditional cash transfers",
+        "givewell_gaps": [
+          "Maintain rolling programs"
+        ],
+        "multiple_of_cash": 0.9752,
+        "mortality_share": 0.0,
+        "cost_per_life_saved_usd": null,
+        "deaths_averted_per_100k_usd": null,
+        "givewell_priority": "Not currently highly prioritized—more cost-effective funding gaps exist"
+      }
+    }
+  ],
+  "recommenders": [
+    {
+      "id": "rec-cost-effectiveness",
+      "name": "Cost-effectiveness",
+      "lens": "Takes GiveWell's cost-effectiveness estimate for each funding gap as is."
+    },
+    {
+      "id": "rec-evidence",
+      "name": "Evidence strength",
+      "lens": "Full weight for gaps GiveWell calls sufficiently vetted; gaps GiveWell is still investigating count half."
+    },
+    {
+      "id": "rec-lives",
+      "name": "Lives saved first",
+      "lens": "Counts value from averted deaths in full and value from income and development gains at one quarter."
+    }
+  ],
+  "funders": [
+    {
+      "id": "funder-harbor",
+      "name": "Harbor Health Fund",
+      "budget": 32000000,
+      "trust": {
+        "rec-cost-effectiveness": 60,
+        "rec-evidence": 30,
+        "rec-lives": 10
+      }
+    },
+    {
+      "id": "funder-meridian",
+      "name": "Meridian Family Foundation",
+      "budget": 18000000,
+      "trust": {
+        "rec-cost-effectiveness": 20,
+        "rec-evidence": 30,
+        "rec-lives": 50
+      }
+    }
+  ],
+  "curves": {
+    "rec-cost-effectiveness": {
+      "vas-nigeria-hki": {
+        "points": [
+          {
+            "x": 0,
+            "m": 36.0502
+          },
+          {
+            "x": 5361884,
+            "m": 21.6302
+          }
+        ]
+      },
+      "vas-cameroon-hki": {
+        "points": [
+          {
+            "x": 0,
+            "m": 33.8275
+          },
+          {
+            "x": 3786127,
+            "m": 20.2965
+          }
+        ]
+      },
+      "vas-kenya-hki": {
+        "points": [
+          {
+            "x": 0,
+            "m": 8.8807
+          },
+          {
+            "x": 3546132,
+            "m": 5.3285
+          }
+        ]
+      },
+      "smc-burkina-faso-mc": {
+        "points": [
+          {
+            "x": 0,
+            "m": 18.3476
+          },
+          {
+            "x": 3143892,
+            "m": 11.0086
+          }
+        ]
+      },
+      "smc-nigeria-mc": {
+        "points": [
+          {
+            "x": 0,
+            "m": 12.7316
+          },
+          {
+            "x": 9062469,
+            "m": 7.639
+          }
+        ]
+      },
+      "smc-togo-mc": {
+        "points": [
+          {
+            "x": 0,
+            "m": 11.4585
+          },
+          {
+            "x": 743205,
+            "m": 6.8751
+          }
+        ]
+      },
+      "smc-chad-mc": {
+        "points": [
+          {
+            "x": 0,
+            "m": 7.7904
+          },
+          {
+            "x": 8414210,
+            "m": 4.6742
+          }
+        ]
+      },
+      "bednets-dr-congo-amf": {
+        "points": [
+          {
+            "x": 0,
+            "m": 12.8153
+          },
+          {
+            "x": 14704499,
+            "m": 7.6891
+          }
+        ]
+      },
+      "vaccines-nigeria-ni": {
+        "points": [
+          {
+            "x": 0,
+            "m": 13.5545
+          },
+          {
+            "x": 16222838,
+            "m": 8.1327
+          }
+        ]
+      },
+      "deworming-chad-sightsavers": {
+        "points": [
+          {
+            "x": 0,
+            "m": 17.6724
+          },
+          {
+            "x": 5384079,
+            "m": 10.6034
+          }
+        ]
+      },
+      "deworming-senegal-sightsavers": {
+        "points": [
+          {
+            "x": 0,
+            "m": 4.3865
+          },
+          {
+            "x": 1292810,
+            "m": 2.6319
+          }
+        ]
+      },
+      "deworming-sci": {
+        "points": [
+          {
+            "x": 0,
+            "m": 12.3579
+          },
+          {
+            "x": 22915464,
+            "m": 7.4147
+          }
+        ]
+      },
+      "deworming-lagos-dtw": {
+        "points": [
+          {
+            "x": 0,
+            "m": 6.6881
+          },
+          {
+            "x": 269485,
+            "m": 4.0129
+          }
+        ]
+      },
+      "deworming-pakistan-dtw": {
+        "points": [
+          {
+            "x": 0,
+            "m": 6.4026
+          },
+          {
+            "x": 2249172,
+            "m": 3.8416
+          }
+        ]
+      },
+      "cash-givedirectly": {
+        "points": [
+          {
+            "x": 0,
+            "m": 1.219
+          },
+          {
+            "x": 23450834,
+            "m": 0.7314
+          }
+        ]
+      }
+    },
+    "rec-evidence": {
+      "vas-nigeria-hki": {
+        "points": [
+          {
+            "x": 0,
+            "m": 18.0251
+          },
+          {
+            "x": 5361884,
+            "m": 10.8151
+          }
+        ]
+      },
+      "vas-cameroon-hki": {
+        "points": [
+          {
+            "x": 0,
+            "m": 16.9138
+          },
+          {
+            "x": 3786127,
+            "m": 10.1483
+          }
+        ]
+      },
+      "vas-kenya-hki": {
+        "points": [
+          {
+            "x": 0,
+            "m": 4.4404
+          },
+          {
+            "x": 3546132,
+            "m": 2.6642
+          }
+        ]
+      },
+      "smc-burkina-faso-mc": {
+        "points": [
+          {
+            "x": 0,
+            "m": 18.3476
+          },
+          {
+            "x": 3143892,
+            "m": 11.0086
+          }
+        ]
+      },
+      "smc-nigeria-mc": {
+        "points": [
+          {
+            "x": 0,
+            "m": 12.7316
+          },
+          {
+            "x": 9062469,
+            "m": 7.639
+          }
+        ]
+      },
+      "smc-togo-mc": {
+        "points": [
+          {
+            "x": 0,
+            "m": 11.4585
+          },
+          {
+            "x": 743205,
+            "m": 6.8751
+          }
+        ]
+      },
+      "smc-chad-mc": {
+        "points": [
+          {
+            "x": 0,
+            "m": 3.8952
+          },
+          {
+            "x": 8414210,
+            "m": 2.3371
+          }
+        ]
+      },
+      "bednets-dr-congo-amf": {
+        "points": [
+          {
+            "x": 0,
+            "m": 12.8153
+          },
+          {
+            "x": 14704499,
+            "m": 7.6891
+          }
+        ]
+      },
+      "vaccines-nigeria-ni": {
+        "points": [
+          {
+            "x": 0,
+            "m": 6.7773
+          },
+          {
+            "x": 16222838,
+            "m": 4.0663
+          }
+        ]
+      },
+      "deworming-chad-sightsavers": {
+        "points": [
+          {
+            "x": 0,
+            "m": 8.8362
+          },
+          {
+            "x": 5384079,
+            "m": 5.3017
+          }
+        ]
+      },
+      "deworming-senegal-sightsavers": {
+        "points": [
+          {
+            "x": 0,
+            "m": 2.1932
+          },
+          {
+            "x": 1292810,
+            "m": 1.3159
+          }
+        ]
+      },
+      "deworming-sci": {
+        "points": [
+          {
+            "x": 0,
+            "m": 6.1789
+          },
+          {
+            "x": 22915464,
+            "m": 3.7074
+          }
+        ]
+      },
+      "deworming-lagos-dtw": {
+        "points": [
+          {
+            "x": 0,
+            "m": 6.6881
+          },
+          {
+            "x": 269485,
+            "m": 4.0129
+          }
+        ]
+      },
+      "deworming-pakistan-dtw": {
+        "points": [
+          {
+            "x": 0,
+            "m": 6.4026
+          },
+          {
+            "x": 2249172,
+            "m": 3.8416
+          }
+        ]
+      },
+      "cash-givedirectly": {
+        "points": [
+          {
+            "x": 0,
+            "m": 1.219
+          },
+          {
+            "x": 23450834,
+            "m": 0.7314
+          }
+        ]
+      }
+    },
+    "rec-lives": {
+      "vas-nigeria-hki": {
+        "points": [
+          {
+            "x": 0,
+            "m": 32.9842
+          },
+          {
+            "x": 5361884,
+            "m": 19.7905
+          }
+        ]
+      },
+      "vas-cameroon-hki": {
+        "points": [
+          {
+            "x": 0,
+            "m": 29.7403
+          },
+          {
+            "x": 3786127,
+            "m": 17.8442
+          }
+        ]
+      },
+      "vas-kenya-hki": {
+        "points": [
+          {
+            "x": 0,
+            "m": 6.738
+          },
+          {
+            "x": 3546132,
+            "m": 4.0428
+          }
+        ]
+      },
+      "smc-burkina-faso-mc": {
+        "points": [
+          {
+            "x": 0,
+            "m": 14.3281
+          },
+          {
+            "x": 3143892,
+            "m": 8.5969
+          }
+        ]
+      },
+      "smc-nigeria-mc": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.205
+          },
+          {
+            "x": 9062469,
+            "m": 6.123
+          }
+        ]
+      },
+      "smc-togo-mc": {
+        "points": [
+          {
+            "x": 0,
+            "m": 7.6617
+          },
+          {
+            "x": 743205,
+            "m": 4.597
+          }
+        ]
+      },
+      "smc-chad-mc": {
+        "points": [
+          {
+            "x": 0,
+            "m": 6.3186
+          },
+          {
+            "x": 8414210,
+            "m": 3.7911
+          }
+        ]
+      },
+      "bednets-dr-congo-amf": {
+        "points": [
+          {
+            "x": 0,
+            "m": 8.666
+          },
+          {
+            "x": 14704499,
+            "m": 5.1996
+          }
+        ]
+      },
+      "vaccines-nigeria-ni": {
+        "points": [
+          {
+            "x": 0,
+            "m": 10.2557
+          },
+          {
+            "x": 16222838,
+            "m": 6.1534
+          }
+        ]
+      },
+      "deworming-chad-sightsavers": {
+        "points": [
+          {
+            "x": 0,
+            "m": 4.4181
+          },
+          {
+            "x": 5384079,
+            "m": 2.6509
+          }
+        ]
+      },
+      "deworming-senegal-sightsavers": {
+        "points": [
+          {
+            "x": 0,
+            "m": 1.0966
+          },
+          {
+            "x": 1292810,
+            "m": 0.658
+          }
+        ]
+      },
+      "deworming-sci": {
+        "points": [
+          {
+            "x": 0,
+            "m": 3.0895
+          },
+          {
+            "x": 22915464,
+            "m": 1.8537
+          }
+        ]
+      },
+      "deworming-lagos-dtw": {
+        "points": [
+          {
+            "x": 0,
+            "m": 1.672
+          },
+          {
+            "x": 269485,
+            "m": 1.0032
+          }
+        ]
+      },
+      "deworming-pakistan-dtw": {
+        "points": [
+          {
+            "x": 0,
+            "m": 1.6007
+          },
+          {
+            "x": 2249172,
+            "m": 0.9604
+          }
+        ]
+      },
+      "cash-givedirectly": {
+        "points": [
+          {
+            "x": 0,
+            "m": 0.3047
+          },
+          {
+            "x": 23450834,
+            "m": 0.1828
+          }
+        ]
+      }
+    }
+  }
+}

@@ -250,7 +250,7 @@ function Workspace({
         </div>
 
         <div className="space-y-5">
-          <Card title={selectedApp ? selectedApp.name.replace(/^Literacy program — /, "") : "Curves"}>
+          <Card title={selectedApp ? selectedApp.name : "Curves"}>
             {!selectedApp ? (
               <p className="text-sm text-ink-2">Select an application to see how much each recommender values each extra dollar to it.</p>
             ) : view.me.role === "OBSERVER" ? (
@@ -307,23 +307,18 @@ function Workspace({
   );
 }
 
+/** Display-ready facts a sample attaches to each application (data.facts); custom rounds have none. */
 function ApplicationFacts({ app }: { app: RoundView["applications"][number] }) {
-  const d = (app.data ?? {}) as { illiterate_15plus?: number; illiteracy_rate?: number; female_illiteracy_rate?: number };
-  if (d.illiterate_15plus === undefined) return null;
+  const facts = ((app.data ?? {}) as { facts?: { label: string; value: string }[] }).facts ?? [];
+  if (facts.length === 0) return null;
   return (
-    <dl className="grid grid-cols-3 gap-2 text-xs">
-      <div>
-        <dt className="text-ink-2">Adults who can&apos;t read</dt>
-        <dd className="tabular text-sm font-semibold">{d.illiterate_15plus.toLocaleString()}</dd>
-      </div>
-      <div>
-        <dt className="text-ink-2">Illiteracy rate</dt>
-        <dd className="tabular text-sm font-semibold">{((d.illiteracy_rate ?? 0) * 100).toFixed(1)}%</dd>
-      </div>
-      <div>
-        <dt className="text-ink-2">Among women</dt>
-        <dd className="tabular text-sm font-semibold">{((d.female_illiteracy_rate ?? 0) * 100).toFixed(1)}%</dd>
-      </div>
+    <dl className="grid grid-cols-2 gap-2 text-xs sm:grid-cols-3">
+      {facts.map((f) => (
+        <div key={f.label}>
+          <dt className="text-ink-2">{f.label}</dt>
+          <dd className="tabular text-sm font-semibold">{f.value}</dd>
+        </div>
+      ))}
     </dl>
   );
 }
