@@ -25,7 +25,7 @@ apps/api          Express + Socket.IO + Prisma/Postgres: auth, roles, audit log,
 apps/web          Next.js + Tailwind: curve editor, allocation charts, live preview
 python/pipeline   Source data → scenario (CONALFA PDF → CSV → data/guatemala-literacy.json)
 python/reference  Independent NumPy implementation that the TS engine is cross-checked against
-infra/            GCP VM provisioning, systemd, Caddy, deploy/backup/demo-reset scripts
+render.yaml       Render Blueprint for the API (web app on Vercel, database on Neon)
 docs/math.md      The model, both algorithms, convergence results, and how it's tested
 ```
 
@@ -106,19 +106,16 @@ cd python
 ## Deployment
 
 - **Web:** Vercel (Hobby), via its GitHub integration, at `allocation.calebweeks.com`. Root directory `apps/web`; set `NEXT_PUBLIC_API_URL=https://api.calebweeks.com`.
-- **API:** a GCP e2-micro VM (free tier) at `api.calebweeks.com`, running Node under systemd behind Caddy (automatic TLS), with Postgres on the same VM. On the VM, `apps/api/.env` sets `WEB_ORIGINS=https://allocation.calebweeks.com`.
-  - `infra/gcp/provision.sh` creates the VM.
-  - `infra/vm/setup.sh` bootstraps it.
-  - The manual **Deploy API** GitHub Actions workflow (`.github/workflows/deploy.yml`) runs `infra/vm/deploy.sh` over SSH (pull, build, migrate, restart, health check).
+- **API:** a Render free web service at `api.calebweeks.com`, defined by `render.yaml` (a Render Blueprint). Render deploys `main` after CI passes, when API, engine or lockfile files change. Pre-deploy commands are paid-only, so `prisma migrate deploy` runs at the end of the build. Env vars: `DATABASE_URL` (Neon), `WEB_ORIGINS=https://allocation.calebweeks.com`, `NODE_ENV=production`.
+  - The free instance sleeps after 15 minutes without traffic and takes about a minute to wake; the web app shows a "waking up" notice meanwhile (`apps/web/src/components/ServerWaking.tsx`).
+- **Database:** Neon free tier (Postgres 17). Use the direct (non-pooled) connection string with `sslmode=verify-full`; a single API instance doesn't need the pooler, and migrations need a direct connection. Neon keeps 6 hours of history for point-in-time restore.
 - **CI:** `.github/workflows/ci.yml` typechecks and runs the TypeScript, Python, and Postgres-backed API tests on every push and pull request.
-- **Cron:**
-  - nightly `pg_dump` with 14-day retention, and the dump is verified readable;
-  - nightly demo reset.
+- **Demo reset:** `.github/workflows/demo-reset.yml` applies migrations and rebuilds the demo round nightly at 03:30 UTC (repository secret `DATABASE_URL`). Run it by hand to seed a fresh database.
 - **DNS** (at the domain's registrar; the main calebweeks.com site is untouched):
   - `allocation` CNAME → the target Vercel shows when the domain is added;
-  - `api` A → the VM's external IP.
+  - `api` CNAME → the service's `onrender.com` hostname (shown under the service's Custom Domains).
 - **Cookies:** the session cookie is host-only on `api.calebweeks.com` (`COOKIE_DOMAIN` unset). The web app and API share the registrable domain, so `SameSite=Lax` cookies still flow, and the cookie is never sent to other calebweeks.com sites.
-- **Cost:** about $3.60/month, for the VM's external IPv4 address. Everything else is within free tiers.
+- **Cost:** $0/month. Vercel Hobby, Render free, Neon free and GitHub Actions (public repo) are all free tiers; only the domain costs money.
 
 ## Data and attribution
 

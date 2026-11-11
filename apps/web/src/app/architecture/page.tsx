@@ -50,7 +50,7 @@ function Section({ id, title, intro, children }: { id: string; title: string; in
 
 const facts = [
   ["Web app", "allocation.calebweeks.com", "https://allocation.calebweeks.com", "Next.js on Vercel (Hobby)"],
-  ["API", "api.calebweeks.com", "https://api.calebweeks.com/health", "Express + Socket.IO on a GCP e2-micro"],
+  ["API", "api.calebweeks.com", "https://api.calebweeks.com/health", "Express + Socket.IO on Render, Postgres on Neon"],
   ["Code", "caleb-weeks/allocation-sim", "https://github.com/caleb-weeks/allocation-sim", "pnpm monorepo · TypeScript + Python"],
 ] as const;
 
@@ -95,7 +95,7 @@ export default function Architecture() {
       <Section
         id="architecture"
         title="Architecture"
-        intro="Two hosts serve the app. Vercel serves the web pages; one Node process on a small GCP VM serves both the REST API and the live WebSocket, behind Caddy, with Postgres on the same machine."
+        intro="Everything runs on free plans. Vercel serves the web pages; one Node process on Render serves both the REST API and the live WebSocket; Neon hosts Postgres; GitHub Actions runs CI and the nightly demo reset."
       >
         <Key items={[["acc", "the shared engine package"], ["dash", "hosting boundary"]]} />
         <Figure svg={diagrams.architecture}>
@@ -109,16 +109,17 @@ export default function Architecture() {
             the same Node process and share one permission function, <C>can()</C> in <C>apps/api/src/authz.ts</C>.
           </li>
           <li>
-            <strong className="text-ink">Caddy only terminates TLS.</strong> It gets the Let&apos;s Encrypt certificate,
-            adds HSTS and proxies everything to <C>127.0.0.1:4000</C>. Node never listens publicly.
+            <strong className="text-ink">Free tiers sleep.</strong> The API sleeps after 15 idle minutes and the database
+            after 5. The first visit after that waits up to a minute, so every page pings <C>/health</C> on load and shows
+            a &ldquo;waking up&rdquo; notice if it&apos;s slow (<C>ServerWaking.tsx</C>).
           </li>
           <li>
-            <strong className="text-ink">Postgres has no network port.</strong> The API connects over a unix socket with
-            peer auth, so there&apos;s no database password to leak.
+            <strong className="text-ink">Migrations run in the build.</strong> Render&apos;s free plan has no pre-deploy
+            step, so <C>prisma migrate deploy</C> runs at the end of each build, before the new instance takes traffic.
           </li>
           <li>
-            <strong className="text-ink">Cron keeps the demo tidy.</strong> A nightly <C>pg_dump</C> (14 kept, each
-            verified readable), then a demo reset that rebuilds the shared round.
+            <strong className="text-ink">GitHub Actions keeps the demo tidy.</strong> A scheduled workflow rebuilds the
+            shared round every night at 03:30 UTC (<C>demo-reset.yml</C>).
           </li>
         </ul>
       </Section>
@@ -158,9 +159,9 @@ export default function Architecture() {
           count shared curves, and sharing is a separate <C>POST …/share</C> that triggers the same push.
         </Figure>
         <Figure title="Ship a change" svg={diagrams.ship}>
-          Vercel deploys the web app on every push to <C>main</C>. The API deploys separately: the manual Deploy API
-          workflow SSHes into the VM and runs <C>infra/vm/deploy.sh</C>, which can also be run by hand over{" "}
-          <C>gcloud compute ssh</C>.
+          Vercel deploys the web app on every push to <C>main</C>. Render deploys the API only after CI passes, and only
+          when files it depends on changed (<C>buildFilter</C> in <C>render.yaml</C>). If the new instance never answers{" "}
+          <C>/health</C>, the old one keeps serving.
         </Figure>
       </Section>
 

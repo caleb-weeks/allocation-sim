@@ -11,7 +11,7 @@ httpServer.listen(env.port, () => {
   console.log(`api listening on :${env.port}`);
 });
 
-// systemd sends SIGTERM on restart/deploy: stop accepting, finish, disconnect.
+// Render sends SIGTERM on deploy and before sleeping: stop accepting, finish, disconnect.
 function shutdown() {
   io.close();
   httpServer.close(async () => {

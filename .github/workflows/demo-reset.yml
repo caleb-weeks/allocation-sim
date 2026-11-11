@@ -1,4 +1,4 @@
-# Rebuild the shared demo round every night, undoing visitors' edits (formerly a cron job on the VM).
+# Rebuild the shared demo round every night, undoing visitors' edits.
 # Also runnable by hand from the Actions tab, e.g. to seed a fresh database.
 #
 # Needs the repository secret DATABASE_URL: the Neon connection string the API uses.

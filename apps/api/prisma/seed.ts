@@ -1,6 +1,6 @@
 /**
  * (Re)create the shared demo round from the Guatemala literacy template.
- * Safe to run repeatedly; the nightly cron uses it to wipe visitors' changes.
+ * Safe to run repeatedly; the nightly GitHub Actions workflow (demo-reset.yml) uses it to wipe visitors' changes.
  *
  *   pnpm --filter @allocation-sim/api demo:reset
  */

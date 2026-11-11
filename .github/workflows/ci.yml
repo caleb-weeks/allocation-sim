@@ -1,6 +1,6 @@
 # Typecheck and test: TypeScript engine + web, Python reference, and the Postgres-backed API.
 # The web app deploys through Vercel's GitHub integration (root directory: apps/web);
-# the API deploys with the manual "Deploy API" workflow (deploy.yml).
+# Render deploys the API (render.yaml) once this workflow passes on main.
 
 name: CI
 
