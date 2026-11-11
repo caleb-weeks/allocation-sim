@@ -8,7 +8,7 @@ import { roundsRouter } from "./routes/rounds.js";
 export function createApp() {
   const app = express();
   app.disable("x-powered-by");
-  app.set("trust proxy", 1); // behind Caddy: use X-Forwarded-For for rate limiting
+  app.set("trust proxy", 1); // one proxy hop (Render's edge): use X-Forwarded-For for rate limiting
 
   // CORS for the web app, with credentials (session cookie).
   app.use((req, res, next) => {

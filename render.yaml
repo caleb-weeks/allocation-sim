@@ -1,0 +1,47 @@
+# Render Blueprint for the API (Express + Socket.IO). The database is Neon's free Postgres;
+# the web app stays on Vercel. Create it from the Render dashboard: New → Blueprint → this repo.
+#
+# Free plan notes:
+# - The service sleeps after 15 minutes without traffic; the next request wakes it in about a minute.
+#   The web app shows a "waking up" notice meanwhile (apps/web/src/components/ServerWaking.tsx).
+# - preDeployCommand is paid-only, so migrations run at the end of the build instead.
+# - No cron: the nightly demo reset runs from GitHub Actions (.github/workflows/demo-reset.yml).
+services:
+  - type: web
+    name: allocation-api
+    runtime: node
+    plan: free
+    region: ohio # Neon project lives in AWS us-east-2 (Ohio), next to it
+    branch: main
+    # corepack provides the pnpm pinned in package.json; NODE_ENV=production would otherwise skip devDependencies.
+    buildCommand: >-
+      mkdir -p .bin && corepack enable --install-directory .bin && export PATH="$PWD/.bin:$PATH" &&
+      pnpm install --frozen-lockfile --prod=false &&
+      pnpm --filter @allocation-sim/api build &&
+      pnpm --filter @allocation-sim/api exec prisma migrate deploy
+    startCommand: cd apps/api && node --import ./dist/instrument.js dist/server.js
+    healthCheckPath: /health
+    autoDeployTrigger: checksPass # wait for CI on main
+    buildFilter:
+      paths:
+        - apps/api/**
+        - packages/engine/**
+        - pnpm-lock.yaml
+        - package.json
+        - render.yaml
+    domains:
+      - api.calebweeks.com
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: COREPACK_ENABLE_DOWNLOAD_PROMPT
+        value: "0"
+      - key: WEB_ORIGINS
+        value: https://allocation.calebweeks.com
+      # Neon's direct (non-pooled) connection string; one instance needs no pooler, and migrations need direct.
+      - key: DATABASE_URL
+        sync: false
+      - key: SENTRY_DSN
+        sync: false

@@ -1,0 +1,39 @@
+# Rebuild the shared demo round every night, undoing visitors' edits (formerly a cron job on the VM).
+# Also runnable by hand from the Actions tab, e.g. to seed a fresh database.
+#
+# Needs the repository secret DATABASE_URL: the Neon connection string the API uses.
+# GitHub disables scheduled workflows after 60 days without repository activity; re-enable from the Actions tab.
+
+name: Demo reset
+
+on:
+  schedule:
+    - cron: "30 3 * * *" # 03:30 UTC
+  workflow_dispatch:
+
+concurrency:
+  group: demo-reset
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  reset:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Apply migrations and reseed the demo round
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          pnpm --filter @allocation-sim/engine build
+          pnpm --filter @allocation-sim/api exec prisma generate
+          pnpm --filter @allocation-sim/api exec prisma migrate deploy
+          pnpm --filter @allocation-sim/api demo:reset
