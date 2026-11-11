@@ -1,14 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { glossary } from "./glossary-data";
+import type { GlossaryGroup } from "./_lib/glossary";
 
-const total = glossary.reduce((n, g) => n + g.terms.length, 0);
-
-export function Glossary() {
+export function Glossary({ groups: all }: { groups: GlossaryGroup[] }) {
+  const total = all.reduce((n, g) => n + g.terms.length, 0);
   const [query, setQuery] = useState("");
   const q = query.trim().toLowerCase();
-  const groups = glossary
+  const groups = all
     .map((g) => ({ ...g, terms: q ? g.terms.filter((t) => t.join(" ").toLowerCase().includes(q)) : g.terms }))
     .filter((g) => g.terms.length > 0);
 

@@ -14,7 +14,7 @@ The demo scenario uses CONALFA's 2023 literacy data for Guatemala's 22
 departments. The program costs are explicit, illustrative assumptions.
 
 - **Live demo:** https://allocation.calebweeks.com (one-click demo personas, no signup)
-- **Architecture, data flow, sequence diagrams and glossary:** https://allocation.calebweeks.com/architecture (source: `apps/web/src/app/architecture`)
+- **Architecture, data flow, sequence diagrams and glossary:** https://allocation.calebweeks.com/architecture, versioned by hosting setup: [v1](https://allocation.calebweeks.com/architecture/v1) (one GCP VM, code at tag `infra-v1`) and [v2](https://allocation.calebweeks.com/architecture/v2) (Render + Neon, current), with a comparison of what changed (source: `apps/web/src/app/architecture`)
 - **The math:** [docs/math.md](docs/math.md)
 
 ## What's in here
