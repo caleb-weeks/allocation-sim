@@ -109,3 +109,46 @@ body {
   outline: 2px solid var(--ink);
   outline-offset: 2px;
 }
+
+/*
+ * Architecture diagrams (app/architecture/diagrams.ts). The SVGs carry only
+ * class names; colors come from the theme tokens above so they follow
+ * light/dark. "acc" marks the engine, "amb" marks private trust data.
+ */
+.diagram {
+  --d-acc: var(--series-1);
+  --d-acc-wash: color-mix(in srgb, var(--series-1) 12%, var(--surface));
+  --d-acc-ink: color-mix(in srgb, var(--series-1) 70%, var(--ink));
+  --d-amb: color-mix(in srgb, var(--series-2) 80%, var(--ink));
+  --d-zone: color-mix(in srgb, var(--surface-2) 60%, var(--surface));
+  --d-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+.diagram svg { display: block; width: 100%; height: auto; }
+.diagram .bx { fill: var(--surface); stroke: var(--axis); stroke-width: 1.25; }
+.diagram .bx.acc, .diagram .ch.acc { fill: var(--d-acc-wash); stroke: var(--d-acc); }
+.diagram .ch { fill: var(--page); stroke: var(--grid); }
+.diagram .zn { fill: var(--d-zone); stroke: var(--axis); stroke-dasharray: 5 4; }
+.diagram .tt { fill: var(--ink); font: 600 13px var(--font-sans); }
+.diagram .tt.acc, .diagram .tc.acc, .diagram .tl.acc { fill: var(--d-acc-ink); }
+.diagram .tc { fill: var(--ink); font: 500 12px var(--d-mono); }
+.diagram .ts { fill: var(--muted); font: 11px var(--d-mono); }
+.diagram .ts.amb, .diagram .tl.amb { fill: var(--d-amb); }
+.diagram .tz { fill: var(--muted); font: 600 12px var(--font-sans); letter-spacing: 0.02em; }
+.diagram .tl { fill: var(--ink-2); font: 11px var(--d-mono); }
+.diagram .tk { fill: var(--ink); font: 600 11px var(--d-mono); }
+.diagram .lb { fill: var(--surface); }
+.diagram .eg { fill: none; stroke: var(--ink-2); stroke-width: 1.4; }
+.diagram .eg.acc { stroke: var(--d-acc); }
+.diagram .eg.amb { stroke: var(--d-amb); }
+.diagram .dash { stroke-dasharray: 5 4; }
+.diagram .mk { fill: var(--ink-2); }
+.diagram .mk-acc { fill: var(--d-acc); }
+.diagram .mk-amb { fill: var(--d-amb); }
+.diagram .ll { stroke: var(--axis); stroke-dasharray: 3 4; }
+.diagram .fr { fill: none; stroke: var(--axis); }
+.diagram .frl { fill: var(--d-zone); stroke: var(--axis); }
+.diagram .frd { stroke: var(--axis); stroke-dasharray: 4 4; }
+.diagram-key { display: inline-block; width: 12px; height: 12px; border-radius: 3px; border: 1.5px solid; }
+.diagram-key-acc { border-color: var(--series-1); background: color-mix(in srgb, var(--series-1) 12%, var(--surface)); }
+.diagram-key-amb { border-color: color-mix(in srgb, var(--series-2) 80%, var(--ink)); background: color-mix(in srgb, var(--series-2) 14%, var(--surface)); }
+.diagram-key-dash { width: 18px; height: 0; border-width: 1.5px 0 0; border-style: dashed; border-color: var(--ink-2); border-radius: 0; }

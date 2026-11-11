@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="min-h-dvh">
         <header className="border-b border-border bg-surface">
-          <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-3">
+          <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3">
             <Link href="/" className="font-semibold tracking-tight">
               Allocation Simulator
             </Link>
@@ -40,6 +40,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </Link>
               <Link href="/how-it-works" className="hover:text-ink">
                 How it works
+              </Link>
+              <Link href="/architecture" className="hover:text-ink">
+                Architecture
               </Link>
             </nav>
             <div className="ml-auto flex items-center gap-2">
